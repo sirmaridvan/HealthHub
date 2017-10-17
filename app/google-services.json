@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "74747017325",
+    "firebase_url": "https://healthhub-a0d45.firebaseio.com",
+    "project_id": "healthhub-a0d45",
+    "storage_bucket": "healthhub-a0d45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74747017325:android:406a2a61f65b7382",
+        "android_client_info": {
+          "package_name": "halmob.healthhub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "74747017325-60rdv8oi8nuic2vnid3oovsungigh06d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "halmob.healthhub",
+            "certificate_hash": "aa5f3112c2e25221e2b3b9635bc715246e7a246b"
+          }
+        },
+        {
+          "client_id": "74747017325-g5onk0bt4habt8h4dr1d25ej50luqa4s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRHt-gNTJSL9Nn6Gnj0-JGqDQHwUNXCmQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "74747017325-g5onk0bt4habt8h4dr1d25ej50luqa4s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
