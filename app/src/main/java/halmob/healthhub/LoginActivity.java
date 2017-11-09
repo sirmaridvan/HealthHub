@@ -156,18 +156,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     }
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
-        if (user != null) {
-            String userName= user.getDisplayName();
-            String signText="Hoşgeldin, " + userName;
-            signTextView.setText(signText);
-            signInButton.setVisibility(View.GONE);
-            signOutButton.setVisibility(View.VISIBLE);
-        } else {
-            signTextView.setText("Güle Güle");
-
-            signInButton.setVisibility(View.VISIBLE);
-            signOutButton.setVisibility(View.INVISIBLE);
-        }
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
     }
     private void showSignedInUI(FirebaseUser firebaseUser) {
         Log.d(TAG, "Showing signed in UI");

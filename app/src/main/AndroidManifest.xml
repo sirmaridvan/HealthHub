@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BaseActivity"></activity>
+        <activity android:name=".BaseActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".StepCounterActivity"></activity>
     </application>
 
 </manifest>
