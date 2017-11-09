@@ -24,6 +24,7 @@ import halmob.healthhub.Models.Drug;
 public class ProfileActivity extends BaseActivity implements View.OnClickListener {
     private Button followButton;
     private Button addDrugButton;
+    private Button stepCounter;
     private DatabaseReference mPersonRef;
     private String mUserId;
 
@@ -36,6 +37,8 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         followButton.setOnClickListener(this);
         addDrugButton = findViewById(R.id.add_drug);
         addDrugButton.setOnClickListener(this);
+        stepCounter = findViewById(R.id.step_counter);
+        stepCounter.setOnClickListener(this);
         mUserId = "kuLAa0XboKVSwwiaP9PK80AaJGf1";
     }
     @Override
@@ -47,6 +50,9 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
             case R.id.add_drug:
                 addDrug();
                 break;
+            case R.id.step_counter:
+                Intent intent = new Intent(this, StepCounterActivity.class);
+                startActivity(intent);
         }
     }
     public void follow(){
