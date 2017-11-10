@@ -1,7 +1,6 @@
 package halmob.healthhub;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +12,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -25,6 +23,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     private Button followButton;
     private Button addDrugButton;
     private Button stepCounter;
+    private Button addMedicineButton;
     private DatabaseReference mPersonRef;
     private String mUserId;
 
@@ -39,6 +38,8 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         addDrugButton.setOnClickListener(this);
         stepCounter = findViewById(R.id.step_counter);
         stepCounter.setOnClickListener(this);
+        addMedicineButton = findViewById(R.id.add_medicine);
+        addMedicineButton.setOnClickListener(this);
         mUserId = "kuLAa0XboKVSwwiaP9PK80AaJGf1";
     }
     @Override
@@ -53,8 +54,12 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
             case R.id.step_counter:
                 Intent intent = new Intent(this, StepCounterActivity.class);
                 startActivity(intent);
+            case R.id.add_medicine:
+                Intent intent1 = new Intent(this, MedicineActivity.class);
+                startActivity(intent1);
         }
     }
+
     public void follow(){
         final String currentUserId = FirebaseUtil.getCurrentUserId();
         if (currentUserId == null) {
@@ -86,19 +91,27 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
             }
         });
     }
+
     public void addDrug(){
         final String currentUserId = FirebaseUtil.getCurrentUserId();
         Drug drug = new Drug();
         drug.setName("aspirin");
         drug.setHowMany("40");
         try {
-            String date = "2018-11-12";
+            String date1 = "2017-11-12";    // start date
+            String date2 = "2018-11-12";    // end date
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date parsedDate = dateFormat.parse(date);
+
+            Date parsedDate = dateFormat.parse(date1);
             Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
-            drug.setEndTime(timestamp.toString());
+            drug.setStartDate(timestamp.toString());
+
+            parsedDate = dateFormat.parse(date2);
+            timestamp = new java.sql.Timestamp(parsedDate.getTime());
+            drug.setEndDate(timestamp.toString());
+
         } catch(Exception e) { //this generic but you can control another types of exception
-            // look the origin of excption
+            // look the origin of exception
         }
         mPersonRef.child(currentUserId).child("drugs").push().setValue(drug, new DatabaseReference.CompletionListener() {
             @Override
