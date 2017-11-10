@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_1"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="48dp"
+        android:text="Medicine Name"
+        android:textSize="16sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords|text"
+        android:hint="Enter Medicine Name Here"
+        android:id="@+id/editText_1"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:imeOptions="actionNext"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_2"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Start Date"
+        android:textSize="16sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:hint="Enter Start Date Here"
+        android:id="@+id/editText_2"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:imeOptions="actionNext"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_3"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:text="End Date"
+        android:textSize="16sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:hint="Enter End Date Here"
+        android:id="@+id/editText_3"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:imeOptions="actionNext"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_4"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:text="How many"
+        android:textSize="16sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="How many times in a day"
+        android:id="@+id/editText_4"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:imeOptions="actionDone"
+        />
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Submit"
+        android:onClick="submitMedicine"
+
+
+        />
+
+
+
+
+
+
+</LinearLayout>
