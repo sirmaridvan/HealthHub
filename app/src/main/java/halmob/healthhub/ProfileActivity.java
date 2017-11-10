@@ -54,9 +54,11 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
             case R.id.step_counter:
                 Intent intent = new Intent(this, StepCounterActivity.class);
                 startActivity(intent);
+                break;
             case R.id.add_medicine:
                 Intent intent1 = new Intent(this, MedicineActivity.class);
                 startActivity(intent1);
+                break;
         }
     }
 
