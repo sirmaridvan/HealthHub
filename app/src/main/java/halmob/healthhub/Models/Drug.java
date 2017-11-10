@@ -5,16 +5,17 @@ package halmob.healthhub.Models;
  */
 
 public class Drug {
-    String name;
+    String nameMedicine;
     String howMany;
-    String endTime;
+    String startDate;
+    String endDate;
 
     public String getName() {
-        return name;
+        return nameMedicine;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nameMedicine) {
+        this.nameMedicine = nameMedicine;
     }
 
     public String getHowMany() {
@@ -25,11 +26,20 @@ public class Drug {
         this.howMany = howMany;
     }
 
-    public String getEndTime() {
-        return endTime;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
 }
