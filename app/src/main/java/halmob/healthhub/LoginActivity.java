@@ -100,7 +100,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null && !currentUser.isAnonymous()) {
             showSignedInUI(currentUser);
-            updateUI(currentUser);
         }
     }
     @Override
@@ -139,14 +138,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
                             showSignedInUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            updateUI(null);
                         }
 
                         // ...
@@ -154,7 +151,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 });
     }
     private void updateUI(FirebaseUser user) {
-        hideProgressDialog();
+        //hideProgressDialog();
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
