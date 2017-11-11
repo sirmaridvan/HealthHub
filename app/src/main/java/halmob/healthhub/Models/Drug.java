@@ -10,9 +10,7 @@ public class Drug {
     String startDate;
     String endDate;
 
-    public String getName() {
-        return nameMedicine;
-    }
+    public String getName() { return nameMedicine;}
 
     public void setName(String nameMedicine) {
         this.nameMedicine = nameMedicine;

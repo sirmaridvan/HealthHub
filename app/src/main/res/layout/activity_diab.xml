@@ -154,7 +154,7 @@
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/imageButton1"
+                    android:id="@+id/insulin_button"
                     android:layout_width="100dp"
                     android:layout_height="96dp"
                     android:layout_gravity="center_horizontal"
