@@ -85,7 +85,6 @@ public class InsulinActivity extends AppCompatActivity {
 
     }
 
-
     public void createInsulinDose(int insulinType, float insulinDose)
     {
         NewInsulinDose.setDate(); //set current date

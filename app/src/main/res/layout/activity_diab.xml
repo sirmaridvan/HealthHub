@@ -1,177 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="450dp"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="halmob.healthhub.DiabetesActivity"
+    tools:context="halmob.healthhub.DiabActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="400dp"
-        android:layout_height="119dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout">
 
-        <LinearLayout
-            android:layout_width="100dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="60dp"
-            android:background="@android:color/holo_red_dark"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="100dp"
-                    android:layout_height="96dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:background="@android:color/holo_red_dark"
-                    app:srcCompat="@mipmap/blood_sugar_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Blood Sugar"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="230dp"
+            android:layout_weight="1"
             android:background="@android:color/holo_blue_light"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="100dp"
-                    android:layout_height="96dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:background="@android:color/holo_blue_light"
-                    app:srcCompat="@mipmap/insulin_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Carbohydrate Count"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-    </android.support.v7.widget.CardView>
+            android:gravity="center"
+            android:text="Diabetes Page" />
+    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="383dp"
-        android:layout_height="138dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="100dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="190dp"
+        android:layout_height="130dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/insulin_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:src="@mipmap/insulin_icon" />
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_bright"
+            android:text="Add Insulin " />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/linearLayout3"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/blood_sugar_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:src="@mipmap/blood_sugar_icon" />
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_light"
+            android:text="ADD BLOOD SUGAR" />
 
     </LinearLayout>
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="400dp"
-        android:layout_height="119dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="60dp"
-            android:background="@android:color/holo_red_dark"
-            android:orientation="horizontal">
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="190dp"
+        android:layout_height="130dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_marginTop="130dp"
+        android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/insulin_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:src="@mipmap/carbo_icon" />
 
-                <ImageButton
-                    android:id="@+id/imageButton2"
-                    android:layout_width="100dp"
-                    android:layout_height="96dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:background="@android:color/holo_red_dark"
-                    app:srcCompat="@mipmap/blood_sugar_icon" />
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@android:color/holo_green_light"
+            android:text="Add Meal" />
+    </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Blood Sugar"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-            </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_marginTop="130dp"
+        android:layout_toEndOf="@+id/linearLayout3"
+        android:orientation="vertical">
 
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/blood_sugar_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:src="@mipmap/meal_icon" />
 
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="230dp"
-            android:background="@android:color/holo_blue_light"
-            android:orientation="horizontal">
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@android:color/holo_red_light"
+            android:text="Carbohydrate Count" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+    </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/insulin_button"
-                    android:layout_width="100dp"
-                    android:layout_height="96dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:background="@android:color/holo_blue_light"
-                    app:srcCompat="@mipmap/insulin_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Insulin"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-    </android.support.v7.widget.CardView>
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
