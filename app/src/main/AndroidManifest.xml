@@ -22,7 +22,8 @@
         <activity android:name=".BaseActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".StepCounterActivity" />
-        <activity android:name=".MedicineActivity"></activity>
+        <activity android:name=".MedicineActivity" />
+        <activity android:name=".DiabActivity"></activity>
     </application>
 
 </manifest>
