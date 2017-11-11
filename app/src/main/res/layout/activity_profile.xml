@@ -28,4 +28,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Medicine"/>
+
+    <Button
+        android:id="@+id/diabetes_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diabetes Page" />
 </LinearLayout>
