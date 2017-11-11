@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="450dp"
-    android:background="@color/grayLight"
     android:orientation="vertical"
     tools:context="halmob.healthhub.DiabetesActivity"
     tools:layout_editor_absoluteY="81dp">
