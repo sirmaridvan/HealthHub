@@ -9,14 +9,14 @@ import java.util.Date;
 
 
 public class InsulinDose {
-    String appliedDose;
+    Float appliedDose;
     Date date;
     String time;
-    String insulinType;
+    Integer insulinType;
 
-    public String getAppliedDose() { return appliedDose; }
+    public Float getAppliedDose() { return appliedDose; }
 
-    public void setAppliedDose(String appliedDose) {
+    public void setAppliedDose(Float appliedDose) {
         this.appliedDose = appliedDose;
     }
 
@@ -24,7 +24,7 @@ public class InsulinDose {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate() {
         Date currentDate = new Date(System.currentTimeMillis());
         this.date = currentDate;
     }
@@ -33,16 +33,16 @@ public class InsulinDose {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime() {
         Calendar c = Calendar.getInstance();
         int Hr24=c.get(Calendar.HOUR_OF_DAY);
         int Min=c.get(Calendar.MINUTE);
         this.time = String.valueOf(Hr24 +  " " + Min);
     }
 
-    public String getInsulinType() { return insulinType; }
+    public Integer getInsulinType() { return insulinType; }
 
-    public void setInsulinType(String insulinType) {
+    public void setInsulinType(Integer insulinType) {
         this.insulinType = insulinType;
     }
 }
