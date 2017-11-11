@@ -86,7 +86,7 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="190dp"
-        android:layout_height="130dp"
+        android:layout_height="140dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/linearLayout2"
         android:layout_marginTop="140dp"
@@ -95,9 +95,11 @@
         <ImageButton
             android:id="@+id/insulin_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="88dp"
             android:background="@android:color/white"
-            android:src="@mipmap/meal_icon" />
+            android:cropToPadding="false"
+            android:elevation="0dp"
+            android:src="@drawable/meal_icon" />
 
         <Button
             style="@style/Widget.AppCompat.Button.Colored"
@@ -111,7 +113,7 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="140dp"
         android:layout_below="@+id/linearLayout2"
         android:layout_marginTop="140dp"
         android:layout_toEndOf="@+id/linearLayout3"
@@ -120,9 +122,9 @@
         <ImageButton
             android:id="@+id/blood_sugar_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="88dp"
             android:background="@android:color/white"
-            android:src="@mipmap/carbo_icon" />
+            android:src="@drawable/carbo_icon" />
 
         <Button
             style="@style/Widget.AppCompat.Button.Colored"
