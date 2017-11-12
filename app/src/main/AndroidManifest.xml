@@ -25,7 +25,8 @@
         <activity android:name=".MedicineActivity" />
         <activity android:name=".DiabActivity" />
         <activity android:name=".InsulinActivity" />
-        <activity android:name=".BloodSugarActivity"></activity>
+        <activity android:name=".BloodSugarActivity" />
+        <activity android:name=".ProfilePageActivity"></activity>
     </application>
 
 </manifest>
