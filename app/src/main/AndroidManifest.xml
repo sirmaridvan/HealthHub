@@ -24,7 +24,8 @@
         <activity android:name=".StepCounterActivity" />
         <activity android:name=".MedicineActivity" />
         <activity android:name=".DiabActivity" />
-        <activity android:name=".InsulinActivity"></activity>
+        <activity android:name=".InsulinActivity" />
+        <activity android:name=".BloodSugarActivity"></activity>
     </application>
 
 </manifest>
