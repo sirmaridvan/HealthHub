@@ -30,48 +30,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/label_2"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Start Date"
-        android:textSize="16sp"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:hint="Enter Start Date Here"
-        android:id="@+id/editText_2"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:imeOptions="actionNext"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/label_3"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
-        android:text="End Date"
-        android:textSize="16sp"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:hint="Enter End Date Here"
-        android:id="@+id/editText_3"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:imeOptions="actionNext"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/label_4"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
@@ -89,6 +47,48 @@
         android:layout_marginRight="24dp"
         android:imeOptions="actionDone"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_2"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Start Date"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:hint="Tap here to enter start date"
+        android:textSize="20sp"
+        android:id="@+id/date1"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_3"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:text="End Date"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:hint="Tap here to enter end date"
+        android:textSize="20sp"
+        android:id="@+id/date2"
+        />
+
 
     <Button
         android:id="@+id/button_submit"
