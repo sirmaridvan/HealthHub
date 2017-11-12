@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import halmob.healthhub.Models.BloodSugar;
+
 public class DiabActivity extends AppCompatActivity {
     private ImageButton insulinButton;
+    private ImageButton bloodSugarButton;
 
 
     @Override
@@ -24,8 +27,16 @@ public class DiabActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        bloodSugarButton = findViewById(R.id.blood_sugar_button);
+        bloodSugarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(DiabActivity.this, BloodSugarActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
-
-
 
 }
