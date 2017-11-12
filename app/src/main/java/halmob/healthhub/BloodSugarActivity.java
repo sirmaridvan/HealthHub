@@ -1,14 +1,11 @@
 package halmob.healthhub;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.text.NumberFormat;
-import java.text.ParseException;
 
 import halmob.healthhub.Models.BloodSugar;
 
@@ -30,8 +27,8 @@ public class BloodSugarActivity extends AppCompatActivity {
 
         editTextSugarValue = (EditText) findViewById(R.id.blood_sugar_input);
         editTextHungerSituation = (EditText) findViewById(R.id.hunger_situation_input);
-        editTextDate = (EditText) findViewById(R.id.editText_3);
-        editTextTime = (EditText) findViewById(R.id.editText_4);
+        // editTextDate = (EditText) findViewById(R.id.editText_3);
+        // editTextTime = (EditText) findViewById(R.id.editText_4);
         editTextExtraNotes = (EditText) findViewById(R.id.extra_notes_input);
 
         NewBloodSugar = new BloodSugar();

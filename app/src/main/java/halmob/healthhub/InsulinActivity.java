@@ -1,17 +1,14 @@
 package halmob.healthhub;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.sql.Timestamp;
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import halmob.healthhub.Models.InsulinDose;
 
@@ -33,8 +30,8 @@ public class InsulinActivity extends AppCompatActivity {
 
         editTextInsulinType = (EditText) findViewById(R.id.insulin_type_input);
         editTextInsulinDose = (EditText) findViewById(R.id.insulin_dose_input);
-        editTextDate = (EditText) findViewById(R.id.editText_3);
-        editTextTime = (EditText) findViewById(R.id.editText_4);
+        // editTextDate = (EditText) findViewById(R.id.editText_3);
+        // editTextTime = (EditText) findViewById(R.id.editText_4);
 
         NewInsulinDose = new InsulinDose();
 
