@@ -10,7 +10,7 @@ public class Person {
     private String photoUrl;
     private String displayName;
     private String uid;
-    private String eMail;
+    private String email;
     private Map<String, Object> following;
 
     public Person() {
@@ -46,12 +46,12 @@ public class Person {
         return photoUrl;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Map<String, Object> getFollowing() {

@@ -26,8 +26,10 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     private Button addMedicineButton;
     private Button diabetesButton;
     private Button sportsPageButton;
+    private Button profilePageButton;
     private DatabaseReference mPersonRef;
     private String mUserId;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         diabetesButton.setOnClickListener(this);
         sportsPageButton = findViewById(R.id.sportsPage_button);
         sportsPageButton.setOnClickListener(this);
+        profilePageButton = findViewById(R.id.profilePage_button);
+        profilePageButton.setOnClickListener(this);
         mUserId = "kuLAa0XboKVSwwiaP9PK80AaJGf1";
     }
     @Override
@@ -58,20 +62,24 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                 addDrug();
                 break;
             case R.id.step_counter:
-                Intent intent = new Intent(this, StepCounterActivity.class);
+                intent = new Intent(this, StepCounterActivity.class);
                 startActivity(intent);
                 break;
             case R.id.add_medicine:
-                Intent intent1 = new Intent(this, MedicineActivity.class);
-                startActivity(intent1);
+                intent = new Intent(this, MedicineActivity.class);
+                startActivity(intent);
                 break;
             case R.id.diabetes_button:
-                Intent i = new Intent(this, DiabActivity.class);
-                startActivity(i);
+                intent = new Intent(this, DiabActivity.class);
+                startActivity(intent);
                 break;
             case R.id.sportsPage_button:
-                Intent intentForSportsPage = new Intent(this, Sports_Activity.class);
-                startActivity(intentForSportsPage);
+                intent = new Intent(this, Sports_Activity.class);
+                startActivity(intent);
+                break;
+            case R.id.profilePage_button:
+                intent = new Intent(this, ProfilePageActivity.class);
+                startActivity(intent);
                 break;
         }
     }
