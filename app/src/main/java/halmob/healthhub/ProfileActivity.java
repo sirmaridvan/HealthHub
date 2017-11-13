@@ -2,10 +2,16 @@ package halmob.healthhub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +33,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     private Button diabetesButton;
     private Button sportsPageButton;
     private Button profilePageButton;
+    private Button logoutButton;
     private DatabaseReference mPersonRef;
     private String mUserId;
     private Intent intent;
@@ -50,6 +57,8 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         sportsPageButton.setOnClickListener(this);
         profilePageButton = findViewById(R.id.profilePage_button);
         profilePageButton.setOnClickListener(this);
+        logoutButton = findViewById(R.id.logout_button);
+        logoutButton.setOnClickListener(this);
         mUserId = "kuLAa0XboKVSwwiaP9PK80AaJGf1";
     }
     @Override
@@ -81,9 +90,26 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                 intent = new Intent(this, ProfilePageActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.logout_button:
+                signOut();
+                break;
         }
     }
+    private void signOut() {
+        // Firebase sign out
+        FirebaseAuth.getInstance().signOut();
 
+        /*// Google sign out
+        Auth.GoogleSignInApi.signOut(LoginActivity.mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(@NonNull Status status) {
+                        finish();
+                    }
+                });*/
+        finish();
+        System.exit(0);
+    }
     public void follow(){
         final String currentUserId = FirebaseUtil.getCurrentUserId();
         if (currentUserId == null) {

@@ -37,7 +37,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private SignInButton signInButton;
     private Button signOutButton;
     private TextView signTextView;
-    private GoogleApiClient mGoogleApiClient;
+    public static GoogleApiClient mGoogleApiClient;
     private FirebaseAuth mAuth;
     private static final String TAG = "LoginActivity";
     private static final int RC_SIGN_IN = 9001;
