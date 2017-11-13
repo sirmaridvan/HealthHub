@@ -25,6 +25,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     private Button stepCounter;
     private Button addMedicineButton;
     private Button diabetesButton;
+    private Button sportsPageButton;
     private DatabaseReference mPersonRef;
     private String mUserId;
 
@@ -43,6 +44,8 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         addMedicineButton.setOnClickListener(this);
         diabetesButton = findViewById(R.id.diabetes_button);
         diabetesButton.setOnClickListener(this);
+        sportsPageButton = findViewById(R.id.sportsPage_button);
+        sportsPageButton.setOnClickListener(this);
         mUserId = "kuLAa0XboKVSwwiaP9PK80AaJGf1";
     }
     @Override
@@ -65,6 +68,10 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
             case R.id.diabetes_button:
                 Intent i = new Intent(this, DiabActivity.class);
                 startActivity(i);
+                break;
+            case R.id.sportsPage_button:
+                Intent intentForSportsPage = new Intent(this, Sports_Activity.class);
+                startActivity(intentForSportsPage);
                 break;
         }
     }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="halmob.healthhub.Sports_Activity">
+
+
+    <LinearLayout
+        android:id="@+id/Header_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/Empty_Layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_light"
+            android:gravity="center"
+            android:text="Sports Page" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/Empty_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Header_Layout"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="30dp">
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/SportsRecord_Layout"
+        android:layout_width="190dp"
+        android:layout_height="130dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Empty_Layout"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="180dp"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_bright"
+            android:text="History Sport Record "
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/AddSportsRecord_Layout"
+        android:layout_width="190dp"
+        android:layout_height="130dp"
+        android:layout_below="@+id/Empty_Layout"
+        android:layout_toEndOf="@+id/SportsRecord_Layout"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="190dp"
+        tools:layout_editor_absoluteY="180dp">
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_light"
+            android:text="Add Record" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
