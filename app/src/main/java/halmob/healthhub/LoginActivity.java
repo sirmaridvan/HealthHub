@@ -12,7 +12,6 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
@@ -26,12 +25,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-import java.util.Map;
+import halmob.healthhub.Models.Person;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener{
     private SignInButton signInButton;
@@ -91,7 +86,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(@NonNull Status status) {
-                        updateUI(null);
+                        startMainActivity();
                     }
                 });
     }
@@ -101,7 +96,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null && !currentUser.isAnonymous()) {
-            showSignedInUI(currentUser);
+            updateUser(currentUser);
         }
     }
     @Override
@@ -150,7 +145,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            showSignedInUI(user);
+                            updateUser(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -162,32 +157,21 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     }
                 });
     }
-    private void updateUI(FirebaseUser user) {
+    private void startMainActivity(){
         //hideProgressDialog();
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, MainAcitivity.class);
         startActivity(intent);
     }
-    private void showSignedInUI(FirebaseUser firebaseUser) {
+    private void updateUser(FirebaseUser firebaseUser) {
         Log.d(TAG, "Showing signed in UI");
-        Map<String, Object> updateValues = new HashMap<>();
-        updateValues.put("displayName", firebaseUser.getDisplayName() != null ? firebaseUser.getDisplayName() : "Anonymous");
-        updateValues.put("photoUrl", firebaseUser.getPhotoUrl() != null ? firebaseUser.getPhotoUrl().toString() : null);
-        updateValues.put("email", firebaseUser.getEmail() != null ? firebaseUser.getEmail().toString() : null);
-
-        FirebaseUtil.getPeopleRef().child(firebaseUser.getUid()).updateChildren(
-                updateValues,
-                new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(DatabaseError firebaseError, DatabaseReference databaseReference) {
-                        if (firebaseError != null) {
-                            Toast.makeText(LoginActivity.this,
-                                    "Couldn't save user data: " + firebaseError.getMessage(),
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-
-        updateUI(firebaseUser);
+        Person person = new Person();
+        person.setDisplayName( firebaseUser.getDisplayName() != null ? firebaseUser.getDisplayName() : "Anonymous");
+        person.setPhotoUrl(firebaseUser.getPhotoUrl() != null ? firebaseUser.getPhotoUrl().toString() : null);
+        person.setEmail(firebaseUser.getEmail());
+        person.setUid(firebaseUser.getUid());
+        //kullanıcı tipi ve diğer fazladan bilgiler burada eklenecek. (Hastalıklar vs gibi)
+        FirebaseTransaction.addUser(person);
+        startMainActivity();
     }
 
 }

@@ -11,15 +11,18 @@ public class Person {
     private String displayName;
     private String uid;
     private String email;
+
+    private String userType;
     private Map<String, Object> following;
 
     public Person() {
-
+        userType = "Healthman";
     }
 
     public Person(String displayName, String profile_picture) {
         this.displayName = displayName;
         this.photoUrl = photoUrl;
+        userType = "Healthman";
     }
 
     public void setDisplayName(String displayName) {
@@ -56,5 +59,13 @@ public class Person {
 
     public Map<String, Object> getFollowing() {
         return following;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }

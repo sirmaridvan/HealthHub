@@ -2,15 +2,10 @@ package halmob.healthhub;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +20,7 @@ import java.util.Map;
 
 import halmob.healthhub.Models.Drug;
 
-public class ProfileActivity extends BaseActivity implements View.OnClickListener {
+public class MainAcitivity extends BaseActivity implements View.OnClickListener {
     private Button followButton;
     private Button addDrugButton;
     private Button stepCounter;
@@ -35,7 +30,6 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     private Button profilePageButton;
     private Button logoutButton;
     private DatabaseReference mPersonRef;
-    private String mUserId;
     private Intent intent;
 
     @Override
@@ -59,13 +53,12 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         profilePageButton.setOnClickListener(this);
         logoutButton = findViewById(R.id.logout_button);
         logoutButton.setOnClickListener(this);
-        mUserId = "kuLAa0XboKVSwwiaP9PK80AaJGf1";
     }
     @Override
     public void onClick(View v){
         switch (v.getId()){
             case R.id.follow:
-                follow();
+                FirebaseTransaction.follow("GldLQw9wyiV2wvfDo6OiMi2QhFa2");
                 break;
             case R.id.add_drug:
                 addDrug();
@@ -110,37 +103,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         finish();
         System.exit(0);
     }
-    public void follow(){
-        final String currentUserId = FirebaseUtil.getCurrentUserId();
-        if (currentUserId == null) {
-            Toast.makeText(ProfileActivity.this, "You need to sign in to follow someone.",
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
-        // TODO: Convert these to actually not be single value, for live updating when
-        // current user follows.
-        mPersonRef.child(currentUserId).child("following").child(mUserId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Map<String, Object> updatedUserData = new HashMap<>();
-                updatedUserData.put("people/" + currentUserId + "/following/" + mUserId, true);
-                updatedUserData.put("followers/" + mUserId + "/" + currentUserId, true);
-                FirebaseUtil.getBaseRef().updateChildren(updatedUserData, new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(DatabaseError firebaseError, DatabaseReference firebase) {
-                        if (firebaseError != null) {
-                            Toast.makeText(ProfileActivity.this, R.string.follow_user_error, Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-            }
 
-            @Override
-            public void onCancelled(DatabaseError firebaseError) {
-
-            }
-        });
-    }
 
     public void addDrug(){
         final String currentUserId = FirebaseUtil.getCurrentUserId();
@@ -167,7 +130,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
             @Override
             public void onComplete(DatabaseError error, DatabaseReference firebase) {
                 if (error != null) {
-                    Toast.makeText(ProfileActivity.this, "Error adding drug.", Toast
+                    Toast.makeText(MainAcitivity.this, "Error adding drug.", Toast
                             .LENGTH_SHORT).show();
                 }
             }

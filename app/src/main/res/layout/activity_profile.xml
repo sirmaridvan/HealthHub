@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="halmob.healthhub.ProfileActivity">
+    tools:context="halmob.healthhub.MainAcitivity">
 
     <Button
         android:id="@+id/follow"
