@@ -1,16 +1,17 @@
 package halmob.healthhub;
 
-import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import halmob.healthhub.EventListeners.DrugListener;
+import halmob.healthhub.Models.Drug;
 import halmob.healthhub.Models.Person;
 
 /**
@@ -25,27 +26,6 @@ public class FirebaseTransaction {
         updateValues.put("email", user.getEmail() != null ? user.getEmail().toString() : null);
         updateValues.put("userType", user.getUserType());
         FirebaseUtil.getPeopleRef().child(user.getUid()).updateChildren(
-                updateValues,
-                new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(DatabaseError firebaseError, DatabaseReference databaseReference) {
-                        if (firebaseError != null) {
-                            /*Toast.makeText(LoginActivity.this,
-                                    "Couldn't save user data: " + firebaseError.getMessage(),
-                                    Toast.LENGTH_LONG).show();*/
-                        }
-                    }
-                });
-    }
-    private static void addHealthman(Person user){
-
-    }
-    private static void addProfession(Person user){
-        Map<String, Object> updateValues = new HashMap<>();
-        updateValues.put("displayName", user.getDisplayName() != null ? user.getDisplayName() : "Anonymous");
-        updateValues.put("photoUrl", user.getPhotoUrl() != null ? user.getPhotoUrl().toString() : null);
-        updateValues.put("email", user.getEmail() != null ? user.getEmail().toString() : null);
-        FirebaseUtil.getProfessionRef().child(user.getUid()).updateChildren(
                 updateValues,
                 new DatabaseReference.CompletionListener() {
                     @Override
@@ -80,6 +60,42 @@ public class FirebaseTransaction {
                         }
                     }
                 });
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
+    public static void addDrug(Drug drug){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("drugs").push().setValue(drug, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError error, DatabaseReference firebase) {
+                if (error != null) {
+                }
+            }
+        });
+    }
+    private static DrugListener mDrugListener;
+
+    public static void setDrugListenerListener(DrugListener listen) {
+        mDrugListener = listen;
+    }
+    public static void getDrugs(){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        final List<Drug> drugList = new ArrayList<Drug>();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("drugs").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Drug drug = postSnapshot.getValue(Drug.class);
+                    drugList.add(drug);
+                }
+                if (mDrugListener != null) {
+                    mDrugListener.drugsRead(drugList);
+                }
             }
 
             @Override

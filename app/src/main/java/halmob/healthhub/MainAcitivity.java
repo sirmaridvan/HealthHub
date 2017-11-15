@@ -16,13 +16,13 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import halmob.healthhub.Models.Drug;
 
 public class MainAcitivity extends BaseActivity implements View.OnClickListener {
     private Button followButton;
-    private Button addDrugButton;
     private Button stepCounter;
     private Button addMedicineButton;
     private Button diabetesButton;
@@ -39,8 +39,6 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
         mPersonRef = FirebaseUtil.getPeopleRef();
         followButton = findViewById(R.id.follow);
         followButton.setOnClickListener(this);
-        addDrugButton = findViewById(R.id.add_drug);
-        addDrugButton.setOnClickListener(this);
         stepCounter = findViewById(R.id.step_counter);
         stepCounter.setOnClickListener(this);
         addMedicineButton = findViewById(R.id.add_medicine);
@@ -59,9 +57,6 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
         switch (v.getId()){
             case R.id.follow:
                 FirebaseTransaction.follow("GldLQw9wyiV2wvfDo6OiMi2QhFa2");
-                break;
-            case R.id.add_drug:
-                addDrug();
                 break;
             case R.id.step_counter:
                 intent = new Intent(this, StepCounterActivity.class);
@@ -105,36 +100,6 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
     }
 
 
-    public void addDrug(){
-        final String currentUserId = FirebaseUtil.getCurrentUserId();
-        Drug drug = new Drug();
-        drug.setName("aspirin");
-        drug.setHowMany("40");
-        try {
-            String date1 = "2017-11-12";    // start date
-            String date2 = "2018-11-12";    // end date
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-            Date parsedDate = dateFormat.parse(date1);
-            Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
-            drug.setStartDate(timestamp.toString());
-
-            parsedDate = dateFormat.parse(date2);
-            timestamp = new java.sql.Timestamp(parsedDate.getTime());
-            drug.setEndDate(timestamp.toString());
-
-        } catch(Exception e) { //this generic but you can control another types of exception
-            // look the origin of exception
-        }
-        mPersonRef.child(currentUserId).child("drugs").push().setValue(drug, new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(DatabaseError error, DatabaseReference firebase) {
-                if (error != null) {
-                    Toast.makeText(MainAcitivity.this, "Error adding drug.", Toast
-                            .LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
 }
 

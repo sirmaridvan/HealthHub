@@ -10,17 +10,18 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
+import halmob.healthhub.EventListeners.DrugListener;
 import halmob.healthhub.Models.Drug;
 
 
-public class MedicineActivity extends AppCompatActivity {
+public class MedicineActivity extends AppCompatActivity implements DrugListener {
 
     private EditText editTextName;
     private EditText editTextHowMany;
@@ -50,7 +51,7 @@ public class MedicineActivity extends AppCompatActivity {
         editTextStartDate = (TextView) findViewById(R.id.date1);
         editTextEndDate = (TextView) findViewById(R.id.date2);
 
-        editTextStartDate.setOnClickListener(new View.OnClickListener(){
+        editTextStartDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -70,7 +71,7 @@ public class MedicineActivity extends AppCompatActivity {
             }
         });
 
-        editTextEndDate.setOnClickListener(new View.OnClickListener(){
+        editTextEndDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -90,7 +91,7 @@ public class MedicineActivity extends AppCompatActivity {
             }
         });
 
-        dateSetListener1 = new DatePickerDialog.OnDateSetListener(){
+        dateSetListener1 = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -100,7 +101,7 @@ public class MedicineActivity extends AppCompatActivity {
             }
         };
 
-        dateSetListener2 = new DatePickerDialog.OnDateSetListener(){
+        dateSetListener2 = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -116,17 +117,19 @@ public class MedicineActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 submitMedicine();
-                Toast.makeText(getApplicationContext(), "Data: "+ medicine.getName()
-                        + "\n" + medicine.getHowMany()
-                        + "\n" + medicine.getStartDate()
-                        + "\n" + medicine.getEndDate(),
-                        Toast.LENGTH_LONG).show();
+                FirebaseTransaction.addDrug(medicine);
             }
         });
+        FirebaseTransaction.setDrugListenerListener(this);
+        FirebaseTransaction.getDrugs();
+    }
+    @Override
+    public void drugsRead(List<Drug> drugList){
+        //kullanıcıyla ilgili bütün ilaçlar drugList'in içinde
+        //istediğin gibi kullan
     }
 
-    public void submitMedicine()
-    {
+    public void submitMedicine() {
         String input1 = editTextName.getText().toString();
         String input2 = editTextStartDate.getText().toString();
         String input3 = editTextEndDate.getText().toString();
@@ -136,11 +139,10 @@ public class MedicineActivity extends AppCompatActivity {
 
     }
 
-    public void createMedicine(String s1, String s2, String s3, String s4)
-    {
+    public void createMedicine(String s1, String s2, String s3, String s4) {
         medicine.setName(s1);
 
-        try{
+        try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             Date parsedDate = dateFormat.parse(s2);
@@ -150,8 +152,7 @@ public class MedicineActivity extends AppCompatActivity {
             parsedDate = dateFormat.parse(s3);
             timestamp = new java.sql.Timestamp(parsedDate.getTime());
             medicine.setEndDate(timestamp.toString());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             // generic exception
         }
 
