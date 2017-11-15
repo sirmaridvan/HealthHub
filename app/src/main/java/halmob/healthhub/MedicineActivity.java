@@ -120,9 +120,10 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
                 FirebaseTransaction.addDrug(medicine);
             }
         });
-        FirebaseTransaction.setDrugListenerListener(this);
-        FirebaseTransaction.getDrugs();
     }
+    //kullanıcının ilaçlarını okumak için aşağıdaki iki satırlık kodu kullan. Sonuçlar drugsRead fonksiyonuna düşecek.
+        /*FirebaseTransaction.setDrugListenerListener(this);
+        FirebaseTransaction.getDrugs();*/
     @Override
     public void drugsRead(List<Drug> drugList){
         //kullanıcıyla ilgili bütün ilaçlar drugList'in içinde

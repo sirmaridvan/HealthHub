@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import halmob.healthhub.EventListeners.DrugListener;
+import halmob.healthhub.EventListeners.PeopleListener;
 import halmob.healthhub.Models.Drug;
 import halmob.healthhub.Models.Person;
 
@@ -95,6 +96,31 @@ public class FirebaseTransaction {
                 }
                 if (mDrugListener != null) {
                     mDrugListener.drugsRead(drugList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
+    private static PeopleListener mPeopleListener;
+
+    public static void setPeopleListenerListener(PeopleListener listen) {
+        mPeopleListener = listen;
+    }
+    public static void getPeople(){
+        final List<Person> personList = new ArrayList<Person>();
+        FirebaseUtil.getPeopleRef().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Person person = postSnapshot.getValue(Person.class);
+                    personList.add(person);
+                }
+                if (mPeopleListener != null) {
+                    mPeopleListener.peopleRead(personList);
                 }
             }
 
