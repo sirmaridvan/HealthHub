@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@android:color/holo_blue_light"
+        android:gravity="center"
+        android:text="Sports Page" />
+
     <Button
         android:id="@+id/sportRecord_Button"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -26,7 +33,7 @@
         android:layout_marginRight="75dp"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/sportRecord_Button"
-        android:background="@android:color/holo_orange_light"
+        android:background="@android:color/holo_green_light"
         android:onClick="addSportRecord"
         android:text="Add Sport Record"
         />
@@ -40,7 +47,7 @@
         android:layout_marginRight="75dp"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/sportRecord_Button"
-        android:background="@android:color/holo_red_dark"
+        android:background="@android:color/holo_orange_light"
         android:onClick="createSportProgram"
         android:text="Create Sport Program"
         />
@@ -54,7 +61,7 @@
         android:layout_marginRight="75dp"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/createSportProgram"
-        android:background="@android:color/holo_green_light"
+        android:background="@android:color/holo_red_light"
         android:onClick="showSportProgram"
         android:text="Show Sport Program"
         />
