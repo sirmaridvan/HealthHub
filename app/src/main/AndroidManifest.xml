@@ -29,7 +29,8 @@
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".Sports_Activity" />
         <activity android:name=".addNewSportRecordActivity" />
-        <activity android:name=".MedicineMainActivity"></activity>
+        <activity android:name=".MedicineMainActivity" />
+        <activity android:name=".MedicineListActivity"></activity>
     </application>
 
 </manifest>

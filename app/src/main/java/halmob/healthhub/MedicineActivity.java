@@ -1,6 +1,7 @@
 package halmob.healthhub;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -10,11 +11,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import halmob.healthhub.EventListeners.DrugListener;
@@ -118,6 +117,15 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             public void onClick(View view) {
                 submitMedicine();
                 FirebaseTransaction.addDrug(medicine);
+
+                Toast.makeText(getApplicationContext(),
+                        "Medicine Record is saved successfully!",
+                        Toast.LENGTH_LONG).show();
+
+                Intent intent1 = new Intent(MedicineActivity.this, MedicineMainActivity.class);
+                startActivity(intent1);
+                finish();
+
             }
         });
     }
@@ -143,6 +151,10 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
     public void createMedicine(String s1, String s2, String s3, String s4) {
         medicine.setName(s1);
 
+        medicine.setStartDate(s2);
+        medicine.setEndDate(s3);
+
+        /*
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -156,6 +168,7 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
         } catch (Exception e) {
             // generic exception
         }
+        */
 
         medicine.setHowMany(s4);
     }
