@@ -28,7 +28,8 @@
         <activity android:name=".BloodSugarActivity" />
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".Sports_Activity" />
-        <activity android:name=".addNewSportRecordActivity"></activity>
+        <activity android:name=".addNewSportRecordActivity" />
+        <activity android:name=".MedicineMainActivity"></activity>
     </application>
 
 </manifest>

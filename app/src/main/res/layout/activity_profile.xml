@@ -18,10 +18,10 @@
         android:layout_height="wrap_content"
         android:text="Step Counter"/>
     <Button
-        android:id="@+id/add_medicine"
+        android:id="@+id/track_medicine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Medicine"/>
+        android:text="Medicine Tracking"/>
 
     <Button
         android:id="@+id/diabetes_button"

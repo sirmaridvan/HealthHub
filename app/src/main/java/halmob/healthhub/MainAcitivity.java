@@ -4,27 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
-
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import halmob.healthhub.Models.Drug;
 
 public class MainAcitivity extends BaseActivity implements View.OnClickListener {
     private Button followButton;
     private Button stepCounter;
-    private Button addMedicineButton;
+    private Button trackMedicineButton;
     private Button diabetesButton;
     private Button sportsPageButton;
     private Button profilePageButton;
@@ -41,8 +28,8 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
         followButton.setOnClickListener(this);
         stepCounter = findViewById(R.id.step_counter);
         stepCounter.setOnClickListener(this);
-        addMedicineButton = findViewById(R.id.add_medicine);
-        addMedicineButton.setOnClickListener(this);
+        trackMedicineButton = findViewById(R.id.track_medicine);
+        trackMedicineButton.setOnClickListener(this);
         diabetesButton = findViewById(R.id.diabetes_button);
         diabetesButton.setOnClickListener(this);
         sportsPageButton = findViewById(R.id.sportsPage_button);
@@ -62,8 +49,8 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
                 intent = new Intent(this, StepCounterActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.add_medicine:
-                intent = new Intent(this, MedicineActivity.class);
+            case R.id.track_medicine:
+                intent = new Intent(this, MedicineMainActivity.class);
                 startActivity(intent);
                 break;
             case R.id.diabetes_button:

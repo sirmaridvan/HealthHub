@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Medicine Tracking Page"
+        android:textAlignment="center"
+        android:textSize="24dp"
+        android:gravity="center"
+        android:layout_marginTop="24dp"
+        />
+
+    <Button
+        android:id="@+id/listButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:text="Medicine List"
+        android:textSize="24dp"
+        android:textAllCaps="false"
+        android:background="#FF1744"
+        android:textColor="#FFFFFF"
+        />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:text="Add Medicine Record"
+        android:textSize="24dp"
+        android:textAllCaps="false"
+        android:background="#FF1744"
+        android:textColor="#FFFFFF"
+        />
+
+
+    <Button
+        android:id="@+id/notificationButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:text="Notifications"
+        android:textSize="24dp"
+        android:textAllCaps="false"
+        android:background="#FF1744"
+        android:textColor="#FFFFFF"
+        />
+
+
+
+
+</LinearLayout>
