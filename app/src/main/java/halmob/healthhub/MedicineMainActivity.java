@@ -26,6 +26,13 @@ public class MedicineMainActivity extends AppCompatActivity {
         });
 
         listButton = findViewById(R.id.listButton);
+        listButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MedicineMainActivity.this, MedicineListActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
