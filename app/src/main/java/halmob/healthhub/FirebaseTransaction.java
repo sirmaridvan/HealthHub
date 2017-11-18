@@ -10,8 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import halmob.healthhub.EventListeners.BloodSugarListener;
 import halmob.healthhub.EventListeners.DrugListener;
 import halmob.healthhub.EventListeners.PeopleListener;
+import halmob.healthhub.Models.BloodSugar;
 import halmob.healthhub.Models.Drug;
 import halmob.healthhub.Models.Person;
 
@@ -105,6 +107,55 @@ public class FirebaseTransaction {
             }
         });
     }
+
+
+
+
+
+
+
+    public static void addBloodSugar(BloodSugar newBloodSugar){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("bloodSugars").push().setValue(newBloodSugar, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError error, DatabaseReference firebase) {
+                if (error != null) {
+                }
+            }
+        });
+    }
+    private static BloodSugarListener mBloodSugarListener;
+
+    public static void setmBloodSugarListener(BloodSugarListener listen) {
+        mBloodSugarListener = listen;
+    }
+    public static void getBloodSugars(){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        final List<BloodSugar> bloodSugarList = new ArrayList<BloodSugar>();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("bloodSugars").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    BloodSugar bloodSugar = postSnapshot.getValue(BloodSugar.class);
+                    bloodSugarList.add(bloodSugar);
+                }
+                if (mBloodSugarListener != null) {
+                    mBloodSugarListener.bloodSugarsRead(bloodSugarList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
+
+
+
+
+
+
     private static PeopleListener mPeopleListener;
 
     public static void setPeopleListenerListener(PeopleListener listen) {
