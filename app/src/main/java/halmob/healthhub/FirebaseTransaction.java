@@ -113,6 +113,7 @@ public class FirebaseTransaction {
 
 
 
+    //RIDVAN TARAFINDAN KONTROL EDİLECEK BURADAN BAŞLANARAK
 
     public static void addBloodSugar(BloodSugar newBloodSugar){
         final String currentUserId = FirebaseUtil.getCurrentUserId();
@@ -151,6 +152,7 @@ public class FirebaseTransaction {
         });
     }
 
+    //BURAYA KADAR
 
 
 

@@ -52,6 +52,7 @@ public class BloodSugarActivity extends AppCompatActivity {
                                 + " " + NewBloodSugar.getTime()
                                 + " " + NewBloodSugar.getExtraNotes(),
                         Toast.LENGTH_LONG).show();
+                finish();
             }
         });
     }
