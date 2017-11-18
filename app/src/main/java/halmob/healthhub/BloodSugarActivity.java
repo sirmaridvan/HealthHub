@@ -7,7 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 import halmob.healthhub.Models.BloodSugar;
+import halmob.healthhub.EventListeners.BloodSugarListener;
 
 public class BloodSugarActivity extends AppCompatActivity {
     private EditText editTextSugarValue;
@@ -40,6 +43,7 @@ public class BloodSugarActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 submitBloodSugar();
+                FirebaseTransaction.addBloodSugar(NewBloodSugar);
                 Toast.makeText(getApplicationContext(),
                         "Data: "
                                 + NewBloodSugar.getBloodSugarValue()
@@ -48,6 +52,7 @@ public class BloodSugarActivity extends AppCompatActivity {
                                 + " " + NewBloodSugar.getTime()
                                 + " " + NewBloodSugar.getExtraNotes(),
                         Toast.LENGTH_LONG).show();
+                finish();
             }
         });
     }
@@ -83,4 +88,16 @@ public class BloodSugarActivity extends AppCompatActivity {
         NewBloodSugar.setHungerSituation(hungerSituation);
         NewBloodSugar.setExtraNotes(extraNotes);
     }
+
+    //kullanıcının ilaçlarını okumak için aşağıdaki iki satırlık kodu kullan. Sonuçlar drugsRead fonksiyonuna düşecek.
+        /*FirebaseTransaction.setDrugListenerListener(this);
+        FirebaseTransaction.getDrugs();*/
+    //@Override
+    public void bloodSugarsRead(List<BloodSugar> bloodSugarList){
+        //kullanıcıyla ilgili bütün ilaçlar drugList'in içinde
+        //istediğin gibi kullan
+    }
+
 }
+
+
