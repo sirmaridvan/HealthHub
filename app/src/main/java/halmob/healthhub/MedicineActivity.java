@@ -1,6 +1,7 @@
 package halmob.healthhub;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -25,11 +27,14 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
     private EditText editTextName;
     private EditText editTextHowMany;
 
+    private TextView editTextTime;
     private TextView editTextStartDate;
     private TextView editTextEndDate;
 
+    private TimePickerDialog.OnTimeSetListener timeSetListener1;
     private DatePickerDialog.OnDateSetListener dateSetListener1;
     private DatePickerDialog.OnDateSetListener dateSetListener2;
+
 
     private Button buttonSubmit;
 
@@ -47,8 +52,29 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
 
         editTextName = (EditText) findViewById(R.id.editText_1);
         editTextHowMany = (EditText) findViewById(R.id.editText_4);
+        editTextTime = (TextView) findViewById(R.id.time);
         editTextStartDate = (TextView) findViewById(R.id.date1);
         editTextEndDate = (TextView) findViewById(R.id.date2);
+
+        editTextTime.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view){
+                Calendar timeCal = Calendar.getInstance();
+                int hour = timeCal.get(Calendar.HOUR_OF_DAY);
+                int minute = timeCal.get(Calendar.MINUTE);
+
+                TimePickerDialog dialog3 = new TimePickerDialog(MedicineActivity.this,
+                        TimePickerDialog.THEME_HOLO_LIGHT,
+                        timeSetListener1,
+                        hour,
+                        minute,
+                        true
+                );
+                dialog3.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog3.show();
+            }
+        });
 
         editTextStartDate.setOnClickListener(new View.OnClickListener() {
 
@@ -90,6 +116,20 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             }
         });
 
+        timeSetListener1 = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                String time;
+                if(minute < 10){
+                    time = hour + ":0" + minute;
+                }
+                else{
+                    time = hour + ":" + minute;
+                }
+                editTextTime.setText(time);
+            }
+        };
+
         dateSetListener1 = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -129,9 +169,11 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             }
         });
     }
+
     //kullanıcının ilaçlarını okumak için aşağıdaki iki satırlık kodu kullan. Sonuçlar drugsRead fonksiyonuna düşecek.
         /*FirebaseTransaction.setDrugListenerListener(this);
         FirebaseTransaction.getDrugs();*/
+
     @Override
     public void drugsRead(List<Drug> drugList){
         //kullanıcıyla ilgili bütün ilaçlar drugList'in içinde
@@ -143,12 +185,13 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
         String input2 = editTextStartDate.getText().toString();
         String input3 = editTextEndDate.getText().toString();
         String input4 = editTextHowMany.getText().toString();
+        String input5 = editTextTime.getText().toString();
 
-        createMedicine(input1, input2, input3, input4);
+        createMedicine(input1, input2, input3, input4, input5);
 
     }
 
-    public void createMedicine(String s1, String s2, String s3, String s4) {
+    public void createMedicine(String s1, String s2, String s3, String s4, String s5) {
         medicine.setName(s1);
 
         medicine.setStartDate(s2);
@@ -171,5 +214,6 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
         */
 
         medicine.setHowMany(s4);
+        medicine.setTime(s5);
     }
 }
