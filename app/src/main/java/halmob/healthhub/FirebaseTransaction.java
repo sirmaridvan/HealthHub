@@ -11,11 +11,13 @@ import java.util.List;
 import java.util.Map;
 
 import halmob.healthhub.EventListeners.BloodSugarListener;
+import halmob.healthhub.EventListeners.BodyWorkListener;
 import halmob.healthhub.EventListeners.DrugListener;
 import halmob.healthhub.EventListeners.PeopleListener;
 import halmob.healthhub.Models.BloodSugar;
 import halmob.healthhub.Models.Drug;
 import halmob.healthhub.Models.Person;
+import halmob.healthhub.Models.SportForBodyWork;
 
 /**
  * Created by RIDVAN SIRMA on 11/15/2017.
@@ -153,6 +155,44 @@ public class FirebaseTransaction {
     }
 
     //BURAYA KADAR
+
+
+    public static void addBodyWork(SportForBodyWork BodyWork){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("bodyWork").push().setValue(BodyWork, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError error, DatabaseReference firebase) {
+                if (error != null) {
+                }
+            }
+        });
+    }
+    private static BodyWorkListener mBodyWorkListener;
+
+    public static void setBodyWorkListenerListener(BodyWorkListener listen) {
+        mBodyWorkListener = listen;
+    }
+    public static void getBodyWork(){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        final List<SportForBodyWork> BodyWorkList = new ArrayList<>();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("bodyWork").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    SportForBodyWork BodyWork = postSnapshot.getValue(SportForBodyWork.class);
+                    BodyWorkList.add(BodyWork);
+                }
+                if (mDrugListener != null) {
+                    mBodyWorkListener.BodyWorkRead(BodyWorkList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
 
 
 
