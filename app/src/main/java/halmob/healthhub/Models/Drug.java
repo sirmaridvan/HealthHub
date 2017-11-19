@@ -9,12 +9,11 @@ public class Drug {
     String howMany;
     String startDate;
     String endDate;
+    String time;
 
     public String getName() { return nameMedicine;}
 
-    public void setName(String nameMedicine) {
-        this.nameMedicine = nameMedicine;
-    }
+    public void setName(String nameMedicine) { this.nameMedicine = nameMedicine; }
 
     public String getHowMany() {
         return howMany;
@@ -39,5 +38,9 @@ public class Drug {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
+
+    public String getTime() { return time; }
+
+    public void setTime(String time) { this.time = time; }
 
 }
