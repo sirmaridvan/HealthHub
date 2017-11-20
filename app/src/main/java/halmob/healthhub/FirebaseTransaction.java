@@ -12,12 +12,14 @@ import java.util.Map;
 
 import halmob.healthhub.EventListeners.BloodSugarListener;
 import halmob.healthhub.EventListeners.BodyWorkListener;
+import halmob.healthhub.EventListeners.CardioListener;
 import halmob.healthhub.EventListeners.DrugListener;
 import halmob.healthhub.EventListeners.PeopleListener;
 import halmob.healthhub.Models.BloodSugar;
 import halmob.healthhub.Models.Drug;
 import halmob.healthhub.Models.Person;
 import halmob.healthhub.Models.SportForBodyWork;
+import halmob.healthhub.Models.SportForCardio;
 
 /**
  * Created by RIDVAN SIRMA on 11/15/2017.
@@ -156,6 +158,8 @@ public class FirebaseTransaction {
 
     //BURAYA KADAR
 
+///////////////////////////////////////////////////////////////////////////
+    //FOR BODYWORK
 
     public static void addBodyWork(SportForBodyWork BodyWork){
         final String currentUserId = FirebaseUtil.getCurrentUserId();
@@ -182,7 +186,7 @@ public class FirebaseTransaction {
                     SportForBodyWork BodyWork = postSnapshot.getValue(SportForBodyWork.class);
                     BodyWorkList.add(BodyWork);
                 }
-                if (mDrugListener != null) {
+                if (mBodyWorkListener != null) {
                     mBodyWorkListener.BodyWorkRead(BodyWorkList);
                 }
             }
@@ -193,11 +197,46 @@ public class FirebaseTransaction {
             }
         });
     }
+///////////////////////////////////////////////////////////////////
+    //FOR CARDIO
 
+    public static void addCardio(SportForCardio Cardio){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("cardio").push().setValue(Cardio, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError error, DatabaseReference firebase) {
+                if (error != null) {
+                }
+            }
+        });
+    }
+    private static CardioListener mCardioListener;
+    public static void setCardioListenerListener(CardioListener listen) {
+        mCardioListener = listen;
+    }
+    public static void getCardio(){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        final List<SportForCardio> CardioList = new ArrayList<>();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("cardio").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    SportForCardio Cardio = postSnapshot.getValue(SportForCardio.class);
+                    CardioList.add(Cardio);
+                }
+                if (mDrugListener != null) {
+                    mCardioListener.CardioRead(CardioList);
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
 
+            }
+        });
+    }
 
-
+//////////////////////////////////////////////////////////////////////
     private static PeopleListener mPeopleListener;
 
     public static void setPeopleListenerListener(PeopleListener listen) {

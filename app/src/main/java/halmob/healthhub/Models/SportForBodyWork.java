@@ -27,4 +27,5 @@ public class SportForBodyWork {
     public void setExerciseDateForBodyWork(String ExerciseDateForBodyWork) { this.ExerciseDateForBodyWork = ExerciseDateForBodyWork; }
 
 
+
 };
