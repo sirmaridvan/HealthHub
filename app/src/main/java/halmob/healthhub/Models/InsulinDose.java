@@ -12,7 +12,7 @@ public class InsulinDose {
     Float appliedDose;
     Date date;
     String time;
-    Integer insulinType;
+    String insulinType;
 
     public Float getAppliedDose() { return appliedDose; }
 
@@ -40,9 +40,9 @@ public class InsulinDose {
         this.time = String.valueOf(Hr24 +  " " + Min);
     }
 
-    public Integer getInsulinType() { return insulinType; }
+    public String getInsulinType() { return insulinType; }
 
-    public void setInsulinType(Integer insulinType) {
+    public void setInsulinType(String insulinType) {
         this.insulinType = insulinType;
     }
 }

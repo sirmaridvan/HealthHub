@@ -161,9 +161,9 @@ public class FirebaseTransaction {
 ///////////////////////////////////////////////////////////////////////////
     //FOR BODYWORK
 
-    public static void addBodyWork(SportForBodyWork BodyWork){
+    public static void addBodyWork(SportForBodyWork newBodyWork){
         final String currentUserId = FirebaseUtil.getCurrentUserId();
-        FirebaseUtil.getPeopleRef().child(currentUserId).child("bodyWork").push().setValue(BodyWork, new DatabaseReference.CompletionListener() {
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("bodyWork").push().setValue(newBodyWork, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError error, DatabaseReference firebase) {
                 if (error != null) {
@@ -178,7 +178,7 @@ public class FirebaseTransaction {
     }
     public static void getBodyWork(){
         final String currentUserId = FirebaseUtil.getCurrentUserId();
-        final List<SportForBodyWork> BodyWorkList = new ArrayList<>();
+        final List<SportForBodyWork> BodyWorkList = new ArrayList<SportForBodyWork>();
         FirebaseUtil.getPeopleRef().child(currentUserId).child("bodyWork").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
