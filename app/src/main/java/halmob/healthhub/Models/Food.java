@@ -41,7 +41,7 @@ public class Food {
     public void setCalorie(float newCalorie) {
         this.calorie = newCalorie;
     }
-x
+
     public float getGlysemicIndex() {
         return glysemicIndex;
     }
