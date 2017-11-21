@@ -16,10 +16,13 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.List;
 
+import halmob.healthhub.EventListeners.FoodListener;
+import halmob.healthhub.Models.Drug;
+import halmob.healthhub.Models.Food;
 import halmob.healthhub.Models.SportForBodyWork;
 import halmob.healthhub.Models.SportForCardio;
 
-public class addNewSportRecordActivity extends AppCompatActivity {
+public class addNewSportRecordActivity extends AppCompatActivity implements FoodListener{
     private Button cardioButton;
     private Button bodyWorkButton;
     private Button submitForBodyWork;
@@ -64,8 +67,15 @@ public class addNewSportRecordActivity extends AppCompatActivity {
                 OnCreateBodyWork();
             }
         });
+        FirebaseTransaction.setFoodListener(this);
+        FirebaseTransaction.getFoods();
 
-
+    }
+    @Override
+    public void foodRead(List<Food> foods){
+        //kullanıcıyla ilgili bütün ilaçlar drugList'in içinde
+        //istediğin gibi kullan
+        int a=1;
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////

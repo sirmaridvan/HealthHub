@@ -6,39 +6,39 @@ package halmob.healthhub.Models;
 
 public class Food {
     String foodName;
-    float protein;
-    float carbohydrate;
-    float fat;
-    float calorie;
+    String protein;
+    String carbohydrate;
+    String fat;
+    String calorie;
 
     public String getFoodName() { return foodName;}
     public void setFoodName(String newFoodName) {
         this.foodName = newFoodName;
     }
 
-    public float getProtein() { return protein;}
-    public void setProtein(float newProtein) {
+    public String getProtein() { return protein;}
+    public void setProtein(String newProtein) {
         this.protein = newProtein;
     }
 
-    public float getCarbohydrate() {
+    public String getCarbohydrate() {
         return carbohydrate;
     }
-    public void setCarbohydrate(float newCarbohydrate) {
+    public void setCarbohydrate(String newCarbohydrate) {
         this.carbohydrate = newCarbohydrate;
     }
 
-    public float getFat() {
+    public String getFat() {
         return fat;
     }
-    public void setFat(float newFat) {
+    public void setFat(String newFat) {
         this.fat = newFat;
     }
 
-    public float getCalorie() {
+    public String getCalorie() {
         return calorie;
     }
-    public void setCalorie(float newCalorie) {
+    public void setCalorie(String newCalorie) {
         this.calorie = newCalorie;
     }
 

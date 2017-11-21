@@ -14,9 +14,11 @@ import halmob.healthhub.EventListeners.BloodSugarListener;
 import halmob.healthhub.EventListeners.BodyWorkListener;
 import halmob.healthhub.EventListeners.CardioListener;
 import halmob.healthhub.EventListeners.DrugListener;
+import halmob.healthhub.EventListeners.FoodListener;
 import halmob.healthhub.EventListeners.PeopleListener;
 import halmob.healthhub.Models.BloodSugar;
 import halmob.healthhub.Models.Drug;
+import halmob.healthhub.Models.Food;
 import halmob.healthhub.Models.Person;
 import halmob.healthhub.Models.SportForBodyWork;
 import halmob.healthhub.Models.SportForCardio;
@@ -253,6 +255,31 @@ public class FirebaseTransaction {
                 }
                 if (mPeopleListener != null) {
                     mPeopleListener.peopleRead(personList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
+    private static FoodListener mFoodListener;
+
+    public static void setFoodListener(FoodListener listen) {
+        mFoodListener = listen;
+    }
+    public static void getFoods(){
+        final List<Food> foodList = new ArrayList<Food>();
+        FirebaseUtil.getFoodRef().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Food food = postSnapshot.getValue(Food.class);
+                    foodList.add(food);
+                }
+                if (mFoodListener != null) {
+                    mFoodListener.foodRead(foodList);
                 }
             }
 

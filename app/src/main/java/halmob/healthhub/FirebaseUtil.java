@@ -52,6 +52,9 @@ class FirebaseUtil {
     public static DatabaseReference getPeopleRef() {
         return getBaseRef().child("people");
     }
+    public static DatabaseReference getFoodRef() {
+        return getBaseRef().child("food");
+    }
 
     public static DatabaseReference getCommentsRef() {
         return getBaseRef().child("comments");
