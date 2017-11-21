@@ -16,6 +16,7 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
     private Button sportsPageButton;
     private Button profilePageButton;
     private Button logoutButton;
+    private Button sampleRead;
     private DatabaseReference mPersonRef;
     private Intent intent;
 
@@ -38,6 +39,8 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
         profilePageButton.setOnClickListener(this);
         logoutButton = findViewById(R.id.logout_button);
         logoutButton.setOnClickListener(this);
+        sampleRead = findViewById(R.id.sample_button);
+        sampleRead.setOnClickListener(this);
     }
     @Override
     public void onClick(View v){
@@ -63,6 +66,10 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.profilePage_button:
                 intent = new Intent(this, ProfilePageActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.sample_button:
+                intent = new Intent(this, SampleReadActivity.class);
                 startActivity(intent);
                 break;
             case R.id.logout_button:

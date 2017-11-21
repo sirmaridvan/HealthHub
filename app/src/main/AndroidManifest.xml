@@ -31,7 +31,8 @@
         <activity android:name=".addNewSportRecordActivity" />
         <activity android:name=".MedicineMainActivity" />
         <activity android:name=".MedicineListActivity" />
-        <activity android:name=".BloodSugarListActivity"></activity>
+        <activity android:name=".BloodSugarListActivity" />
+        <activity android:name=".SampleReadActivity"></activity>
     </application>
 
 </manifest>

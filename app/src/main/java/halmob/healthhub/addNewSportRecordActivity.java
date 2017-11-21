@@ -22,7 +22,7 @@ import halmob.healthhub.Models.Food;
 import halmob.healthhub.Models.SportForBodyWork;
 import halmob.healthhub.Models.SportForCardio;
 
-public class addNewSportRecordActivity extends AppCompatActivity implements FoodListener{
+public class addNewSportRecordActivity extends AppCompatActivity{
     private Button cardioButton;
     private Button bodyWorkButton;
     private Button submitForBodyWork;
@@ -67,15 +67,7 @@ public class addNewSportRecordActivity extends AppCompatActivity implements Food
                 OnCreateBodyWork();
             }
         });
-        FirebaseTransaction.setFoodListener(this);
-        FirebaseTransaction.getFoods();
 
-    }
-    @Override
-    public void foodRead(List<Food> foods){
-        //kullanıcıyla ilgili bütün ilaçlar drugList'in içinde
-        //istediğin gibi kullan
-        int a=1;
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////
