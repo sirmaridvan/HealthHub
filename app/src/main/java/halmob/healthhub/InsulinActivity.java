@@ -57,8 +57,9 @@ public class InsulinActivity extends AppCompatActivity {
 
     public void submitInsulinDose()
     {
-        String stringInsulinType = editTextInsulinType.getText().toString();
+        String insulinType = editTextInsulinType.getText().toString();
 
+        /* Use the lines below if you need integer input!
         int intInsulinType = -1;
 
         try {
@@ -67,6 +68,7 @@ public class InsulinActivity extends AppCompatActivity {
         catch (NumberFormatException e) {
 
         }
+        */
 
         String stringInsulinDose = editTextInsulinDose.getText().toString();
         float floatInsulinDose = -1;
@@ -78,11 +80,11 @@ public class InsulinActivity extends AppCompatActivity {
 
         }
 
-        createInsulinDose(intInsulinType, floatInsulinDose);
+        createInsulinDose(insulinType, floatInsulinDose);
 
     }
 
-    public void createInsulinDose(int insulinType, float insulinDose)
+    public void createInsulinDose(String insulinType, float insulinDose)
     {
         NewInsulinDose.setDate(); //set current date
         NewInsulinDose.setTime(); //set current time

@@ -117,7 +117,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             submitToBodyWork();
-            FirebaseTransaction.addCardio(Cardio);
+            FirebaseTransaction.addBodyWork(BodyWork);
 
             Toast.makeText(getApplicationContext(),
                     "Sport Record is saved successfully!",
@@ -198,7 +198,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             submitToCardio();
-            FirebaseTransaction.addBodyWork(BodyWork);
+            FirebaseTransaction.addCardio(Cardio);
 
             Toast.makeText(getApplicationContext(),
                     "Sport Record is saved successfully!",

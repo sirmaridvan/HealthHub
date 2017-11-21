@@ -8,11 +8,11 @@ import java.util.Date;
  */
 
 public class BloodSugar {
-    int sugarValue;
-    String hungerSituation;
-    Date date;
-    String time;
-    String extraNotes;
+    private int sugarValue;
+    private String hungerSituation;
+    private Date date;
+    private String time;
+    private String extraNotes;
 
 
     public int getBloodSugarValue() { return sugarValue; }
