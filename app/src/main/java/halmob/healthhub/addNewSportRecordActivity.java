@@ -192,6 +192,15 @@ public class addNewSportRecordActivity extends AppCompatActivity {
 
         }
     });
+    dateSetForCardio = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;  // since index starts from 0
+                String date1 = year + "-" + month + "-" + day;
+                editExerciseDateForCardio.setText(date1);
+            }
+        };
 
     submitForCardio = (Button) findViewById(R.id.button_submitForCardioRecord);
     submitForCardio.setOnClickListener(new View.OnClickListener() {
