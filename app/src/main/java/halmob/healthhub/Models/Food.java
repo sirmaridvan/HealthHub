@@ -5,15 +5,18 @@ package halmob.healthhub.Models;
  */
 
 public class Food {
+    String foodName;
     float protein;
     float carbohydrate;
     float fat;
     float calorie;
-    float glysemicIndex;
-    float carbohydrateCount;
+
+    public String getFoodName() { return foodName;}
+    public void setFoodName(String newFoodName) {
+        this.foodName = newFoodName;
+    }
 
     public float getProtein() { return protein;}
-
     public void setProtein(float newProtein) {
         this.protein = newProtein;
     }
@@ -21,7 +24,6 @@ public class Food {
     public float getCarbohydrate() {
         return carbohydrate;
     }
-
     public void setCarbohydrate(float newCarbohydrate) {
         this.carbohydrate = newCarbohydrate;
     }
@@ -29,7 +31,6 @@ public class Food {
     public float getFat() {
         return fat;
     }
-
     public void setFat(float newFat) {
         this.fat = newFat;
     }
@@ -37,23 +38,8 @@ public class Food {
     public float getCalorie() {
         return calorie;
     }
-
     public void setCalorie(float newCalorie) {
         this.calorie = newCalorie;
     }
 
-    public float getGlysemicIndex() {
-        return glysemicIndex;
-    }
-    public void setGlysemicIndex(float newGlysemicIndex) {
-        this.glysemicIndex = newGlysemicIndex;
-    }
-
-    public float getCarbohydrateCount() {
-        return carbohydrateCount;
-    }
-
-    public void setCarbohydrateCount(float newCarbohydrateCount) {
-        this.carbohydrateCount = newCarbohydrateCount;
-    }
 }

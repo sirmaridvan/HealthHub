@@ -11,7 +11,7 @@ public class SportForCardio {
     String ExerciseDateForCardio;
 
     public String getNameOfExerciseForCardio() { return NameOfExerciseForCardio;}
-    public void setNameOfExerciseForCardio(String NameOfExerciseForBodyWork) { this.NameOfExerciseForCardio = NameOfExerciseForCardio; }
+    public void setNameOfExerciseForCardio(String NameOfExerciseForCardio) { this.NameOfExerciseForCardio = NameOfExerciseForCardio; }
 
     public String getMinuteOfExerciseForCardio() { return MinuteOfExerciseForCardio;}
     public void setMinuteOfExerciseForCardio(String MinuteOfExerciseForCardio) { this.MinuteOfExerciseForCardio = MinuteOfExerciseForCardio; }
