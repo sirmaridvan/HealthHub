@@ -1,23 +1,16 @@
 package halmob.healthhub.Models;
 
-/**
- * Created by hakan on 11.11.2017.
- */
-
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Created by hakan on 21.11.2017.
+ */
 
-public class InsulinDose {
-    Float appliedDose;
+public class Meal {
+    String foodName; //Rıdvan tarafından incelenecek! Hazır yemeklerin çekilmesini nasıl yapacagımızla ilgili!
     Date date;
     String time;
-    String insulinType;
-
-    public Float getAppliedDose() { return appliedDose; }
-    public void setAppliedDose(Float appliedDose) {
-        this.appliedDose = appliedDose;
-    }
 
     public Date getDate() {
         return date;
@@ -35,10 +28,5 @@ public class InsulinDose {
         int Hr24=c.get(Calendar.HOUR_OF_DAY);
         int Min=c.get(Calendar.MINUTE);
         this.time = String.valueOf(Hr24 +  " " + Min);
-    }
-
-    public String getInsulinType() { return insulinType; }
-    public void setInsulinType(String insulinType) {
-        this.insulinType = insulinType;
     }
 }
