@@ -23,7 +23,7 @@
         android:layout_marginRight="24dp"
         android:hint="Enter Insulin Type Here"
         android:imeOptions="actionNext"
-        android:inputType="number" />
+        android:inputType="text|textCapWords" />
 
     <TextView
         android:id="@+id/insulin_dose"

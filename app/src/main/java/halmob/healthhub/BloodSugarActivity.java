@@ -1,10 +1,14 @@
 package halmob.healthhub;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.List;
@@ -14,6 +18,7 @@ import halmob.healthhub.EventListeners.BloodSugarListener;
 
 public class BloodSugarActivity extends AppCompatActivity {
     private EditText editTextSugarValue;
+    private Spinner hungerSituationSpinner;
     private EditText editTextHungerSituation;
     private EditText editTextDate;
     private EditText editTextTime;
@@ -29,16 +34,27 @@ public class BloodSugarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_blood_sugar);
 
         editTextSugarValue = (EditText) findViewById(R.id.blood_sugar_input);
-        editTextHungerSituation = (EditText) findViewById(R.id.hunger_situation_input);
+
+
+        //Spinner definition
+        Spinner spinner = (Spinner) findViewById(R.id.hunger_situation_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.hunger_situation_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        hungerSituationSpinner = (Spinner) findViewById(R.id.hunger_situation_spinner);
+
         // editTextDate = (EditText) findViewById(R.id.editText_3);
         // editTextTime = (EditText) findViewById(R.id.editText_4);
         editTextExtraNotes = (EditText) findViewById(R.id.extra_notes_input);
 
         NewBloodSugar = new BloodSugar();
 
+
+
+
         buttonSubmit = (Button) findViewById(R.id.blood_sugar_submit_button);
-
-
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,10 +74,9 @@ public class BloodSugarActivity extends AppCompatActivity {
     }
 
 
-
     public void submitBloodSugar()
     {
-        String hungerSituation = editTextHungerSituation.getText().toString();
+        String hungerSituation = String.valueOf(hungerSituationSpinner.getSelectedItem());
 
         String stringBloodSugarValue = editTextSugarValue.getText().toString();
         int intBloodSugarValue = -1;
