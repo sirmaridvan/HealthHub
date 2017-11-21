@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/label_1"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="36dp"
         android:text="Medicine Name"
         android:textSize="16sp"
         />
@@ -32,21 +32,24 @@
         android:layout_height="wrap_content"
         android:id="@+id/label_4"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="How many"
         android:textSize="16sp"
         />
 
-    <EditText
-        android:layout_width="match_parent"
+    <Spinner
+        android:id="@+id/howManySpinner"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="How many times in a day"
-        android:id="@+id/editText_4"
         android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:imeOptions="actionDone"
-        />
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+
+        >
+
+
+    </Spinner>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,6 +70,20 @@
         android:textSize="20sp"
         android:id="@+id/time"
         />
+
+    <LinearLayout
+        android:id="@+id/takeTimeLinearLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="24dp"
+        >
+
+
+
+    </LinearLayout>
 
 
     <TextView
