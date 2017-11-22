@@ -1,24 +1,18 @@
 package halmob.healthhub;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.io.File;
-import java.io.IOException;
-
-public class CameraDemoActivity extends AppCompatActivity{
+public class CameraDemoActivity extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST = 1888;
-    ImageView mimageView;
+    private ImageView mimageView;
     private Button takePhoto;
 
     @Override
@@ -28,6 +22,16 @@ public class CameraDemoActivity extends AppCompatActivity{
 
         mimageView = this.findViewById(R.id.image_from_camera);
         takePhoto = this.findViewById(R.id.take_image_from_camera);
+        takePhoto.setEnabled(false);
+        
+        if (checkSelfPermission(android.Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            requestPermissions(new String[]{android.Manifest.permission.CAMERA},
+                    111);
+        }else{
+            takePhoto.setEnabled(true);
+        }
     }
 
     public void takeImageFromCamera(View view) {
@@ -41,4 +45,20 @@ public class CameraDemoActivity extends AppCompatActivity{
             mimageView.setImageBitmap(mphoto);
         }
     }
+    @Override
+    public void  onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == 111) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Now user should be able to use camera
+                takePhoto.setEnabled(true);
+            }
+            else {
+                // Your app will not have this permission. Turn off all functions
+                // that require this permission or it will force close like your
+                // original question
+                super.onBackPressed();
+            }
+        }
+    }
+
 }
