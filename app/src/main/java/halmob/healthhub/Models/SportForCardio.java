@@ -5,10 +5,10 @@ package halmob.healthhub.Models;
  */
 
 public class SportForCardio {
-    String NameOfExerciseForCardio;
-    String MinuteOfExerciseForCardio;
-    String BurnedCaloriesForCardio;
-    String ExerciseDateForCardio;
+    private String NameOfExerciseForCardio;
+    private String MinuteOfExerciseForCardio;
+    private String BurnedCaloriesForCardio;
+    private String ExerciseDateForCardio;
 
     public String getNameOfExerciseForCardio() { return NameOfExerciseForCardio;}
     public void setNameOfExerciseForCardio(String NameOfExerciseForCardio) { this.NameOfExerciseForCardio = NameOfExerciseForCardio; }

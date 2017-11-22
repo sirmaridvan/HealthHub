@@ -5,36 +5,32 @@ package halmob.healthhub.Models;
  */
 
 import java.util.Calendar;
-import java.util.Date;
-
 
 public class InsulinDose {
-    Float appliedDose;
-    Date date;
-    String time;
-    String insulinType;
+    private Float appliedDose;
+    private String date;
+    private String time;
+    private String insulinType;
 
     public Float getAppliedDose() { return appliedDose; }
     public void setAppliedDose(Float appliedDose) {
         this.appliedDose = appliedDose;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
     public void setDate() {
-        Date currentDate = new Date(System.currentTimeMillis());
-        this.date = currentDate;
+        CurrentDate newDate = new CurrentDate();
+        this.date = newDate.getCurrentDate();
     }
 
     public String getTime() {
         return time;
     }
     public void setTime() {
-        Calendar c = Calendar.getInstance();
-        int Hr24=c.get(Calendar.HOUR_OF_DAY);
-        int Min=c.get(Calendar.MINUTE);
-        this.time = String.valueOf(Hr24 +  " " + Min);
+        CurrentTime newTime = new CurrentTime();
+        this.time = newTime.getCurrentTime();
     }
 
     public String getInsulinType() { return insulinType; }

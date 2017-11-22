@@ -8,25 +8,23 @@ import java.util.Date;
  */
 
 public class Meal {
-    String foodName; //Rıdvan tarafından incelenecek! Hazır yemeklerin çekilmesini nasıl yapacagımızla ilgili!
-    Date date;
-    String time;
+    private String foodName; //Rıdvan tarafından incelenecek! Hazır yemeklerin çekilmesini nasıl yapacagımızla ilgili!
+    private String date;
+    private String time;
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
     public void setDate() {
-        Date currentDate = new Date(System.currentTimeMillis());
-        this.date = currentDate;
+        CurrentDate newDate = new CurrentDate();
+        this.date = newDate.getCurrentDate();
     }
 
     public String getTime() {
         return time;
     }
     public void setTime() {
-        Calendar c = Calendar.getInstance();
-        int Hr24=c.get(Calendar.HOUR_OF_DAY);
-        int Min=c.get(Calendar.MINUTE);
-        this.time = String.valueOf(Hr24 +  " " + Min);
+        CurrentTime newTime = new CurrentTime();
+        this.time = newTime.getCurrentTime();
     }
 }

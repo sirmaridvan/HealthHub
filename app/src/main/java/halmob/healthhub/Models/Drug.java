@@ -5,11 +5,11 @@ package halmob.healthhub.Models;
  */
 
 public class Drug {
-    String nameMedicine;
-    String howMany;
-    String startDate;
-    String endDate;
-    String time;
+    private String nameMedicine;
+    private String howMany;
+    private String startDate;
+    private String endDate;
+    private String time;
 
     public String getName() { return nameMedicine;}
     public void setName(String nameMedicine) { this.nameMedicine = nameMedicine; }

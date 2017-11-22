@@ -5,13 +5,13 @@ package halmob.healthhub.Models;
  */
 
 public class CarbohydrateCountFood {
-    String foodName;
-    int gram;
-    String portionSize;
-    float carbohydrate;
-    float fiber;
-    float carbohydrateCount;
-    int glysemicIndex;
+    private String foodName;
+    private int gram;
+    private String portionSize;
+    private float carbohydrate;
+    private float fiber;
+    private float carbohydrateCount;
+    private int glysemicIndex;
 
     public String getFoodName() {
         return foodName;

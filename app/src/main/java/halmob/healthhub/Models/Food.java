@@ -5,11 +5,11 @@ package halmob.healthhub.Models;
  */
 
 public class Food {
-    String foodName;
-    String protein;
-    String carbohydrate;
-    String fat;
-    String calorie;
+    private String foodName;
+    private String protein;
+    private String carbohydrate;
+    private String fat;
+    private String calorie;
 
     public String getFoodName() { return foodName;}
     public void setFoodName(String newFoodName) {

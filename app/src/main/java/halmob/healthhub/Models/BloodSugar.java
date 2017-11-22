@@ -10,7 +10,7 @@ import java.util.Date;
 public class BloodSugar {
     private int sugarValue;
     private String hungerSituation;
-    private Date date;
+    private String date;
     private String time;
     private String extraNotes;
 
@@ -23,22 +23,20 @@ public class BloodSugar {
     public String getHungerSituation() { return hungerSituation; }
     public void setHungerSituation(String hungerSituation) { this.hungerSituation = hungerSituation;}
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
     public void setDate() {
-        Date currentDate = new Date(System.currentTimeMillis());
-        this.date = currentDate;
+        CurrentDate newDate = new CurrentDate();
+        this.date = newDate.getCurrentDate();
     }
 
     public String getTime() {
         return time;
     }
     public void setTime() {
-        Calendar c = Calendar.getInstance();
-        int Hr24=c.get(Calendar.HOUR_OF_DAY);
-        int Min=c.get(Calendar.MINUTE);
-        this.time = String.valueOf(Hr24 +  " " + Min);
+        CurrentTime newTime = new CurrentTime();
+        this.time = newTime.getCurrentTime();
     }
 
     public String getExtraNotes() { return extraNotes; }
