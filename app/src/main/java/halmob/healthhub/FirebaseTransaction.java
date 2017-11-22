@@ -15,10 +15,12 @@ import halmob.healthhub.EventListeners.BodyWorkListener;
 import halmob.healthhub.EventListeners.CardioListener;
 import halmob.healthhub.EventListeners.DrugListener;
 import halmob.healthhub.EventListeners.FoodListener;
+import halmob.healthhub.EventListeners.InsulinDoseListener;
 import halmob.healthhub.EventListeners.PeopleListener;
 import halmob.healthhub.Models.BloodSugar;
 import halmob.healthhub.Models.Drug;
 import halmob.healthhub.Models.Food;
+import halmob.healthhub.Models.InsulinDose;
 import halmob.healthhub.Models.Person;
 import halmob.healthhub.Models.SportForBodyWork;
 import halmob.healthhub.Models.SportForCardio;
@@ -159,6 +161,44 @@ public class FirebaseTransaction {
     }
 
     //BURAYA KADAR
+
+
+    public static void addInsulinDose(InsulinDose newInsulinDose){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("insulinDoses").push().setValue(newInsulinDose, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError error, DatabaseReference firebase) {
+                if (error != null) {
+                }
+            }
+        });
+    }
+    private static InsulinDoseListener mInsulinDoseListener;
+
+    public static void setmInsulinDoseListener(InsulinDoseListener listen) {
+        mInsulinDoseListener = listen;
+    }
+    public static void getInsulinDoses(){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        final List<InsulinDose> insulinDoseList = new ArrayList<InsulinDose>();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("insulinDoses").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    InsulinDose insulinDose = postSnapshot.getValue(InsulinDose.class);
+                    insulinDoseList.add(insulinDose);
+                }
+                if (mInsulinDoseListener != null) {
+                    mInsulinDoseListener.insulinDosesRead(insulinDoseList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
 
 ///////////////////////////////////////////////////////////////////////////
     //FOR BODYWORK
