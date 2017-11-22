@@ -7,13 +7,13 @@ package halmob.healthhub.Models;
 import java.util.Calendar;
 
 public class InsulinDose {
-    private Float appliedDose;
+    private String appliedDose;
     private String date;
     private String time;
     private String insulinType;
 
-    public Float getAppliedDose() { return appliedDose; }
-    public void setAppliedDose(Float appliedDose) {
+    public String getAppliedDose() { return appliedDose; }
+    public void setAppliedDose(String appliedDose) {
         this.appliedDose = appliedDose;
     }
 

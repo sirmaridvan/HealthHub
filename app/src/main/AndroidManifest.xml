@@ -32,6 +32,7 @@
         <activity android:name=".MedicineMainActivity" />
         <activity android:name=".MedicineListActivity" />
         <activity android:name=".BloodSugarListActivity" />
+        <activity android:name=".InsulinDoseListActivity" />
         <activity android:name=".SampleReadActivity"></activity>
     </application>
 
