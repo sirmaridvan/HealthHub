@@ -61,12 +61,7 @@ public class BloodSugarActivity extends AppCompatActivity {
                 submitBloodSugar();
                 FirebaseTransaction.addBloodSugar(NewBloodSugar);
                 Toast.makeText(getApplicationContext(),
-                        "Data: "
-                                + NewBloodSugar.getBloodSugarValue()
-                                + " " + NewBloodSugar.getHungerSituation()
-                                + " " + NewBloodSugar.getDate()
-                                + " " + NewBloodSugar.getTime()
-                                + " " + NewBloodSugar.getExtraNotes(),
+                        "Blood Sugar Record is saved successfully!",
                         Toast.LENGTH_LONG).show();
                 finish();
             }

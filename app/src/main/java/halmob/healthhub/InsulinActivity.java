@@ -45,12 +45,9 @@ public class InsulinActivity extends AppCompatActivity {
                 submitInsulinDose();
                 FirebaseTransaction.addInsulinDose(NewInsulinDose);
                 Toast.makeText(getApplicationContext(),
-                        "Data: "
-                                + NewInsulinDose.getInsulinType()
-                                + " " + NewInsulinDose.getAppliedDose()
-                                + " " + NewInsulinDose.getDate()
-                                + " " + NewInsulinDose.getTime(),
+                        "Insulin Dose Record is saved successfully!",
                         Toast.LENGTH_LONG).show();
+                finish();
             }
         });
     }
@@ -72,7 +69,11 @@ public class InsulinActivity extends AppCompatActivity {
         }
         */
 
-        String stringInsulinDose = editTextInsulinDose.getText().toString();
+        String InsulinDose = editTextInsulinDose.getText().toString();
+
+        /*
+        If you need to convert a string to float use the code below!
+
         float floatInsulinDose = -1;
 
         try {
@@ -81,12 +82,12 @@ public class InsulinActivity extends AppCompatActivity {
         catch (ParseException e) {
 
         }
-
-        createInsulinDose(insulinType, floatInsulinDose);
+        */
+        createInsulinDose(insulinType, InsulinDose);
 
     }
 
-    public void createInsulinDose(String insulinType, float insulinDose)
+    public void createInsulinDose(String insulinType, String insulinDose)
     {
         NewInsulinDose.setDate(); //set current date
         NewInsulinDose.setTime(); //set current time
