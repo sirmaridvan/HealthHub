@@ -6,6 +6,10 @@
         <item>Hungry</item>
         <item>Full</item>
     </string-array>
+    <string-array name="insulin_type_array">
+        <item>Novorapid</item>
+        <item>Lantus</item>
+    </string-array>
     <string-array name="howManyMedicineArray">
         <item>1</item>
         <item>2</item>

@@ -41,7 +41,8 @@
             android:layout_weight="1"
             android:background="@android:color/holo_purple"
             android:text="SHOW TABLES"
-            android:textAppearance="@android:style/TextAppearance.Material.Widget.Button.Colored" />
+            android:textAppearance="@android:style/TextAppearance.Material.Widget.Button.Colored"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
