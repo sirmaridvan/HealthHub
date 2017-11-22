@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.List;
 
 import halmob.healthhub.Models.InsulinDose;
 
@@ -42,6 +43,7 @@ public class InsulinActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 submitInsulinDose();
+                FirebaseTransaction.addInsulinDose(NewInsulinDose);
                 Toast.makeText(getApplicationContext(),
                         "Data: "
                                 + NewInsulinDose.getInsulinType()
@@ -90,5 +92,14 @@ public class InsulinActivity extends AppCompatActivity {
         NewInsulinDose.setTime(); //set current time
         NewInsulinDose.setInsulinType(insulinType);
         NewInsulinDose.setAppliedDose(insulinDose);
+    }
+
+    //kullanıcının ilaçlarını okumak için aşağıdaki iki satırlık kodu kullan. Sonuçlar drugsRead fonksiyonuna düşecek.
+        /*FirebaseTransaction.setDrugListenerListener(this);
+        FirebaseTransaction.getDrugs();*/
+    //@Override
+    public void insulinDosesRead(List<InsulinDose> insulinDoseList){
+        //kullanıcıyla ilgili bütün ilaçlar drugList'in içinde
+        //istediğin gibi kullan
     }
 }
