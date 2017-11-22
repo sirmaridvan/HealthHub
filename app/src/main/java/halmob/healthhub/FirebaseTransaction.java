@@ -1,5 +1,7 @@
 package halmob.healthhub;
 
+import android.net.Uri;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +23,7 @@ import halmob.healthhub.Models.BloodSugar;
 import halmob.healthhub.Models.Drug;
 import halmob.healthhub.Models.Food;
 import halmob.healthhub.Models.InsulinDose;
+import halmob.healthhub.Models.MedicalAnalysis;
 import halmob.healthhub.Models.Person;
 import halmob.healthhub.Models.SportForBodyWork;
 import halmob.healthhub.Models.SportForCardio;
@@ -82,6 +85,17 @@ public class FirebaseTransaction {
     public static void addDrug(Drug drug){
         final String currentUserId = FirebaseUtil.getCurrentUserId();
         FirebaseUtil.getPeopleRef().child(currentUserId).child("drugs").push().setValue(drug, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError error, DatabaseReference firebase) {
+                if (error != null) {
+                }
+            }
+        });
+    }
+
+    public static void addMedicalAnalysis(MedicalAnalysis medicalAnalysis){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("medicalAnalysis").push().setValue(medicalAnalysis, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError error, DatabaseReference firebase) {
                 if (error != null) {
