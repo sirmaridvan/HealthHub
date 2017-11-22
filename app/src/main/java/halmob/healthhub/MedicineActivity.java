@@ -2,11 +2,13 @@ package halmob.healthhub;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -38,6 +41,12 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
     // new elements
     private Spinner howManySpinner;
     private LinearLayout myLinearLayout;
+    // private String[] timeArray;
+    private List<String> timeList;
+    private int many;
+    TextView viewhead;
+    TextView viewtime;
+    List<TextView> allTimes = new ArrayList<TextView>();
     // ...
 
     private TimePickerDialog.OnTimeSetListener timeSetListener1;
@@ -78,6 +87,39 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String howManyResult = howManySpinner.getSelectedItem().toString();
                 int howManyInt = Integer.parseInt(howManyResult);
+                many = howManyInt;
+
+                // Remove all existing views from linear layout
+                if(myLinearLayout.getChildCount() > 0)
+                {
+                    myLinearLayout.removeAllViews();
+                }
+
+                LayoutInflater inflater_layout = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+
+                for(int count = 0; count < howManyInt; count++)
+                {
+
+                    final View customView = inflater_layout.inflate(R.layout.custom_time_field, null);
+                    myLinearLayout.addView(customView);
+                    viewhead = (TextView) customView.findViewById(R.id.headText);
+                    viewtime = (TextView) customView.findViewById(R.id.timeText);
+
+                    // allTimes.add(viewtime);
+                    viewhead.setText((count + 1) + ". Time");
+                    viewtime.setText("Tap Here");
+                    viewtime.setId(count + 1);
+                    viewtime.setOnClickListener(timeClick);
+
+
+
+
+
+
+
+
+                }
 
             }
 
@@ -87,9 +129,51 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             }
         });
 
+
+
+
+        /*
+        viewtime.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view){
+                Calendar timeCal = Calendar.getInstance();
+                int hour = timeCal.get(Calendar.HOUR_OF_DAY);
+                int minute = timeCal.get(Calendar.MINUTE);
+
+                TimePickerDialog dialog3 = new TimePickerDialog(MedicineActivity.this,
+                        TimePickerDialog.THEME_HOLO_LIGHT,
+                        timeSetListener1,
+                        hour,
+                        minute,
+                        true
+                );
+                dialog3.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog3.show();
+            }
+        });
+
+
+
+        timeSetListener1 = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                String time;
+                if(minute < 10){
+                    time = hour + ":0" + minute;
+                }
+                else{
+                    time = hour + ":" + minute;
+                }
+                viewtime.setText(time);
+            }
+        };
+        */
+
+
         // ...
 
-
+        /*
         editTextTime.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -109,6 +193,7 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
                 dialog3.show();
             }
         });
+        */
 
         editTextStartDate.setOnClickListener(new View.OnClickListener() {
 
@@ -150,6 +235,7 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             }
         });
 
+        /*
         timeSetListener1 = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
@@ -163,6 +249,7 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
                 editTextTime.setText(time);
             }
         };
+        */
 
         dateSetListener1 = new DatePickerDialog.OnDateSetListener() {
 
@@ -204,6 +291,54 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
         });
     }
 
+    // neww
+
+    View.OnClickListener timeClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Calendar timeCal = Calendar.getInstance();
+            int hour = timeCal.get(Calendar.HOUR_OF_DAY);
+            int minute = timeCal.get(Calendar.MINUTE);
+
+            final TextView tv = (TextView) findViewById(view.getId());
+
+            TimePickerDialog timePickerDynamic = new TimePickerDialog(MedicineActivity.this,
+                    new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                            String time;
+                            if(minute < 10){
+                                time = hour + ":0" + minute;
+                            }
+                            else{
+                                time = hour + ":" + minute;
+                            }
+                            tv.setText(time);
+                            allTimes.add(tv);
+                        }
+                    }, hour, minute, true);
+            timePickerDynamic.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            timePickerDynamic.show();
+        }
+    };
+
+    /*
+        timeSetListener1 = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                String time;
+                if(minute < 10){
+                    time = hour + ":0" + minute;
+                }
+                else{
+                    time = hour + ":" + minute;
+                }
+                editTextTime.setText(time);
+            }
+        };
+        */
+
+
     //kullanıcının ilaçlarını okumak için aşağıdaki iki satırlık kodu kullan. Sonuçlar drugsRead fonksiyonuna düşecek.
         /*FirebaseTransaction.setDrugListenerListener(this);
         FirebaseTransaction.getDrugs();*/
@@ -220,13 +355,20 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
         String input3 = editTextEndDate.getText().toString();
         String input4 = howManySpinner.getSelectedItem().toString();
         // String input4 = editTextHowMany.getText().toString();
-        String input5 = editTextTime.getText().toString();
+        // String input5 = editTextTime.getText().toString();
 
-        createMedicine(input1, input2, input3, input4, input5);
+        // timeArray = new String[allTimes.size()];
+        timeList = new ArrayList<>();
+
+        for(int i = 0; i < many; i++){
+            timeList.add(allTimes.get(i).getText().toString());
+        }
+
+        createMedicine(input1, input2, input3, input4);
 
     }
 
-    public void createMedicine(String s1, String s2, String s3, String s4, String s5) {
+    public void createMedicine(String s1, String s2, String s3, String s4) {
         medicine.setName(s1);
 
         medicine.setStartDate(s2);
@@ -249,6 +391,8 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
         */
 
         medicine.setHowMany(s4);
-        medicine.setTime(s5);
+        // medicine.setTime(s5);
+        // medicine.setTimes(timeArray);
+        medicine.setTimeList(timeList);
     }
 }
