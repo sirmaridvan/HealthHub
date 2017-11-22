@@ -3,8 +3,10 @@ package halmob.healthhub;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
@@ -15,7 +17,7 @@ import halmob.healthhub.Models.InsulinDose;
 
 public class InsulinActivity extends AppCompatActivity {
 
-    private EditText editTextInsulinType;
+    private Spinner insulinTypeSpinner;
     private EditText editTextInsulinDose;
     private EditText editTextDate;
     private EditText editTextTime;
@@ -29,10 +31,18 @@ public class InsulinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insulin);
 
-        editTextInsulinType = (EditText) findViewById(R.id.insulin_type_input);
         editTextInsulinDose = (EditText) findViewById(R.id.insulin_dose_input);
         // editTextDate = (EditText) findViewById(R.id.editText_3);
         // editTextTime = (EditText) findViewById(R.id.editText_4);
+
+        //Spinner definition
+        Spinner spinner = (Spinner) findViewById(R.id.insulin_type_input);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.insulin_type_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        insulinTypeSpinner = (Spinner) findViewById(R.id.insulin_type_input);
 
         NewInsulinDose = new InsulinDose();
 
@@ -56,7 +66,7 @@ public class InsulinActivity extends AppCompatActivity {
 
     public void submitInsulinDose()
     {
-        String insulinType = editTextInsulinType.getText().toString();
+        String insulinType = String.valueOf(insulinTypeSpinner.getSelectedItem());
 
         /* Use the lines below if you need integer input!
         int intInsulinType = -1;
