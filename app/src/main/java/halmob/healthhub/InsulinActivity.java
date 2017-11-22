@@ -2,6 +2,8 @@ package halmob.healthhub;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,9 +17,10 @@ import java.util.List;
 
 import halmob.healthhub.Models.InsulinDose;
 
-public class InsulinActivity extends AppCompatActivity {
+public class InsulinActivity extends AppCompatActivity implements TextWatcher {
 
     private Spinner insulinTypeSpinner;
+
     private EditText editTextInsulinDose;
     private EditText editTextDate;
     private EditText editTextTime;
@@ -31,7 +34,11 @@ public class InsulinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insulin);
 
+
         editTextInsulinDose = (EditText) findViewById(R.id.insulin_dose_input);
+        editTextInsulinDose.addTextChangedListener(this);
+
+
         // editTextDate = (EditText) findViewById(R.id.editText_3);
         // editTextTime = (EditText) findViewById(R.id.editText_4);
 
@@ -47,11 +54,12 @@ public class InsulinActivity extends AppCompatActivity {
         NewInsulinDose = new InsulinDose();
 
         buttonSubmit = (Button) findViewById(R.id.button_submit);
-
+        buttonSubmit.setEnabled(false); //initially, submit button is disabled
 
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 submitInsulinDose();
                 FirebaseTransaction.addInsulinDose(NewInsulinDose);
                 Toast.makeText(getApplicationContext(),
@@ -61,6 +69,37 @@ public class InsulinActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if(s.toString().trim().length()==0){
+            buttonSubmit.setEnabled(false);
+            editTextInsulinDose.setError("This field can not be empty!");
+        }
+
+        else if (s.toString().trim().length() >= 3 && s.toString().contains(".") == false ){
+            buttonSubmit.setEnabled(false);
+            editTextInsulinDose.setError("The entered dose is too high!");
+        }
+
+        //Daha sonra incelenecek!!!! Kırmızı çizgi durumu düzeltilecek!
+        else if (s.toString().trim().length() >= 3 && s.toString().substring(0,2).contains(".") == false && s.toString().contains(".") == true ){
+            buttonSubmit.setEnabled(false);
+        }
+
+        else {
+            buttonSubmit.setEnabled(true);
+        }
+
+    }
+
+    public void afterTextChanged(Editable s) {
+    }
+
 
 
 
