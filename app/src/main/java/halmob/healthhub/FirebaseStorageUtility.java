@@ -1,9 +1,14 @@
 package halmob.healthhub;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -60,5 +65,14 @@ public class FirebaseStorageUtility {
                 addedImageListener.imageAdded(downloadUrl);
             }
         });
+    }
+    public static void loadImage(String url, ImageView imageView, Context context) {
+        ColorDrawable cd = new ColorDrawable(ContextCompat.getColor(context, R.color.blue_grey_500));
+        Glide.with(context)
+                .load(url)
+                .placeholder(cd)
+                .crossFade()
+                .centerCrop()
+                .into(imageView);
     }
 }

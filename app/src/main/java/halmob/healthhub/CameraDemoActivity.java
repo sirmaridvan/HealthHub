@@ -53,6 +53,10 @@ public class CameraDemoActivity extends AppCompatActivity implements AddedImageL
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, CAMERA_REQUEST);
     }
+    public void getImageFromDatabase(View view){
+        String uri = "https://firebasestorage.googleapis.com/v0/b/healthhub-a0d45.appspot.com/o/images%2FnUulYae7H9btz1TrfaxSBlHKsPc2%2Fsample.jpg?alt=media&token=0c90ac19-9056-4722-b50d-f01651f51847";
+        FirebaseStorageUtility.loadImage(uri,mimageView,getApplicationContext());
+    }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
