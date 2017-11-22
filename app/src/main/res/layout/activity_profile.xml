@@ -52,4 +52,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SAMPLE READ" />
+
+    <Button
+        android:id="@+id/camera_demo_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CAMERA DEMO" />
 </LinearLayout>
