@@ -6,12 +6,14 @@ package halmob.healthhub.Models;
 
 public class CarbohydrateCountFood {
     private String foodName;
-    private int gram;
+    private String foodType;
+    private String gram;
     private String portionSize;
-    private float carbohydrate;
-    private float fiber;
-    private float carbohydrateCount;
-    private int glysemicIndex;
+    private String carbohydrate;
+    private String fiber;
+    private String carbohydrateCount;
+    private String glysemicIndex;
+
 
     public String getFoodName() {
         return foodName;
@@ -20,10 +22,17 @@ public class CarbohydrateCountFood {
         this.foodName = newFoodName;
     }
 
-    public int getGram() {
+    public String getFoodType() {
+        return foodType;
+    }
+    public void setFoodType(String newFoodType) {
+        this.foodType = newFoodType;
+    }
+
+    public String getGram() {
         return gram;
     }
-    public void setGram(int newGram) { this.gram = newGram; }
+    public void setGram(String newGram) { this.gram = newGram; }
 
     public String getPortionSize() {
         return portionSize;
@@ -32,27 +41,27 @@ public class CarbohydrateCountFood {
         this.portionSize = newPortionSize;
     }
 
-    public float getCarbohydrate() {
+    public String getCarbohydrate() {
         return carbohydrate;
     }
-    public void setCarbohydrate(float newCarbohydrate) {
+    public void setCarbohydrate(String newCarbohydrate) {
         this.carbohydrate = newCarbohydrate;
     }
 
-    public float getFiber() { return fiber; }
-    public void setFiber(float newFiber) {
+    public String getFiber() { return fiber; }
+    public void setFiber(String newFiber) {
         this.fiber = newFiber;
     }
 
-    public float getCarbohydrateCount() {
+    public String getCarbohydrateCount() {
         return carbohydrateCount;
     }
-    public void setCarbohydrateCount(float newCarbohydrateCount) { this.carbohydrateCount = newCarbohydrateCount; }
+    public void setCarbohydrateCount(String newCarbohydrateCount) { this.carbohydrateCount = newCarbohydrateCount; }
 
-    public int getGlysemicIndex() {
+    public String getGlysemicIndex() {
         return glysemicIndex;
     }
-    public void setGlysemicIndex(int newGlysemicIndex) {
+    public void setGlysemicIndex(String newGlysemicIndex) {
         this.glysemicIndex = newGlysemicIndex;
     }
 }
