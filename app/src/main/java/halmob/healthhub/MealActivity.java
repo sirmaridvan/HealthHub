@@ -231,28 +231,35 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
             selectedFood = String.valueOf(fruitFoodNameSpinner.getSelectedItem());
         }
 
-        String foodName = String.valueOf(foodName.getSelectedItem());
 
-        String stringBloodSugarValue = editTextSugarValue.getText().toString();
-        int intBloodSugarValue = -1;
+        //String stringBloodSugarValue = editTextSugarValue.getText().toString();
+        //int intBloodSugarValue = -1;
 
-        try {
-            intBloodSugarValue = Integer.parseInt(stringBloodSugarValue);
-        }
-        catch (NumberFormatException e) {
+//        try {
+  //          intBloodSugarValue = Integer.parseInt(stringBloodSugarValue);
+      //  }
+    //    catch (NumberFormatException e) {
 
-        }
-
-        String extraNotes = editTextExtraNotes.getText().toString();
+        //}
 
 
-        createMealRecord(intBloodSugarValue, hungerSituation, extraNotes);
+
+        createMealRecord();
 
     }
 
     public void createMealRecord() {
+        Food newFoodRecord = null;
         for( int i = 0; i < allFoodList.size(); i++ ) {
-            
+            if(selectedFood.equals(allFoodList.get(i).getFoodName())) {
+                newFoodRecord = allFoodList.get(i);
+            }
         }
+
+
+        if( newFoodRecord != null )
+            NewMeal = new Meal(newFoodRecord, "one" );
+            NewMeal.setDate();
+            NewMeal.setTime();
     }
 }
