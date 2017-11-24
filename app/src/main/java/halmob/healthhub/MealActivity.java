@@ -27,6 +27,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
     private String selectedFoodType;
     private TextView foodNameTextView;
     private boolean spinnerInitFlag;
+    private ArrayList<Food> allFoodList = new ArrayList<>();;
 
 
     @Override
@@ -36,6 +37,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
         FirebaseTransaction.setFoodListener(this);
         FirebaseTransaction.getFoods();
         spinnerInitFlag = false;
+
 
         //foodType spinner creation code
         Spinner spinner = (Spinner) findViewById(R.id.food_type_spinner);
@@ -66,7 +68,8 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
                 else if( selectedFoodType.equals("Milk Product")) {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
-                    String s = fruitFoodNameSpinner.getSelectedItem().toString();
+                    //String t = allFoodList.get(1).getFoodName();
+                    //String s = fruitFoodNameSpinner.getSelectedItem().toString();
                     milkProductFoodNameSpinner.setVisibility(View.VISIBLE);
                     fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
                 }
@@ -124,12 +127,16 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
     @Override
     public void foodRead(List<Food> foods){
 
+
         //fruitFoodName spinner creation code
         Spinner spinner2 = (Spinner) findViewById(R.id.fruit_food_name_spinner);
 
         List<String> fruitFoodNames = new ArrayList<String>();
 
         for (int i=0;i<foods.size();i++) {
+            if(foods.get(i) != null )
+                allFoodList.add(foods.get(i));
+
             if(foods.get(i).getFoodType().equals("Fruit") )
                 fruitFoodNames.add(foods.get(i).getFoodName());
         }
@@ -156,6 +163,8 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
 
 
         /*
+        DAHA SONRA EKLEYECEGİM SPİNNERLAR
+
 
         //vegetableFoodName spinner creation code
         Spinner spinner4 = (Spinner) findViewById(R.id.fruit_food_name_spinner);

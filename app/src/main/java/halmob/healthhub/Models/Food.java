@@ -7,10 +7,16 @@ package halmob.healthhub.Models;
 public class Food {
     private String foodName;
     private String foodType;
+    private String portionSize;
+    private String gram;
     private String protein;
     private String carbohydrate;
     private String fat;
     private String calorie;
+    private String fiber;
+    private String carbohydrateCount;
+    private String glysemicIndex;
+
 
     public String getFoodName() { return foodName;}
     public void setFoodName(String newFoodName) {
@@ -48,6 +54,35 @@ public class Food {
     }
     public void setCalorie(String newCalorie) {
         this.calorie = newCalorie;
+    }
+
+    public String getGram() {
+        return gram;
+    }
+    public void setGram(String newGram) { this.gram = newGram; }
+
+    public String getPortionSize() {
+        return portionSize;
+    }
+    public void setPortionSize(String newPortionSize) {
+        this.portionSize = newPortionSize;
+    }
+
+    public String getFiber() { return fiber; }
+    public void setFiber(String newFiber) {
+        this.fiber = newFiber;
+    }
+
+    public String getCarbohydrateCount() {
+        return carbohydrateCount;
+    }
+    public void setCarbohydrateCount(String newCarbohydrateCount) { this.carbohydrateCount = newCarbohydrateCount; }
+
+    public String getGlysemicIndex() {
+        return glysemicIndex;
+    }
+    public void setGlysemicIndex(String newGlysemicIndex) {
+        this.glysemicIndex = newGlysemicIndex;
     }
 
 }
