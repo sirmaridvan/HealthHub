@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import halmob.healthhub.EventListeners.FoodListener;
 import halmob.healthhub.Models.Food;
+import halmob.healthhub.Models.Meal;
 
 public class MealActivity extends AppCompatActivity implements FoodListener {
     private Spinner foodTypeSpinner;
@@ -25,9 +27,12 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
     private Spinner riceFoodNameSpinner;
     private Spinner pastaFoodNameSpinner;
     private String selectedFoodType;
+    private String selectedFood;
     private TextView foodNameTextView;
     private boolean spinnerInitFlag;
     private ArrayList<Food> allFoodList = new ArrayList<>();;
+    private Button mealSubmitButton;
+    Meal NewMeal;
 
 
     @Override
@@ -52,8 +57,6 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
 
         foodNameTextView = (TextView) findViewById(R.id.food_name_text_view);
 
-
-
         foodTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedFoodType = String.valueOf(foodTypeSpinner.getSelectedItem());
@@ -69,6 +72,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
                     //String t = allFoodList.get(1).getFoodName();
+                    Meal m = new Meal(allFoodList.get(1),"one");
                     //String s = fruitFoodNameSpinner.getSelectedItem().toString();
                     milkProductFoodNameSpinner.setVisibility(View.VISIBLE);
                     fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
@@ -118,10 +122,21 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
             }
         });
 
-        //selectedFoodTypeList = new ArrayList<Food>();
-        //Food selectedFood = selectedFoodTypeList.get(1);
 
 
+
+        mealSubmitButton = (Button) findViewById(R.id.meal_submit_button);
+        mealSubmitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitMeal();
+                FirebaseTransaction.addMeal(NewMeal);
+                Toast.makeText(getApplicationContext(),
+                        "Blood Sugar Record is saved successfully!",
+                        Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
     }
 
     @Override
@@ -204,5 +219,40 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
         //int a=1;
 
         */
+    }
+
+    public void submitMeal()
+    {
+        if( selectedFoodType.equals("Milk Product" ) ) {
+            selectedFood = String.valueOf(milkProductFoodNameSpinner.getSelectedItem());
+        }
+
+        else if( selectedFoodType.equals("Fruit" ) ) {
+            selectedFood = String.valueOf(fruitFoodNameSpinner.getSelectedItem());
+        }
+
+        String foodName = String.valueOf(foodName.getSelectedItem());
+
+        String stringBloodSugarValue = editTextSugarValue.getText().toString();
+        int intBloodSugarValue = -1;
+
+        try {
+            intBloodSugarValue = Integer.parseInt(stringBloodSugarValue);
+        }
+        catch (NumberFormatException e) {
+
+        }
+
+        String extraNotes = editTextExtraNotes.getText().toString();
+
+
+        createMealRecord(intBloodSugarValue, hungerSituation, extraNotes);
+
+    }
+
+    public void createMealRecord() {
+        for( int i = 0; i < allFoodList.size(); i++ ) {
+            
+        }
     }
 }

@@ -23,6 +23,7 @@ import halmob.healthhub.Models.BloodSugar;
 import halmob.healthhub.Models.Drug;
 import halmob.healthhub.Models.Food;
 import halmob.healthhub.Models.InsulinDose;
+import halmob.healthhub.Models.Meal;
 import halmob.healthhub.Models.MedicalAnalysis;
 import halmob.healthhub.Models.Person;
 import halmob.healthhub.Models.SportForBodyWork;
@@ -318,6 +319,20 @@ public class FirebaseTransaction {
             }
         });
     }
+
+    // AddMeal part is added below
+
+    public static void addMeal(Meal newMeal){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("meal").push().setValue(newMeal, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError error, DatabaseReference firebase) {
+                if (error != null) {
+                }
+            }
+        });
+    }
+
     private static FoodListener mFoodListener;
 
     public static void setFoodListener(FoodListener listen) {

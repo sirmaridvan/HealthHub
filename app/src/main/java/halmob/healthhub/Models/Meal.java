@@ -12,6 +12,22 @@ public class Meal {
     private String portionSize;
     private String date;
     private String time;
+    private String totalGram;
+    private String totalProtein;
+    private String totalCarbohydrate;
+    private String totalFat;
+    private String totalCalorie;
+    private String totalFiber;
+    private String totalCarbohydrateCount;
+    private String totalGlysemicIndex;
+
+
+    //constructor of the Meal class
+    public Meal(Food newFoodRecord, String newPortionSize) {
+        this.foodRecord = newFoodRecord;
+        this.portionSize = newPortionSize;
+    }
+
 
     public Food getFoodRecord() { return foodRecord; }
     public void setFoodRecord(Food newFoodRecord) {
