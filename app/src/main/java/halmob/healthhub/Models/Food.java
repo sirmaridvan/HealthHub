@@ -30,7 +30,16 @@ public class Food {
         this.foodType = newFoodType;
     }
 
-    public String getProtein() { return protein;}
+    public float getProtein() {
+        float floatProtein = 0f;
+
+        try {
+            floatProtein = Float.parseFloat(protein.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatProtein;
+    }
     public void setProtein(String newProtein) {
         this.protein = newProtein;
     }
