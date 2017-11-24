@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
     private TextView foodNameTextView;
     private boolean spinnerInitFlag;
     private ArrayList<Food> allFoodList = new ArrayList<>();;
+    private EditText portionSizeEditText;
     private Button mealSubmitButton;
     Meal NewMeal;
 
@@ -43,6 +45,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
         FirebaseTransaction.getFoods();
         spinnerInitFlag = false;
 
+        portionSizeEditText = (EditText) findViewById(R.id.portion_size_input_edit_text);
 
         //foodType spinner creation code
         Spinner spinner = (Spinner) findViewById(R.id.food_type_spinner);
@@ -72,7 +75,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
                     //String t = allFoodList.get(1).getFoodName();
-                    Meal m = new Meal(allFoodList.get(1),"one");
+                    Meal m = new Meal(allFoodList.get(1),"1.5");
                     //String s = fruitFoodNameSpinner.getSelectedItem().toString();
                     milkProductFoodNameSpinner.setVisibility(View.VISIBLE);
                     fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
@@ -232,6 +235,8 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
         }
 
 
+
+        String stringPortionSize = portionSizeEditText.getText().toString();
         //String stringBloodSugarValue = editTextSugarValue.getText().toString();
         //int intBloodSugarValue = -1;
 
@@ -244,11 +249,11 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
 
 
 
-        createMealRecord();
+        createMealRecord(stringPortionSize);
 
     }
 
-    public void createMealRecord() {
+    public void createMealRecord(String stringNewPortionSize) {
         Food newFoodRecord = null;
         for( int i = 0; i < allFoodList.size(); i++ ) {
             if(selectedFood.equals(allFoodList.get(i).getFoodName())) {
@@ -258,7 +263,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
 
 
         if( newFoodRecord != null )
-            NewMeal = new Meal(newFoodRecord, "one" );
+            NewMeal = new Meal(newFoodRecord, stringNewPortionSize );
             NewMeal.setDate();
             NewMeal.setTime();
     }
