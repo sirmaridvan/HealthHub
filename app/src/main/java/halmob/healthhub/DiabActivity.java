@@ -12,6 +12,7 @@ import halmob.healthhub.Models.BloodSugar;
 public class DiabActivity extends AppCompatActivity {
     private ImageButton insulinButton;
     private ImageButton bloodSugarButton;
+    private ImageButton mealButton;
     private Button tableButton;
 
 
@@ -35,6 +36,15 @@ public class DiabActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(DiabActivity.this, BloodSugarActivity.class);
                 startActivity(i);
+            }
+        });
+
+        mealButton = findViewById(R.id.meal_button);
+        mealButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DiabActivity.this, MealActivity.class);
+                startActivity(intent);
             }
         });
 

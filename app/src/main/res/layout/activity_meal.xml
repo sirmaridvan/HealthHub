@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/food_type_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="48dp"
+        android:text="Select Food Type"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/food_type_spinner"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="7dp" />
+
+    <TextView
+        android:id="@+id/food_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:text="Select Food Name"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/food_name_spinner"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="7dp" />
+
+    <TextView
+        android:id="@+id/portion_size_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="6dp"
+        android:text="Enter Portion Size"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/portion_size_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:hint="Enter portion size"
+        android:imeOptions="actionNext"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/blood_meal_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:onClick="submitMeal"
+        android:text="Submit" />
+
+</LinearLayout>

@@ -8,9 +8,20 @@ import java.util.Date;
  */
 
 public class Meal {
-    private String foodName; //Rıdvan tarafından incelenecek! Hazır yemeklerin çekilmesini nasıl yapacagımızla ilgili!
+    private Food foodRecord; //Rıdvan tarafından incelenecek! Hazır yemeklerin çekilmesini nasıl yapacagımızla ilgili!
+    private String portionSize;
     private String date;
     private String time;
+
+    public Food getFoodRecord() { return foodRecord; }
+    public void setFoodRecord(Food newFoodRecord) {
+        this.foodRecord = newFoodRecord;
+    }
+
+    public String getPortion() { return portionSize; }
+    public void setPortion(String newPortionSize ) {
+        portionSize = newPortionSize;
+    }
 
     public String getDate() {
         return date;

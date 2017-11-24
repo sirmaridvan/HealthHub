@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 public class DiabTableActivity extends AppCompatActivity {
     private ImageButton insulinTableButton;
     private ImageButton bloodSugarTableButton;
+    private ImageButton mealTableButton;
 
 
     @Override
@@ -29,6 +30,15 @@ public class DiabTableActivity extends AppCompatActivity {
 
         bloodSugarTableButton = findViewById(R.id.blood_sugar_table_button);
         bloodSugarTableButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(DiabTableActivity.this, BloodSugarListActivity.class);
+                startActivity(i);
+            }
+        });
+
+        mealTableButton = findViewById(R.id.meal_table_button);
+        mealTableButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(DiabTableActivity.this, BloodSugarListActivity.class);
