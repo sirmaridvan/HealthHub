@@ -6,6 +6,16 @@
         <item>Hungry</item>
         <item>Full</item>
     </string-array>
+    <string-array name="food_type_array">
+        <item>Select Food Type</item>
+        <item>Milk Product</item>
+        <item>Fruit</item>
+        <item>Vegetable</item>
+        <item>Dessert</item>
+        <item>Meat and Meat Products</item>
+        <item>Rice</item>
+        <item>Pasta</item>
+    </string-array>
     <string-array name="insulin_type_array">
         <item>Novorapid</item>
         <item>Lantus</item>
