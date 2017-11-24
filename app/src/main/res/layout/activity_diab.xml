@@ -105,7 +105,7 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/insulin_button"
+            android:id="@+id/meal_button"
             android:layout_width="match_parent"
             android:layout_height="88dp"
             android:background="@android:color/white"
