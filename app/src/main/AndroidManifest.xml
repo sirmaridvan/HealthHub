@@ -37,7 +37,18 @@
         <activity android:name=".SampleReadActivity" />
         <activity android:name=".DiabTableActivity" />
         <activity android:name=".CameraDemoActivity" />
-        <activity android:name=".MealActivity"></activity>
+        <activity android:name=".MealActivity" />
+
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="false"></receiver>
+
+        <service
+            android:name=".MyNewIntentService"
+            android:exported="false"></service>
+
+        <activity android:name=".NotificationActivity"></activity>
     </application>
 
 </manifest>
