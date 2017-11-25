@@ -1,6 +1,8 @@
 package halmob.healthhub;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +29,7 @@ import java.util.List;
 
 import halmob.healthhub.EventListeners.DrugListener;
 import halmob.healthhub.Models.Drug;
+import halmob.healthhub.Models.NotificationInfo;
 
 
 public class MedicineActivity extends AppCompatActivity implements DrugListener {
@@ -39,6 +42,9 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
     private LinearLayout myLinearLayout;
     private List<String> timeList;
     private int many;
+
+    // new
+    private List<NotificationInfo> notificationList;
 
     TextView viewhead;
     TextView viewtime;
@@ -259,11 +265,15 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
         String input2 = editTextStartDate.getText().toString();
         String input3 = editTextEndDate.getText().toString();
         String input4 = howManySpinner.getSelectedItem().toString();
+
         timeList = new ArrayList<>();
 
         for(int i = 0; i < many; i++){
             timeList.add(allTimes.get(i).getText().toString());
         }
+
+
+        createNotificationArray(input2, input3, input1);
 
         createMedicine(input1, input2, input3, input4);
 
@@ -281,8 +291,10 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             FirebaseTransaction.addDrug(medicine);
 
             Toast.makeText(getApplicationContext(),
-                    "Medicine Record is saved successfully!",
+                    "Medicine Record is saved successfully!\n Notification is set for this medicine!",
                     Toast.LENGTH_LONG).show();
+
+            setNotification();
 
             Intent intent1 = new Intent(MedicineActivity.this, MedicineMainActivity.class);
             startActivity(intent1);
@@ -290,9 +302,103 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
         }
     }
 
+    public void createNotificationArray(String s1, String s2, String s3)
+    {
+        notificationList = new ArrayList<>();
+
+        // split strings into parts to find year, month and day
+        String[] parts1 = s1.split("-");
+        int startYear = Integer.parseInt(parts1[0]);
+        int startMonth = Integer.parseInt(parts1[1]);
+        int startDay = Integer.parseInt(parts1[2]);
+
+        String[] parts2 = s2.split("-");
+        int endYear = Integer.parseInt(parts2[0]);
+        int endMonth = Integer.parseInt(parts2[1]);
+        int endDay = Integer.parseInt(parts2[2]);
+
+        Calendar startCal = Calendar.getInstance();
+        startCal.set(startYear, startMonth - 1, startDay);
+
+        Calendar endCal = Calendar.getInstance();
+        endCal.set(endYear, endMonth - 1, endDay);
+
+
+        while(startCal.before(endCal)){     // between date range
+
+            for( int i = 0; i < many; i++ ){    // how many times in a day?
+                NotificationInfo newNotification = new NotificationInfo();
+                newNotification.setYear(startCal.get(Calendar.YEAR));
+                newNotification.setMonth(startCal.get(Calendar.MONTH) + 1);
+                newNotification.setDay(startCal.get(Calendar.DAY_OF_MONTH));
+                newNotification.setDrugName(s3);
+
+                String timeToSplit = timeList.get(i).toString();
+                String[] parts3 = timeToSplit.split(":");
+                int hour = Integer.parseInt(parts3[0]);
+                int minute = Integer.parseInt(parts3[1]);
+
+                newNotification.setHour(hour);
+                newNotification.setMinute(minute);
+
+                notificationList.add(newNotification);
+
+            }
+
+            startCal.add(Calendar.DATE, 1);
+
+        }
+
+
+    }
+
+    public void setNotification()
+    {
+        for(int i = 0; i < notificationList.size(); i++)
+        {
+            Calendar calendar = Calendar.getInstance();
+
+            calendar.set(Calendar.MONTH, notificationList.get(i).getMonth() - 1);
+            calendar.set(Calendar.YEAR, notificationList.get(i).getYear());
+            calendar.set(Calendar.DAY_OF_MONTH, notificationList.get(i).getDay());
+
+            calendar.set(Calendar.HOUR_OF_DAY, notificationList.get(i).getHour());
+            calendar.set(Calendar.MINUTE, notificationList.get(i).getMinute());
+            calendar.set(Calendar.SECOND, 0);
+            // calendar.set(Calendar.AM_PM,Calendar.AM);
+
+            Intent notifyIntent = new Intent(this,MyReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(MedicineActivity.this, i, notifyIntent, 0);
+
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+        }
+    }
+
     public boolean validateForm(String s1, String s2, String s3)
     {
         boolean flag = true;    // if true form is valid, else form inputs are not valid
+
+        // get today's date to check
+        String strToday;
+        Calendar cToday = Calendar.getInstance();
+        int year1 = cToday.get(Calendar.YEAR);
+        int month1 = cToday.get(Calendar.MONTH) + 1;
+        int day1 = cToday.get(Calendar.DAY_OF_MONTH);
+
+        if(month1 < 10 && day1 < 10){
+            strToday = String.valueOf(year1) + "-0" + String.valueOf(month1) + "-0" + String.valueOf(day1);
+        }
+        else if(month1 < 10){
+            strToday = String.valueOf(year1) + "-0" + String.valueOf(month1) + "-" + String.valueOf(day1);
+        }
+        else if(day1 < 10){
+            strToday = String.valueOf(year1) + "-" + String.valueOf(month1) + "-0" + String.valueOf(day1);
+        }
+        else{
+            strToday = String.valueOf(year1) + "-" + String.valueOf(month1) + "-" + String.valueOf(day1);
+        }
+
 
         if(s1 == null || s1.trim().isEmpty()){   // if medicine name is not entered.
             flag = false;
@@ -328,6 +434,20 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
 
         }
 
+        else if(s2.compareTo(strToday) < 0){    // if start date is greater than today's date
+            flag = false;
+            Toast.makeText(getApplicationContext(),
+                    "Start date must not be choosen from the past!",
+                    Toast.LENGTH_LONG).show();
+        }
+
+        else if(s3.compareTo(strToday) < 0){    // if end date is greater than today's date
+            flag = false;
+            Toast.makeText(getApplicationContext(),
+                    "End date must not be choosen from the past!",
+                    Toast.LENGTH_LONG).show();
+        }
+
         else {   // if some of the time values are not entered
             for(int k = 0; k < many; k++){
                 String toCheck = timeList.get(k).toString();
@@ -341,7 +461,6 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             }
 
         }
-
 
         return flag;
     }
