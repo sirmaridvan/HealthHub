@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/label_1"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:text="Medicine Name"
         android:textSize="16sp"
         />
@@ -26,48 +26,6 @@
         android:layout_marginRight="24dp"
         android:imeOptions="actionDone"
         />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/label_4"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:text="How many"
-        android:textSize="16sp"
-        />
-
-    <Spinner
-        android:id="@+id/howManySpinner"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp"
-
-        >
-
-
-    </Spinner>
-
-
-
-
-
-
-    <LinearLayout
-        android:id="@+id/takeTimeLinearLayout"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="24dp"
-        >
-
-
-
-    </LinearLayout>
 
 
     <TextView
@@ -112,6 +70,46 @@
         />
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_4"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="How many"
+        android:textSize="16sp"
+        />
+
+    <Spinner
+        android:id="@+id/howManySpinner"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:spinnerMode="dialog"
+
+        >
+
+    </Spinner>
+
+
+
+    <LinearLayout
+        android:id="@+id/takeTimeLinearLayout"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp"
+        >
+
+
+    </LinearLayout>
+
+
+
     <Button
         android:id="@+id/button_submit"
         android:layout_width="wrap_content"
@@ -122,10 +120,6 @@
         android:onClick="submitMedicine"
         android:textSize="16dp"
         />
-
-
-
-
 
 
 </LinearLayout>

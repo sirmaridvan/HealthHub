@@ -32,27 +32,20 @@ import halmob.healthhub.Models.Drug;
 public class MedicineActivity extends AppCompatActivity implements DrugListener {
 
     private EditText editTextName;
-    // private EditText editTextHowMany;
-
-    private TextView editTextTime;
     private TextView editTextStartDate;
     private TextView editTextEndDate;
 
-    // new elements
     private Spinner howManySpinner;
     private LinearLayout myLinearLayout;
-    // private String[] timeArray;
     private List<String> timeList;
     private int many;
+
     TextView viewhead;
     TextView viewtime;
     List<TextView> allTimes = new ArrayList<TextView>();
-    // ...
 
-    private TimePickerDialog.OnTimeSetListener timeSetListener1;
     private DatePickerDialog.OnDateSetListener dateSetListener1;
     private DatePickerDialog.OnDateSetListener dateSetListener2;
-
 
     private Button buttonSubmit;
 
@@ -69,12 +62,9 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
         medicine = new Drug();
 
         editTextName = (EditText) findViewById(R.id.editText_1);
-        // editTextHowMany = (EditText) findViewById(R.id.editText_4);
-        editTextTime = (TextView) findViewById(R.id.time);
         editTextStartDate = (TextView) findViewById(R.id.date1);
         editTextEndDate = (TextView) findViewById(R.id.date2);
 
-        // new elements
         howManySpinner = (Spinner) findViewById(R.id.howManySpinner);
         myLinearLayout = (LinearLayout) findViewById(R.id.takeTimeLinearLayout);
 
@@ -86,8 +76,7 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String howManyResult = howManySpinner.getSelectedItem().toString();
-                int howManyInt = Integer.parseInt(howManyResult);
-                many = howManyInt;
+                many = Integer.parseInt(howManyResult);
 
                 // Remove all existing views from linear layout
                 if(myLinearLayout.getChildCount() > 0)
@@ -97,103 +86,31 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
 
                 LayoutInflater inflater_layout = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+                // remove all previously created elements from allTimes TextView Array
+                allTimes.removeAll(allTimes);
 
-                for(int count = 0; count < howManyInt; count++)
+                for(int count = 0; count < many; count++)
                 {
-
                     final View customView = inflater_layout.inflate(R.layout.custom_time_field, null);
                     myLinearLayout.addView(customView);
                     viewhead = (TextView) customView.findViewById(R.id.headText);
                     viewtime = (TextView) customView.findViewById(R.id.timeText);
 
-                    // allTimes.add(viewtime);
                     viewhead.setText((count + 1) + ". Time");
                     viewtime.setText("Tap Here");
                     viewtime.setId(count + 1);
                     viewtime.setOnClickListener(timeClick);
-
-
-
-
-
-
-
-
+                    allTimes.add(viewtime);
                 }
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
+
         });
 
-
-
-
-        /*
-        viewtime.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view){
-                Calendar timeCal = Calendar.getInstance();
-                int hour = timeCal.get(Calendar.HOUR_OF_DAY);
-                int minute = timeCal.get(Calendar.MINUTE);
-
-                TimePickerDialog dialog3 = new TimePickerDialog(MedicineActivity.this,
-                        TimePickerDialog.THEME_HOLO_LIGHT,
-                        timeSetListener1,
-                        hour,
-                        minute,
-                        true
-                );
-                dialog3.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog3.show();
-            }
-        });
-
-
-
-        timeSetListener1 = new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                String time;
-                if(minute < 10){
-                    time = hour + ":0" + minute;
-                }
-                else{
-                    time = hour + ":" + minute;
-                }
-                viewtime.setText(time);
-            }
-        };
-        */
-
-
-        // ...
-
-        /*
-        editTextTime.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view){
-                Calendar timeCal = Calendar.getInstance();
-                int hour = timeCal.get(Calendar.HOUR_OF_DAY);
-                int minute = timeCal.get(Calendar.MINUTE);
-
-                TimePickerDialog dialog3 = new TimePickerDialog(MedicineActivity.this,
-                        TimePickerDialog.THEME_HOLO_LIGHT,
-                        timeSetListener1,
-                        hour,
-                        minute,
-                        true
-                );
-                dialog3.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog3.show();
-            }
-        });
-        */
 
         editTextStartDate.setOnClickListener(new View.OnClickListener() {
 
@@ -235,28 +152,24 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             }
         });
 
-        /*
-        timeSetListener1 = new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                String time;
-                if(minute < 10){
-                    time = hour + ":0" + minute;
-                }
-                else{
-                    time = hour + ":" + minute;
-                }
-                editTextTime.setText(time);
-            }
-        };
-        */
 
         dateSetListener1 = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;  // since index starts from 0
-                String date1 = year + "-" + month + "-" + day;
+
+                String strMonth = String.valueOf(month);
+                String strDay = String.valueOf(day);
+
+                if(month < 10){
+                    strMonth = "0" + String.valueOf(month);
+                }
+                if(day < 10){
+                    strDay = "0" + String.valueOf(day);
+                }
+
+                String date1 = year + "-" + strMonth + "-" + strDay;
                 editTextStartDate.setText(date1);
             }
         };
@@ -266,7 +179,18 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;  // since index starts from 0
-                String date2 = year + "-" + month + "-" + day;
+
+                String strMonth = String.valueOf(month);
+                String strDay = String.valueOf(day);
+
+                if(month < 10){
+                    strMonth = "0" + String.valueOf(month);
+                }
+                if(day < 10){
+                    strDay = "0" + String.valueOf(day);
+                }
+
+                String date2 = year + "-" + strMonth + "-" + strDay;
                 editTextEndDate.setText(date2);
             }
         };
@@ -277,21 +201,11 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             @Override
             public void onClick(View view) {
                 submitMedicine();
-                FirebaseTransaction.addDrug(medicine);
-
-                Toast.makeText(getApplicationContext(),
-                        "Medicine Record is saved successfully!",
-                        Toast.LENGTH_LONG).show();
-
-                Intent intent1 = new Intent(MedicineActivity.this, MedicineMainActivity.class);
-                startActivity(intent1);
-                finish();
 
             }
         });
     }
 
-    // neww
 
     View.OnClickListener timeClick = new View.OnClickListener() {
         @Override
@@ -307,14 +221,20 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
                         @Override
                         public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                             String time;
-                            if(minute < 10){
+                            if(minute < 10 && hour < 10){
+                                time = "0" + hour + ":0" + minute;
+                            }
+                            else if(minute < 10){
                                 time = hour + ":0" + minute;
+                            }
+                            else if(hour < 10){
+                                time = "0" + hour + ":" + minute;
                             }
                             else{
                                 time = hour + ":" + minute;
                             }
                             tv.setText(time);
-                            allTimes.add(tv);
+                            // allTimes.add(tv);
                         }
                     }, hour, minute, true);
             timePickerDynamic.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -322,26 +242,11 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
         }
     };
 
-    /*
-        timeSetListener1 = new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                String time;
-                if(minute < 10){
-                    time = hour + ":0" + minute;
-                }
-                else{
-                    time = hour + ":" + minute;
-                }
-                editTextTime.setText(time);
-            }
-        };
-        */
-
 
     //kullanıcının ilaçlarını okumak için aşağıdaki iki satırlık kodu kullan. Sonuçlar drugsRead fonksiyonuna düşecek.
         /*FirebaseTransaction.setDrugListenerListener(this);
         FirebaseTransaction.getDrugs();*/
+
 
     @Override
     public void drugsRead(List<Drug> drugList){
@@ -354,10 +259,6 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
         String input2 = editTextStartDate.getText().toString();
         String input3 = editTextEndDate.getText().toString();
         String input4 = howManySpinner.getSelectedItem().toString();
-        // String input4 = editTextHowMany.getText().toString();
-        // String input5 = editTextTime.getText().toString();
-
-        // timeArray = new String[allTimes.size()];
         timeList = new ArrayList<>();
 
         for(int i = 0; i < many; i++){
@@ -369,30 +270,79 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
     }
 
     public void createMedicine(String s1, String s2, String s3, String s4) {
-        medicine.setName(s1);
+        if(validateForm(s1, s2, s3) == true)
+        {
+            medicine.setName(s1);
+            medicine.setStartDate(s2);
+            medicine.setEndDate(s3);
+            medicine.setHowMany(s4);
+            medicine.setTimeList(timeList);
 
-        medicine.setStartDate(s2);
-        medicine.setEndDate(s3);
+            FirebaseTransaction.addDrug(medicine);
 
-        /*
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Toast.makeText(getApplicationContext(),
+                    "Medicine Record is saved successfully!",
+                    Toast.LENGTH_LONG).show();
 
-            Date parsedDate = dateFormat.parse(s2);
-            Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
-            medicine.setStartDate(timestamp.toString());
-
-            parsedDate = dateFormat.parse(s3);
-            timestamp = new java.sql.Timestamp(parsedDate.getTime());
-            medicine.setEndDate(timestamp.toString());
-        } catch (Exception e) {
-            // generic exception
+            Intent intent1 = new Intent(MedicineActivity.this, MedicineMainActivity.class);
+            startActivity(intent1);
+            finish();
         }
-        */
+    }
 
-        medicine.setHowMany(s4);
-        // medicine.setTime(s5);
-        // medicine.setTimes(timeArray);
-        medicine.setTimeList(timeList);
+    public boolean validateForm(String s1, String s2, String s3)
+    {
+        boolean flag = true;    // if true form is valid, else form inputs are not valid
+
+        if(s1 == null || s1.trim().isEmpty()){   // if medicine name is not entered.
+            flag = false;
+            editTextName.requestFocus();
+            Toast.makeText(getApplicationContext(),
+                    "Medicine Name cannot be left blank!",
+                    Toast.LENGTH_LONG).show();
+
+        }
+
+        else if(s2 == null || s2.trim().isEmpty()){
+            flag = false;
+            editTextStartDate.requestFocus();
+            Toast.makeText(getApplicationContext(),
+                    "Start date cannot be left blank!",
+                    Toast.LENGTH_LONG).show();
+        }
+
+        else if(s3 == null || s3.trim().isEmpty()){
+            flag = false;
+            editTextStartDate.requestFocus();
+            Toast.makeText(getApplicationContext(),
+                    "End date cannot be left blank!",
+                    Toast.LENGTH_LONG).show();
+        }
+
+        else if(s2.compareTo(s3) > 0){     // if start date is greater than end date
+            flag = false;
+            editTextEndDate.requestFocus();
+            Toast.makeText(getApplicationContext(),
+                    "End date must be later than start date!",
+                    Toast.LENGTH_LONG).show();
+
+        }
+
+        else {   // if some of the time values are not entered
+            for(int k = 0; k < many; k++){
+                String toCheck = timeList.get(k).toString();
+                if(toCheck.equals("Tap Here")){
+                    flag = false;
+                    Toast.makeText(getApplicationContext(),
+                            "Medicine times cannot be left blank!",
+                            Toast.LENGTH_LONG).show();
+                    break;
+                }
+            }
+
+        }
+
+
+        return flag;
     }
 }

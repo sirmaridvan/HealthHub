@@ -11,13 +11,12 @@ import java.util.List;
 
 @IgnoreExtraProperties
 public class Drug {
-    String nameMedicine;
-    String howMany;
-    String startDate;
-    String endDate;
-    String time;
-    // String []times;
-    List <String> timeList = new ArrayList<>();
+    private String nameMedicine;
+    private String howMany;
+    private String startDate;
+    private String endDate;
+    private String time;
+    private List <String> timeList = new ArrayList<>();
 
     public String getName() { return nameMedicine;}
     public void setName(String nameMedicine) { this.nameMedicine = nameMedicine; }
@@ -48,9 +47,6 @@ public class Drug {
 
     public List<String> getTimeList() { return timeList; };
     public void setTimeList(List<String> timeList){ this.timeList = timeList; };
-
-    // public String[] getTimes(){ return times; };
-    // public void setTimes(String[] times){ this.times = times; };
 
 
 }
