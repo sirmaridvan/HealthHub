@@ -19,6 +19,7 @@ import halmob.healthhub.EventListeners.DrugListener;
 import halmob.healthhub.EventListeners.FoodListener;
 import halmob.healthhub.EventListeners.InsulinDoseListener;
 import halmob.healthhub.EventListeners.PeopleListener;
+import halmob.healthhub.EventListeners.ReportListener;
 import halmob.healthhub.Models.BloodSugar;
 import halmob.healthhub.Models.Drug;
 import halmob.healthhub.Models.Food;
@@ -26,6 +27,7 @@ import halmob.healthhub.Models.InsulinDose;
 import halmob.healthhub.Models.Meal;
 import halmob.healthhub.Models.MedicalAnalysis;
 import halmob.healthhub.Models.Person;
+import halmob.healthhub.Models.Report;
 import halmob.healthhub.Models.SportForBodyWork;
 import halmob.healthhub.Models.SportForCardio;
 
@@ -349,6 +351,33 @@ public class FirebaseTransaction {
                 }
                 if (mFoodListener != null) {
                     mFoodListener.foodRead(foodList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
+    private static ReportListener mReportListener;
+
+    public static void setReportListenerListener(ReportListener listen) {
+        mReportListener = listen;
+    }
+
+    public static void getReports(){
+        final List<Report> reportList = new ArrayList<Report>();
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("medicalAnalysis").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot reportSnapshot: dataSnapshot.getChildren()) {
+                    Report report = reportSnapshot.getValue(Report.class);
+                    reportList.add(report);
+                }
+                if (mReportListener != null) {
+                    mReportListener.reportRead(reportList);
                 }
             }
 

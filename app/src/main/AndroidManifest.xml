@@ -42,13 +42,14 @@
         <receiver
             android:name=".MyReceiver"
             android:enabled="true"
-            android:exported="false"></receiver>
+            android:exported="false" />
 
         <service
             android:name=".MyNewIntentService"
-            android:exported="false"></service>
+            android:exported="false" />
 
-        <activity android:name=".NotificationActivity"></activity>
+        <activity android:name=".NotificationActivity" />
+        <activity android:name=".ReportActivity"></activity>
     </application>
 
 </manifest>
