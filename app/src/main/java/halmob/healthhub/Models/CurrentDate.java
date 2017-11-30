@@ -10,7 +10,7 @@ import java.util.Calendar;
 public class CurrentDate {
     public String getCurrentDate() {
         Calendar currentCalendar = Calendar.getInstance();
-        SimpleDateFormat newSDF = new SimpleDateFormat("dd-MMMM-YYYY");
+        SimpleDateFormat newSDF = new SimpleDateFormat("dd-MM-yyyy");
         String currentDate = newSDF.format(currentCalendar.getTime());
         return currentDate;
     }

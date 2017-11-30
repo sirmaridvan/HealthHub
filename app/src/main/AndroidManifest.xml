@@ -48,7 +48,6 @@
             android:name=".MyNewIntentService"
             android:exported="false" />
 
-        <activity android:name=".NotificationActivity" />
         <activity android:name=".ReportActivity"></activity>
     </application>
 
