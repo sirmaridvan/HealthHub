@@ -48,7 +48,9 @@
             android:name=".MyNewIntentService"
             android:exported="false" />
 
-        <activity android:name=".ReportActivity"></activity>
+        <activity android:name=".ReportActivity" />
+        <activity android:name=".MedicalAnalysisActivity" />
+        <activity android:name=".AddAnalysisActivity"></activity>
     </application>
 
 </manifest>

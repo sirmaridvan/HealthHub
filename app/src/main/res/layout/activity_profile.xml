@@ -36,6 +36,12 @@
         android:text="SPORTS PAGE" />
 
     <Button
+        android:id="@+id/medical_analysis_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medical Analysis Page" />
+
+    <Button
         android:id="@+id/profilePage_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,4 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Report" />
+
+
+
 </LinearLayout>
