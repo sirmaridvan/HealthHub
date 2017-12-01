@@ -5,7 +5,10 @@ package halmob.healthhub.Models;
  */
 
 public class MedicalAnalysis {
-    String reportName;
+    private String reportName;
+    private String reportNotes;
+    private String reportUri;
+    private String date;
 
     public String getReportUri() {
         return reportUri;
@@ -31,6 +34,9 @@ public class MedicalAnalysis {
         this.date = date;
     }
 
-    String reportUri;
-    String date;
+    public String getReportNotes() { return reportNotes; }
+
+    public void setReportNotes(String reportNotes) { this.reportNotes = reportNotes; }
+
+
 }

@@ -19,6 +19,7 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
     private Button sampleRead;
     private Button cameraDemo;
     private Button Report;
+    private Button MedicalAnalysisButton;
     private DatabaseReference mPersonRef;
     private Intent intent;
 
@@ -47,6 +48,8 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
         cameraDemo.setOnClickListener(this);
         Report = findViewById(R.id.report_button);
         Report.setOnClickListener(this);
+        MedicalAnalysisButton = findViewById(R.id.medical_analysis_page);
+        MedicalAnalysisButton.setOnClickListener(this);
     }
     @Override
     public void onClick(View v){
@@ -88,6 +91,10 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.logout_button:
                 signOut();
+                break;
+            case R.id.medical_analysis_page:
+                intent = new Intent(this, MedicalAnalysisActivity.class);
+                startActivity(intent);
                 break;
         }
     }

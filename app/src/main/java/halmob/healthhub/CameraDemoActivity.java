@@ -5,21 +5,12 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.UploadTask;
-
-import java.io.ByteArrayOutputStream;
-import java.util.List;
-
 import halmob.healthhub.EventListeners.AddedImageListener;
-import halmob.healthhub.Models.Drug;
 import halmob.healthhub.Models.MedicalAnalysis;
 
 public class CameraDemoActivity extends AppCompatActivity implements AddedImageListener{
@@ -70,6 +61,7 @@ public class CameraDemoActivity extends AppCompatActivity implements AddedImageL
         MedicalAnalysis medicalAnalysis = new MedicalAnalysis();
         medicalAnalysis.setDate("1111");
         medicalAnalysis.setReportName("222");
+        medicalAnalysis.setReportNotes("iyi");
         medicalAnalysis.setReportUri(uri.toString());
         FirebaseTransaction.addMedicalAnalysis(medicalAnalysis);
     }
