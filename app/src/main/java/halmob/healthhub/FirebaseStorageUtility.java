@@ -50,7 +50,7 @@ public class FirebaseStorageUtility {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         mphoto.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] bytePhoto = baos.toByteArray();
-        //"sample.jpg" yerine her çekilen fotoğraf için bir eşsiz isim oluşturulmalı ve öyle yazılmalı.Bu iş için tarih ve saat kullanılabilir.
+
         // new part
         String uniqueKey = setUniqueKey();
         UploadTask uploadTask = FirebaseStorageUtility.getImagesStoragePersonRef().child(uniqueKey).putBytes(bytePhoto);
