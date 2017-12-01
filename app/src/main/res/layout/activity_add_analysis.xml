@@ -68,15 +68,36 @@
         android:imeOptions="actionDone"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/takePhoto0"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Analysis Report Photo"
+        android:textSize="16sp"
+        />
+
+    <ImageButton
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/camera_icon"
+        android:id="@+id/takePicButton"
+        android:onClick="takePic"
+        />
+
     <Button
         android:id="@+id/buttonSubmitAnalysis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="Take picture and submit"
+        android:text="Submit"
         android:textAllCaps="false"
-        android:onClick="takePicAndSubmitRecord"
+        android:onClick="submitRecordData"
         android:textSize="16dp"
         />
 

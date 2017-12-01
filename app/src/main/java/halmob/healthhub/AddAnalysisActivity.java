@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,8 +27,10 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
     private EditText editTextName;
     private EditText editTextNote;
     private TextView textViewDate;
-    private Button takePictureAndSubmitButton;
+    private Button submitAnalysisButton;
+    private ImageButton takePicButton;
     private static final int CAMERA_REQUEST = 1888;
+    private boolean photoCheck = false;
 
     private DatePickerDialog.OnDateSetListener dateSetListener1;
     MedicalAnalysis medAnalysis;
@@ -41,26 +44,24 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
         editTextName = (EditText) findViewById(R.id.medAnalysisName1);
         editTextNote = (EditText) findViewById(R.id.medAnalysisNotes1);
         textViewDate = (TextView) findViewById(R.id.medAnalysisDate1);
-        takePictureAndSubmitButton = (Button) findViewById(R.id.buttonSubmitAnalysis);
+        submitAnalysisButton = (Button) findViewById(R.id.buttonSubmitAnalysis);
+        takePicButton = (ImageButton) findViewById(R.id.takePicButton);
 
 
         // camera permissions enabled??
-        takePictureAndSubmitButton.setEnabled(false);
+        takePicButton.setEnabled(false);
 
-        if (checkSelfPermission(android.Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            requestPermissions(new String[]{android.Manifest.permission.CAMERA},
-                    111);
-        }else{
-            takePictureAndSubmitButton.setEnabled(true);
+        if (checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{android.Manifest.permission.CAMERA}, 111);
+        }
+        else{
+            takePicButton.setEnabled(true);
         }
         FirebaseStorageUtility.setAddedImageListener(this);
 
 
 
         textViewDate.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 Calendar cal1 = Calendar.getInstance();
@@ -80,7 +81,6 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
         });
 
         dateSetListener1 = new DatePickerDialog.OnDateSetListener() {
-
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;  // since index starts from 0
@@ -100,30 +100,32 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
             }
         };
 
-        takePictureAndSubmitButton.setOnClickListener(new View.OnClickListener() {
+        submitAnalysisButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                takePicAndSubmitRecord();
+                submitRecordData();
+            }
+        });
 
+        takePicButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                takePic();
             }
         });
 
     }
 
 
-    public void takePicAndSubmitRecord()
+    public void takePic()
     {
-        String input1 = editTextName.getText().toString();
-        String input2 = editTextNote.getText().toString();
-        String input3 = textViewDate.getText().toString();
-
-        createMedicalAnalysis(input1, input3, input2);
-
         // new camera codes
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, CAMERA_REQUEST);
+    }
 
-
+    public void returnToPage()
+    {
         Toast.makeText(getApplicationContext(),
                 "Medical Analysis Repord is saved successfully!",
                 Toast.LENGTH_LONG).show();
@@ -131,6 +133,15 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
         Intent intent1 = new Intent(AddAnalysisActivity.this, MedicalAnalysisActivity.class);
         startActivity(intent1);
         finish();
+    }
+
+    public void submitRecordData()
+    {
+        String input1 = editTextName.getText().toString();
+        String input2 = editTextNote.getText().toString();
+        String input3 = textViewDate.getText().toString();
+
+        createMedicalAnalysis(input1, input3, input2);
 
     }
 
@@ -145,16 +156,17 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
     @Override
     public void imageAdded(Uri uri) {
         medAnalysis.setReportUri(uri.toString());
-        FirebaseTransaction.addMedicalAnalysis(medAnalysis);
+        photoCheck = true;
+        // FirebaseTransaction.addMedicalAnalysis(medAnalysis);
     }
 
 
     @Override
-    public void  onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == 111) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Now user should be able to use camera
-                takePictureAndSubmitButton.setEnabled(true);
+                takePicButton.setEnabled(true);
             }
             else {
                 // Your app will not have this permission. Turn off all functions
@@ -173,10 +185,13 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
             medAnalysis.setDate(s2);
             medAnalysis.setReportNotes(s3);
 
+            FirebaseTransaction.addMedicalAnalysis(medAnalysis);
+            returnToPage();
         }
+
     }
 
-    // s1: name, s2: notes, s3: date
+    // s1: name, s2: date, s3: notes
     public boolean validateForm(String s1, String s2, String s3)
     {
         boolean flag = true;    // if true form is valid, else form inputs are not valid
@@ -210,7 +225,7 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
 
         }
 
-        else if(s3 == null || s2.trim().isEmpty()){
+        else if(s2 == null || s2.trim().isEmpty()){
             flag = false;
             textViewDate.requestFocus();
             Toast.makeText(getApplicationContext(),
@@ -226,13 +241,18 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
                     Toast.LENGTH_LONG).show();
 
         }
+        else if(photoCheck == false){
+            flag = false;
+            takePicButton.requestFocus();
+            Toast.makeText(getApplicationContext(),
+                    "You need to take the photo of the medical analysis report!",
+                    Toast.LENGTH_LONG).show();
+        }
 
         return flag;
 
 
     }
-
-
 
 
 
