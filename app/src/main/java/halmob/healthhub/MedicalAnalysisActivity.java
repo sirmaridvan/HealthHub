@@ -28,7 +28,7 @@ public class MedicalAnalysisActivity extends AppCompatActivity {
         showButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MedicalAnalysisActivity.this, MedicineListActivity.class);
+                Intent intent = new Intent(MedicalAnalysisActivity.this, MedicalAnalysisReportsActivity.class);
                 startActivity(intent);
             }
         });

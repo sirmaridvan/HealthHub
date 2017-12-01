@@ -1,7 +1,5 @@
 package halmob.healthhub;
 
-import android.net.Uri;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -387,4 +385,5 @@ public class FirebaseTransaction {
             }
         });
     }
+
 }

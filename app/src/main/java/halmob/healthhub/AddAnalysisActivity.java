@@ -119,7 +119,6 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
 
     public void takePic()
     {
-        // new camera codes
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, CAMERA_REQUEST);
     }
@@ -148,8 +147,8 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             Bitmap mphoto = (Bitmap) data.getExtras().get("data");
-            //mimageView.setImageBitmap(mphoto);
             FirebaseStorageUtility.setReportImage(mphoto);
+            photoCheck = true;
         }
     }
 
