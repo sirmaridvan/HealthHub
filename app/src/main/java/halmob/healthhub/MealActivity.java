@@ -183,6 +183,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
                 submitMeal();
                 FirebaseTransaction.addMeal(NewMeal);
                 Toast.makeText(getApplicationContext(),
+                        "Meal record is saved successfully!",
                         Toast.LENGTH_LONG).show();
                 finish();
             }
@@ -314,6 +315,19 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
             NewMeal.setDate();
             NewMeal.setTime();
     }
+
+
+    public void setSamplePortionSize() {
+        Food newFoodRecord = null;
+        for( int i = 0; i < allFoodList.size(); i++ ) {
+            if(selectedFood.equals(allFoodList.get(i).getFoodName())) {
+                newFoodRecord = allFoodList.get(i);
+            }
+        }
+
+        samplePortionSizeTextView.setText(newFoodRecord.getPortionSize());
+    }
+
 
     public void makePortionVisible() {
         portionSizeTextView.setVisibility(View.VISIBLE);
