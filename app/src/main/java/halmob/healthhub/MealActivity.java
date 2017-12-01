@@ -33,6 +33,8 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
     private boolean spinnerInitFlag;
     private ArrayList<Food> allFoodList = new ArrayList<>();;
     private EditText portionSizeEditText;
+    private TextView portionSizeTextView;
+    private TextView samplePortionSizeTextView;
     private Button mealSubmitButton;
     Meal NewMeal;
 
@@ -60,12 +62,29 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
 
         foodNameTextView = (TextView) findViewById(R.id.food_name_text_view);
 
+        portionSizeTextView = (TextView)findViewById(R.id.portion_size_text_view);
+        portionSizeTextView.setVisibility(View.INVISIBLE);
+
+        portionSizeEditText = (EditText) findViewById(R.id.portion_size_input_edit_text);
+        portionSizeEditText.setVisibility(View.INVISIBLE);
+
+        samplePortionSizeTextView = (TextView)findViewById(R.id.sample_portion_size_text_view);
+        samplePortionSizeTextView.setVisibility(View.INVISIBLE);
+
+        mealSubmitButton = (Button) findViewById(R.id.meal_submit_button);
+        mealSubmitButton.setVisibility(View.INVISIBLE);
+
         foodTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedFoodType = String.valueOf(foodTypeSpinner.getSelectedItem());
 
                 if(selectedFoodType.equals("Select Food Type")) {
                     foodNameTextView.setVisibility(View.INVISIBLE);
+                    samplePortionSizeTextView.setVisibility(View.INVISIBLE);
+                    portionSizeEditText.setVisibility(View.INVISIBLE);
+                    portionSizeTextView.setVisibility(View.INVISIBLE);
+                    mealSubmitButton.setVisibility(View.INVISIBLE);
+
                     if(spinnerInitFlag == true) { //if the program applied the steps for the first time
                         milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
                         fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
@@ -75,16 +94,46 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
                     //String t = allFoodList.get(1).getFoodName();
-                    Meal m = new Meal(allFoodList.get(1),"1.5");
+                    //Meal m = new Meal(allFoodList.get(1),"1.5");
                     //String s = fruitFoodNameSpinner.getSelectedItem().toString();
                     milkProductFoodNameSpinner.setVisibility(View.VISIBLE);
                     fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    selectedFood = String.valueOf(milkProductFoodNameSpinner.getSelectedItem());
+                    setSamplePortionSize();
+                    makePortionVisible();
+
+
+                    milkProductFoodNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedFood = String.valueOf(milkProductFoodNameSpinner.getSelectedItem());
+                            setSamplePortionSize();
+                        }
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                            return;
+                        }
+                    });
+
                 }
                 else if( selectedFoodType.equals("Fruit")) {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
                     fruitFoodNameSpinner.setVisibility(View.VISIBLE);
                     milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+
+                    selectedFood = String.valueOf(fruitFoodNameSpinner.getSelectedItem());
+                    setSamplePortionSize();
+
+                    makePortionVisible();
+
+                    fruitFoodNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedFood = String.valueOf(fruitFoodNameSpinner.getSelectedItem());
+                            setSamplePortionSize();
+                        }
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                            return;
+                        }
+                    });
                 }
 
                 else if( selectedFoodType.equals("Vegetable")) {
@@ -128,14 +177,13 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
 
 
 
-        mealSubmitButton = (Button) findViewById(R.id.meal_submit_button);
         mealSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 submitMeal();
                 FirebaseTransaction.addMeal(NewMeal);
                 Toast.makeText(getApplicationContext(),
-                        "Blood Sugar Record is saved successfully!",
+                        "Meal record is saved successfully!",
                         Toast.LENGTH_LONG).show();
                 finish();
             }
@@ -267,4 +315,25 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
             NewMeal.setDate();
             NewMeal.setTime();
     }
+
+
+    public void setSamplePortionSize() {
+        Food newFoodRecord = null;
+        for( int i = 0; i < allFoodList.size(); i++ ) {
+            if(selectedFood.equals(allFoodList.get(i).getFoodName())) {
+                newFoodRecord = allFoodList.get(i);
+            }
+        }
+
+        samplePortionSizeTextView.setText(newFoodRecord.getPortionSize());
+    }
+
+
+    public void makePortionVisible() {
+        portionSizeTextView.setVisibility(View.VISIBLE);
+        portionSizeEditText.setVisibility(View.VISIBLE);
+        samplePortionSizeTextView.setVisibility(View.VISIBLE);
+        mealSubmitButton.setVisibility(View.VISIBLE);
+    }
+
 }
