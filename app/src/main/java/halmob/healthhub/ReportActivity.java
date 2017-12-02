@@ -1,7 +1,7 @@
 package halmob.healthhub;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -10,7 +10,6 @@ import android.widget.Toast;
 import java.util.List;
 
 import halmob.healthhub.EventListeners.ReportListener;
-import halmob.healthhub.Models.Food;
 import halmob.healthhub.Models.Report;
 
 public class ReportActivity extends AppCompatActivity implements ReportListener {
@@ -41,6 +40,7 @@ public class ReportActivity extends AppCompatActivity implements ReportListener 
                 ReportList(ReportActivity.this,getApplicationContext(), uri);
         list=(ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

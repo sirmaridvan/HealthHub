@@ -23,8 +23,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import halmob.healthhub.EventListeners.DrugListener;
@@ -324,7 +326,7 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
         endCal.set(endYear, endMonth - 1, endDay);
 
 
-        while(startCal.before(endCal)){     // between date range
+        while(startCal.before(endCal) || startCal.equals(endCal)){     // between date range
 
             for( int i = 0; i < many; i++ ){    // how many times in a day?
                 NotificationInfo newNotification = new NotificationInfo();
@@ -356,6 +358,7 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
     {
         for(int i = 0; i < notificationList.size(); i++)
         {
+            long notificationID = setNotificationID(i);
             Calendar calendar = Calendar.getInstance();
 
             calendar.set(Calendar.MONTH, notificationList.get(i).getMonth() - 1);
@@ -368,11 +371,19 @@ public class MedicineActivity extends AppCompatActivity implements DrugListener 
             // calendar.set(Calendar.AM_PM,Calendar.AM);
 
             Intent notifyIntent = new Intent(this,MyReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(MedicineActivity.this, i, notifyIntent, 0);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(MedicineActivity.this, (int)notificationID, notifyIntent, 0);
 
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
         }
+    }
+
+    public long setNotificationID(int i)
+    {
+        Date now = new Date();
+        String notificationID = Long.toString(Long.parseLong(new SimpleDateFormat("ddHHmmss").format(now)));
+        notificationID = Integer.toString(i) + notificationID;
+        return Integer.parseInt(notificationID);
     }
 
     public boolean validateForm(String s1, String s2, String s3)

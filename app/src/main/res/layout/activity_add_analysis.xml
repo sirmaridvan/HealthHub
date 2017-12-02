@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/medAnalysisName0"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Medical Analysis Name"
+        android:textSize="16sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords|text"
+        android:hint="Enter Medical Analysis Name Here"
+        android:id="@+id/medAnalysisName1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="24dp"
+        android:imeOptions="actionDone"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/medAnalysisDate0"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Analysis Date"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="24dp"
+        android:hint="Tap here to enter Analysis Date"
+        android:textSize="20sp"
+        android:id="@+id/medAnalysisDate1"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/medAnalysisNotes0"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Medical Analysis Notes"
+        android:textSize="16sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords|text"
+        android:hint="Enter your notes about this report"
+        android:id="@+id/medAnalysisNotes1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="24dp"
+        android:imeOptions="actionDone"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/takePhoto0"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Analysis Report Photo"
+        android:textSize="16sp"
+        />
+
+    <ImageButton
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/camera_icon"
+        android:id="@+id/takePicButton"
+        android:onClick="takePic"
+        />
+
+    <Button
+        android:id="@+id/buttonSubmitAnalysis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:onClick="submitRecordData"
+        android:textSize="16dp"
+        />
+
+
+</LinearLayout>

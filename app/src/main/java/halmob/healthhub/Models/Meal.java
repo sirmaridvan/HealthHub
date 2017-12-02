@@ -8,7 +8,8 @@ import java.util.Date;
  */
 
 public class Meal {
-    private Food foodRecord; //Rıdvan tarafından incelenecek! Hazır yemeklerin çekilmesini nasıl yapacagımızla ilgili!
+    private String foodName;
+    private String foodType;
     private String portionSize;
     private Float floatPortionSize;
     private String date;
@@ -22,24 +23,20 @@ public class Meal {
     private String totalCarbohydrateCount;
     private String totalGlysemicIndex;
 
-
-    //constructor of the Meal class
-    public Meal(Food newFoodRecord, String newPortionSize) {
-        this.foodRecord = newFoodRecord;
-        this.portionSize = newPortionSize;
-
-        try {
-            this.floatPortionSize = Float.parseFloat(portionSize);
-        } catch(NumberFormatException NFE) {
-            System.out.println("Parsing float error: " + NFE);
-        }
-        setTotalProtein(foodRecord.getProtein());
+    public String getFoodType() {
+        return foodType;
     }
 
+    public void setFoodType(String newFoodType) {
+        foodType = newFoodType;
+    }
 
-    public Food getFoodRecord() { return foodRecord; }
-    public void setFoodRecord(Food newFoodRecord) {
-        this.foodRecord = newFoodRecord;
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName( String newFoodName ) {
+        foodName = newFoodName;
     }
 
     public String getPortion() { return portionSize; }
@@ -76,8 +73,123 @@ public class Meal {
     }
 
     public void setTotalProtein(float newTotalProtein) {
-        this.totalProtein = String.valueOf(newTotalProtein * floatPortionSize);
+        this.totalProtein = String.valueOf(newTotalProtein);
     }
+
+    public Float getTotalFat() {
+        Float floatTotalFat = 0f;
+
+        try {
+            floatTotalFat = Float.parseFloat(totalFat.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatTotalFat;
+    }
+
+    public void setTotalFat(float newTotalFat) {
+        this.totalFat = String.valueOf(newTotalFat );
+    }
+
+    public Float getTotalCarbohydrate() {
+        Float floatTotalCarbohydrate = 0f;
+
+        try {
+            floatTotalCarbohydrate = Float.parseFloat(totalCarbohydrate.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatTotalCarbohydrate;
+    }
+
+    public void setTotalCarbohydrate(float newTotalCarbohydrate) {
+        this.totalCarbohydrate = String.valueOf(newTotalCarbohydrate );
+    }
+
+    public Float getTotalCalorie() {
+        Float floatTotalCalorie = 0f;
+
+        try {
+            floatTotalCalorie = Float.parseFloat(totalCalorie.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatTotalCalorie;
+    }
+
+    public void setTotalCalorie(float newTotalCalorie) {
+        this.totalCalorie = String.valueOf(newTotalCalorie );
+    }
+
+
+    public Float getTotalFiber() {
+        Float floatTotalFiber = 0f;
+
+        try {
+            floatTotalFiber = Float.parseFloat(totalFiber.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatTotalFiber;
+    }
+
+    public void setTotalFiber(float newTotalFiber) {
+        this.totalFiber = String.valueOf(newTotalFiber );
+    }
+
+    public Float getTotalCarbohydrateCount() {
+        Float floatTotalCarbohydrateCount = 0f;
+
+        try {
+            floatTotalCarbohydrateCount = Float.parseFloat(totalCarbohydrateCount.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatTotalCarbohydrateCount;
+    }
+
+    public void setTotalCarbohydrateCount(float newTotalCarbohydrateCount) {
+        this.totalCarbohydrateCount = String.valueOf(newTotalCarbohydrateCount );
+    }
+
+
+
+    public Float getTotalGlycemicIndex() {
+        Float floatTotalGlycemicIndex = 0f;
+
+        try {
+            floatTotalGlycemicIndex = Float.parseFloat(totalGlysemicIndex.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatTotalGlycemicIndex;
+    }
+
+    public void setTotalGlysemicIndex(float newTotalGlycemicIndex) {
+        this.totalGlysemicIndex = String.valueOf(newTotalGlycemicIndex );
+    }
+
+    public String getPortionSize() {
+        return portionSize;
+    }
+
+    public void setPortionSize(String newPortionSize) {
+        portionSize = newPortionSize;
+    }
+
+
+    public float getFloatPortionSize() {
+        return floatPortionSize;
+    }
+
+    public void setFloatPortionSize(float newFloatPortionSize ) {
+        floatPortionSize = newFloatPortionSize;
+    }
+
+
+
+
+
 
     /*
     public String getCarbohydrate() {

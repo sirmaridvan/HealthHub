@@ -44,28 +44,51 @@ public class Food {
         this.protein = newProtein;
     }
 
-    public String getCarbohydrate() {
-        return carbohydrate;
+    public float getCarbohydrate() {
+        float floatCarbohydrate = 0f;
+
+        try {
+            floatCarbohydrate = Float.parseFloat(carbohydrate.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatCarbohydrate;
     }
     public void setCarbohydrate(String newCarbohydrate) {
         this.carbohydrate = newCarbohydrate;
     }
 
-    public String getFat() {
-        return fat;
+    public float getFat() {
+        float floatFat = 0f;
+
+        try {
+            floatFat = Float.parseFloat(fat.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatFat;
     }
     public void setFat(String newFat) {
         this.fat = newFat;
     }
 
-    public String getCalorie() {
-        return calorie;
+    public float getCalorie()
+    {
+        float floatCalorie = 0f;
+
+        try {
+            floatCalorie = Float.parseFloat(calorie.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatCalorie;
     }
     public void setCalorie(String newCalorie) {
         this.calorie = newCalorie;
     }
 
     public String getGram() {
+
         return gram;
     }
     public void setGram(String newGram) { this.gram = newGram; }
@@ -77,18 +100,41 @@ public class Food {
         this.portionSize = newPortionSize;
     }
 
-    public String getFiber() { return fiber; }
+    public float getFiber() {
+        float floatFiber = 0f;
+
+        try {
+            floatFiber = Float.parseFloat(fiber.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatFiber;
+    }
     public void setFiber(String newFiber) {
         this.fiber = newFiber;
     }
 
-    public String getCarbohydrateCount() {
-        return carbohydrateCount;
+    public float getCarbohydrateCount() {
+        float floatCarbohydrateCount = 0f;
+
+        try {
+            floatCarbohydrateCount = Float.parseFloat(carbohydrateCount.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatCarbohydrateCount;
     }
     public void setCarbohydrateCount(String newCarbohydrateCount) { this.carbohydrateCount = newCarbohydrateCount; }
 
-    public String getGlysemicIndex() {
-        return glysemicIndex;
+    public float getGlysemicIndex() {
+        float floatGlysemicIndex = 0f;
+
+        try {
+            floatGlysemicIndex = Float.parseFloat(glysemicIndex.toString());
+        } catch(NumberFormatException NFE) {
+            System.out.println("Parsing int error: " + NFE);
+        }
+        return floatGlysemicIndex;
     }
     public void setGlysemicIndex(String newGlysemicIndex) {
         this.glysemicIndex = newGlysemicIndex;

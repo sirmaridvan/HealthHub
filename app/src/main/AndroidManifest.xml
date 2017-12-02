@@ -38,6 +38,8 @@
         <activity android:name=".DiabTableActivity" />
         <activity android:name=".CameraDemoActivity" />
         <activity android:name=".MealActivity" />
+        <activity android:name=".MealListActivity" />
+        <activity android:name=".CarbCountListActivity" />
 
         <receiver
             android:name=".MyReceiver"
@@ -48,8 +50,10 @@
             android:name=".MyNewIntentService"
             android:exported="false" />
 
-        <activity android:name=".NotificationActivity" />
-        <activity android:name=".ReportActivity"></activity>
+        <activity android:name=".ReportActivity" />
+        <activity android:name=".MedicalAnalysisActivity" />
+        <activity android:name=".AddAnalysisActivity" />
+        <activity android:name=".MedicalAnalysisReportsActivity"></activity>
     </application>
 
 </manifest>

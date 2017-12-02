@@ -33,6 +33,8 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
     private boolean spinnerInitFlag;
     private ArrayList<Food> allFoodList = new ArrayList<>();;
     private EditText portionSizeEditText;
+    private TextView portionSizeTextView;
+    private TextView samplePortionSizeTextView;
     private Button mealSubmitButton;
     Meal NewMeal;
 
@@ -60,61 +62,230 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
 
         foodNameTextView = (TextView) findViewById(R.id.food_name_text_view);
 
+        portionSizeTextView = (TextView)findViewById(R.id.portion_size_text_view);
+        portionSizeTextView.setVisibility(View.INVISIBLE);
+
+        portionSizeEditText = (EditText) findViewById(R.id.portion_size_input_edit_text);
+        portionSizeEditText.setVisibility(View.INVISIBLE);
+
+        samplePortionSizeTextView = (TextView)findViewById(R.id.sample_portion_size_text_view);
+        samplePortionSizeTextView.setVisibility(View.INVISIBLE);
+
+        mealSubmitButton = (Button) findViewById(R.id.meal_submit_button);
+        mealSubmitButton.setVisibility(View.INVISIBLE);
+
         foodTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedFoodType = String.valueOf(foodTypeSpinner.getSelectedItem());
 
                 if(selectedFoodType.equals("Select Food Type")) {
                     foodNameTextView.setVisibility(View.INVISIBLE);
+                    samplePortionSizeTextView.setVisibility(View.INVISIBLE);
+                    portionSizeEditText.setVisibility(View.INVISIBLE);
+                    portionSizeTextView.setVisibility(View.INVISIBLE);
+                    mealSubmitButton.setVisibility(View.INVISIBLE);
+
                     if(spinnerInitFlag == true) { //if the program applied the steps for the first time
                         milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
                         fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
+                        vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                        meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                        dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                        pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+                        riceFoodNameSpinner.setVisibility(View.INVISIBLE);
                     }
                 }
                 else if( selectedFoodType.equals("Milk Product")) {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
                     //String t = allFoodList.get(1).getFoodName();
-                    Meal m = new Meal(allFoodList.get(1),"1.5");
+                    //Meal m = new Meal(allFoodList.get(1),"1.5");
                     //String s = fruitFoodNameSpinner.getSelectedItem().toString();
                     milkProductFoodNameSpinner.setVisibility(View.VISIBLE);
                     fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    selectedFood = String.valueOf(milkProductFoodNameSpinner.getSelectedItem());
+                    setSamplePortionSize();
+                    makePortionVisible();
+
+
+                    milkProductFoodNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedFood = String.valueOf(milkProductFoodNameSpinner.getSelectedItem());
+                            setSamplePortionSize();
+                        }
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                            return;
+                        }
+                    });
+
                 }
                 else if( selectedFoodType.equals("Fruit")) {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
                     fruitFoodNameSpinner.setVisibility(View.VISIBLE);
                     milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.INVISIBLE);
+
+                    selectedFood = String.valueOf(fruitFoodNameSpinner.getSelectedItem());
+                    setSamplePortionSize();
+
+                    makePortionVisible();
+
+                    fruitFoodNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedFood = String.valueOf(fruitFoodNameSpinner.getSelectedItem());
+                            setSamplePortionSize();
+                        }
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                            return;
+                        }
+                    });
                 }
 
                 else if( selectedFoodType.equals("Vegetable")) {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
-                    fruitFoodNameSpinner.setVisibility(View.VISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.VISIBLE);
+                    fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.INVISIBLE);
+
+                    selectedFood = String.valueOf(vegetableFoodNameSpinner.getSelectedItem());
+                    setSamplePortionSize();
+
+                    makePortionVisible();
+
+                    vegetableFoodNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedFood = String.valueOf(vegetableFoodNameSpinner.getSelectedItem());
+                            setSamplePortionSize();
+                        }
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                            return;
+                        }
+                    });
                 }
 
                 else if( selectedFoodType.equals("Dessert")) {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
-                    fruitFoodNameSpinner.setVisibility(View.VISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.VISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.INVISIBLE);
+
+                    selectedFood = String.valueOf(dessertFoodNameSpinner.getSelectedItem());
+                    setSamplePortionSize();
+
+                    makePortionVisible();
+
+                    dessertFoodNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedFood = String.valueOf(dessertFoodNameSpinner.getSelectedItem());
+                            setSamplePortionSize();
+                        }
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                            return;
+                        }
+                    });
                 }
 
                 else if( selectedFoodType.equals("Meat and Meat Products")) {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
-                    fruitFoodNameSpinner.setVisibility(View.VISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.VISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.INVISIBLE);
+
+                    selectedFood = String.valueOf(meatFoodNameSpinner.getSelectedItem());
+                    setSamplePortionSize();
+
+                    makePortionVisible();
+
+                    meatFoodNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedFood = String.valueOf(meatFoodNameSpinner.getSelectedItem());
+                            setSamplePortionSize();
+                        }
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                            return;
+                        }
+                    });
                 }
 
                 else if( selectedFoodType.equals("Rice")) {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
-                    fruitFoodNameSpinner.setVisibility(View.VISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.VISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+
+                    selectedFood = String.valueOf(riceFoodNameSpinner.getSelectedItem());
+                    setSamplePortionSize();
+
+                    makePortionVisible();
+
+                    riceFoodNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedFood = String.valueOf(riceFoodNameSpinner.getSelectedItem());
+                            setSamplePortionSize();
+                        }
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                            return;
+                        }
+                    });
                 }
 
                 else if( selectedFoodType.equals("Pasta")) {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
-                    fruitFoodNameSpinner.setVisibility(View.VISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.VISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+
+
+
+                    selectedFood = String.valueOf(pastaFoodNameSpinner.getSelectedItem());
+                    setSamplePortionSize();
+
+                    makePortionVisible();
+
+                    pastaFoodNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedFood = String.valueOf(pastaFoodNameSpinner.getSelectedItem());
+                            setSamplePortionSize();
+                        }
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                            return;
+                        }
+                    });
                 }
 
                 spinnerInitFlag = true;
@@ -128,14 +299,13 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
 
 
 
-        mealSubmitButton = (Button) findViewById(R.id.meal_submit_button);
         mealSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 submitMeal();
                 FirebaseTransaction.addMeal(NewMeal);
                 Toast.makeText(getApplicationContext(),
-                        "Blood Sugar Record is saved successfully!",
+                        "Meal record is saved successfully!",
                         Toast.LENGTH_LONG).show();
                 finish();
             }
@@ -178,6 +348,96 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
         spinner3.setAdapter(adapter3);
 
         milkProductFoodNameSpinner = (Spinner) findViewById(R.id.milk_food_name_spinner);
+
+
+
+        //vegetableFoodName spinner creation code
+        Spinner spinner4 = (Spinner) findViewById(R.id.vegetable_food_name_spinner);
+
+        List<String> VegetableFoodNames = new ArrayList<String>();
+
+        for (int i=0;i<foods.size();i++) {
+            if(foods.get(i).getFoodType().equals("Vegetable") )
+                VegetableFoodNames.add(foods.get(i).getFoodName());
+        }
+        ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, VegetableFoodNames);
+        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner4.setAdapter(adapter4);
+
+        vegetableFoodNameSpinner = (Spinner) findViewById(R.id.vegetable_food_name_spinner);
+
+
+
+
+        //dessertFoodName spinner creation code
+        Spinner spinner5 = (Spinner) findViewById(R.id.dessert_food_name_spinner);
+
+        List<String> dessertFoodNames = new ArrayList<String>();
+
+        for (int i=0;i<foods.size();i++) {
+            if(foods.get(i).getFoodType().equals("Dessert") )
+                dessertFoodNames.add(foods.get(i).getFoodName());
+        }
+        ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dessertFoodNames);
+        adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner5.setAdapter(adapter5);
+
+        dessertFoodNameSpinner = (Spinner) findViewById(R.id.dessert_food_name_spinner);
+
+
+
+
+        //meatFoodName spinner creation code
+        Spinner spinner6 = (Spinner) findViewById(R.id.meat_food_name_spinner);
+
+        List<String> meatFoodNames = new ArrayList<String>();
+
+        for (int i=0;i<foods.size();i++) {
+            if(foods.get(i).getFoodType().equals("Meat and Meat Products") )
+                meatFoodNames.add(foods.get(i).getFoodName());
+        }
+        ArrayAdapter<String> adapter6 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, meatFoodNames);
+        adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner6.setAdapter(adapter6);
+
+        meatFoodNameSpinner = (Spinner) findViewById(R.id.meat_food_name_spinner);
+
+
+
+
+        //riceFoodName spinner creation code
+        Spinner spinner7 = (Spinner) findViewById(R.id.rice_food_name_spinner);
+
+        List<String> riceFoodNames = new ArrayList<String>();
+
+        for (int i=0;i<foods.size();i++) {
+            if(foods.get(i).getFoodType().equals("Rice") )
+                riceFoodNames.add(foods.get(i).getFoodName());
+        }
+        ArrayAdapter<String> adapter7 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, riceFoodNames);
+        adapter7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner7.setAdapter(adapter7);
+
+        riceFoodNameSpinner = (Spinner) findViewById(R.id.rice_food_name_spinner);
+
+
+
+        //pastaFoodName spinner creation code
+        Spinner spinner8 = (Spinner) findViewById(R.id.pasta_food_name_spinner);
+
+        List<String> pastaFoodNames = new ArrayList<String>();
+
+        for (int i=0;i<foods.size();i++) {
+            if(foods.get(i).getFoodType().equals("Pasta") )
+                pastaFoodNames.add(foods.get(i).getFoodName());
+        }
+        ArrayAdapter<String> adapter8 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, pastaFoodNames);
+        adapter8.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner8.setAdapter(adapter8);
+
+        pastaFoodNameSpinner = (Spinner) findViewById(R.id.pasta_food_name_spinner);
+
+
 
 
         /*
@@ -234,6 +494,10 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
             selectedFood = String.valueOf(fruitFoodNameSpinner.getSelectedItem());
         }
 
+        else if( selectedFoodType.equals("Meat and Meat Products" ) ) {
+            selectedFood = String.valueOf(meatFoodNameSpinner.getSelectedItem());
+        }
+
 
 
         String stringPortionSize = portionSizeEditText.getText().toString();
@@ -255,16 +519,62 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
 
     public void createMealRecord(String stringNewPortionSize) {
         Food newFoodRecord = null;
+        for (int i = 0; i < allFoodList.size(); i++) {
+            if (selectedFood.equals(allFoodList.get(i).getFoodName())) {
+                newFoodRecord = allFoodList.get(i);
+            }
+        }
+
+
+        if (newFoodRecord != null) {
+
+            Float floatNewPortionSize = 0f;
+
+            try {
+                floatNewPortionSize = Float.parseFloat(stringNewPortionSize.toString());
+            } catch (NumberFormatException NFE) {
+                System.out.println("Parsing int error: " + NFE);
+            }
+
+            NewMeal = new Meal();
+
+            NewMeal.setPortionSize(newFoodRecord.getPortionSize());
+            NewMeal.setFloatPortionSize(floatNewPortionSize);
+            NewMeal.setTotalProtein(newFoodRecord.getProtein() * floatNewPortionSize);
+            NewMeal.setTotalCarbohydrate(newFoodRecord.getCarbohydrate() * floatNewPortionSize);
+            NewMeal.setTotalFat(newFoodRecord.getFat() * floatNewPortionSize);
+            NewMeal.setTotalCalorie(newFoodRecord.getCalorie() * floatNewPortionSize);
+            NewMeal.setTotalFiber(newFoodRecord.getFiber() * floatNewPortionSize);
+            NewMeal.setTotalGlysemicIndex(newFoodRecord.getGlysemicIndex()* floatNewPortionSize);
+            NewMeal.setTotalCarbohydrateCount(newFoodRecord.getCarbohydrateCount()* floatNewPortionSize);
+            NewMeal.setDate();
+            NewMeal.setTime();
+            NewMeal.setFoodName(newFoodRecord.getFoodName());
+            NewMeal.setFoodType(newFoodRecord.getFoodType());
+        }
+    }
+
+
+    public void setSamplePortionSize() {
+        Food newFoodRecord = null;
         for( int i = 0; i < allFoodList.size(); i++ ) {
             if(selectedFood.equals(allFoodList.get(i).getFoodName())) {
                 newFoodRecord = allFoodList.get(i);
             }
         }
 
-
-        if( newFoodRecord != null )
-            NewMeal = new Meal(newFoodRecord, stringNewPortionSize );
-            NewMeal.setDate();
-            NewMeal.setTime();
+        samplePortionSizeTextView.setText(newFoodRecord.getPortionSize());
     }
+
+
+    public void makePortionVisible() {
+        portionSizeTextView.setVisibility(View.VISIBLE);
+        portionSizeEditText.setVisibility(View.VISIBLE);
+        samplePortionSizeTextView.setVisibility(View.VISIBLE);
+        mealSubmitButton.setVisibility(View.VISIBLE);
+    }
+
+    public void mealsRead(List<Meal> mealList){
+    }
+
 }

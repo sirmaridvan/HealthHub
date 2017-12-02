@@ -51,13 +51,63 @@
         android:visibility="invisible" />
 
 
+    <Spinner
+        android:id="@+id/dessert_food_name_spinner"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/food_name_text_view"
+        android:layout_alignTop="@+id/milk_food_name_spinner"
+        android:visibility="invisible" />
+
+    <Spinner
+        android:id="@+id/meat_food_name_spinner"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/food_name_text_view"
+        android:layout_alignTop="@+id/milk_food_name_spinner"
+        android:visibility="invisible" />
+
+    <Spinner
+        android:id="@+id/vegetable_food_name_spinner"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/food_name_text_view"
+        android:layout_alignTop="@+id/milk_food_name_spinner"
+        android:visibility="invisible" />
+
+
+    <Spinner
+        android:id="@+id/rice_food_name_spinner"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/food_name_text_view"
+        android:layout_alignTop="@+id/milk_food_name_spinner"
+        android:visibility="invisible" />
+
+    <Spinner
+        android:id="@+id/pasta_food_name_spinner"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/food_name_text_view"
+        android:layout_alignTop="@+id/milk_food_name_spinner"
+        android:visibility="invisible" />
+
+
     <TextView
         android:id="@+id/portion_size_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="190dp"
-        android:text="Enter Portion Size"
+        android:text="Portion Size: "
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/sample_portion_size_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="190dp"
         android:textSize="16sp" />
 
     <EditText
@@ -67,7 +117,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:layout_marginTop="230dp"
-        android:hint="Enter portion size"
+        android:hint="Enter your portion size"
         android:imeOptions="actionNext"
         android:inputType="numberDecimal" />
 

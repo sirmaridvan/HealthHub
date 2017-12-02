@@ -16,10 +16,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import halmob.healthhub.EventListeners.AddedImageListener;
-import halmob.healthhub.EventListeners.DrugListener;
-import halmob.healthhub.Models.MedicalAnalysis;
 
 /**
  * Created by RIDVAN SIRMA on 11/22/2017.
@@ -50,8 +50,10 @@ public class FirebaseStorageUtility {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         mphoto.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] bytePhoto = baos.toByteArray();
-        //"sample.jpg" yerine her çekilen fotoğraf için bir eşsiz isim oluşturulmalı ve öyle yazılmalı.Bu iş için tarih ve saat kullanılabilir.
-        UploadTask uploadTask = FirebaseStorageUtility.getImagesStoragePersonRef().child("sample.jpg").putBytes(bytePhoto);
+
+        // new part
+        String uniqueKey = setUniqueKey();
+        UploadTask uploadTask = FirebaseStorageUtility.getImagesStoragePersonRef().child(uniqueKey).putBytes(bytePhoto);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
@@ -74,5 +76,14 @@ public class FirebaseStorageUtility {
                 .crossFade()
                 .centerCrop()
                 .into(imageView);
+    }
+
+    // new part
+    public static String setUniqueKey()
+    {
+        Date now = new Date();
+        String uniqueKey = Long.toString(Long.parseLong(new SimpleDateFormat("ddHHmmss").format(now)));
+        uniqueKey = uniqueKey + ".jpg";
+        return uniqueKey;
     }
 }
