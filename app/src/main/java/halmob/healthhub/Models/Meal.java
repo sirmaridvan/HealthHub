@@ -8,7 +8,8 @@ import java.util.Date;
  */
 
 public class Meal {
-    private Food foodRecord; //Rıdvan tarafından incelenecek! Hazır yemeklerin çekilmesini nasıl yapacagımızla ilgili!
+    private String foodName;
+    private String foodType;
     private String portionSize;
     private Float floatPortionSize;
     private String date;
@@ -23,31 +24,9 @@ public class Meal {
     private String totalGlysemicIndex;
 
 
-    //constructor of the Meal class
-    public Meal(Food newFoodRecord, String newPortionSize) {
-        this.foodRecord = newFoodRecord;
-        this.portionSize = newPortionSize;
-
-        try {
-            this.floatPortionSize = Float.parseFloat(portionSize);
-        } catch(NumberFormatException NFE) {
-            System.out.println("Parsing float error: " + NFE);
-        }
-        setTotalProtein(foodRecord.getProtein());
-        setTotalCarbohydrate(foodRecord.getCarbohydrate());
-        setTotalFat(foodRecord.getFat());
-        setTotalCalorie(foodRecord.getCalorie());
-        setTotalFiber(foodRecord.getFiber());
-        setTotalGlysemicIndex(foodRecord.getGlysemicIndex());
-        setTotalCarbohydrateCount(foodRecord.getCarbohydrateCount());
-
-    }
 
 
-    public Food getFoodRecord() { return foodRecord; }
-    public void setFoodRecord(Food newFoodRecord) {
-        this.foodRecord = newFoodRecord;
-    }
+
 
     public String getPortion() { return portionSize; }
     public void setPortion(String newPortionSize ) {
@@ -177,6 +156,23 @@ public class Meal {
 
     public void setTotalGlysemicIndex(float newTotalGlycemicIndex) {
         this.totalGlysemicIndex = String.valueOf(newTotalGlycemicIndex * floatPortionSize);
+    }
+
+    public String getPortionSize() {
+        return portionSize;
+    }
+
+    public void setPortionSize(String newPortionSize) {
+        portionSize = newPortionSize;
+    }
+
+
+    public float getFloatPortionSize() {
+        return floatPortionSize;
+    }
+
+    public void setFloatPortionSize(float newFloatPortionSize ) {
+        floatPortionSize = newFloatPortionSize;
     }
 
 
