@@ -33,10 +33,37 @@ public class CustomMealAdapter extends ArrayAdapter<Meal> {
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
-        if(singleMealElement.getFoodType().equals("Milk Product"))
-            imageView.setImageResource(R.drawable.cheese);
-        else
-            imageView.setImageResource(R.drawable.camera_icon);
+        if (singleMealElement.getFoodType().equals("Milk Product")) {
+            if (singleMealElement.getFoodName().equals("Milk"))
+                imageView.setImageResource(R.drawable.milk);
+            else if (singleMealElement.getFoodName().equals("Cheese"))
+                imageView.setImageResource(R.drawable.cheese);
+        }
+        else if (singleMealElement.getFoodType().equals("Fruit")) {
+            if (singleMealElement.getFoodName().equals("Watermelon")) ;
+            imageView.setImageResource(R.drawable.watermelon);
+        }
+        else if (singleMealElement.getFoodType().equals("Meat and Meat Products")) {
+            if( singleMealElement.getFoodName().equals("Steak"))
+                imageView.setImageResource(R.drawable.steak);
+        }
+        else if (singleMealElement.getFoodType().equals("Dessert")) {
+            if( singleMealElement.getFoodName().equals("Cheesecake") )
+                imageView.setImageResource(R.drawable.cheesecake);
+        }
+        else if (singleMealElement.getFoodType().equals("Vegetable")) {
+            if( singleMealElement.getFoodName().equals("Cauliflower") )
+                imageView.setImageResource(R.mipmap.cauliflower);
+        }
+        else if (singleMealElement.getFoodType().equals("Pasta")) {
+            if( singleMealElement.getFoodName().equals("Penne") )
+                imageView.setImageResource(R.drawable.pasta_penne);
+        }
+        else if (singleMealElement.getFoodType().equals("Rice")) {
+            if( singleMealElement.getFoodName().equals("Pilaf with Rice") )
+                imageView.setImageResource(R.drawable.rice);
+        }
+
         textView.setText("Date: " + singleMealElement.getDate() + "\n" +
                 "Time: " + singleMealElement.getTime() + "\n" +
                 "Food Name: " + singleMealElement.getFoodName() + "\n" +
