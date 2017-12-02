@@ -41,7 +41,7 @@ public class DiabTableActivity extends AppCompatActivity {
         mealTableButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(DiabTableActivity.this, BloodSugarListActivity.class);
+                Intent i = new Intent(DiabTableActivity.this, MealListActivity.class);
                 startActivity(i);
             }
         });

@@ -16,6 +16,7 @@ import halmob.healthhub.EventListeners.CardioListener;
 import halmob.healthhub.EventListeners.DrugListener;
 import halmob.healthhub.EventListeners.FoodListener;
 import halmob.healthhub.EventListeners.InsulinDoseListener;
+import halmob.healthhub.EventListeners.MealListener;
 import halmob.healthhub.EventListeners.PeopleListener;
 import halmob.healthhub.EventListeners.ReportListener;
 import halmob.healthhub.Models.BloodSugar;
@@ -320,18 +321,7 @@ public class FirebaseTransaction {
         });
     }
 
-    // AddMeal part is added below
 
-    public static void addMeal(Meal newMeal){
-        final String currentUserId = FirebaseUtil.getCurrentUserId();
-        FirebaseUtil.getPeopleRef().child(currentUserId).child("meal").push().setValue(newMeal, new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(DatabaseError error, DatabaseReference firebase) {
-                if (error != null) {
-                }
-            }
-        });
-    }
 
     private static FoodListener mFoodListener;
 
@@ -358,6 +348,50 @@ public class FirebaseTransaction {
             }
         });
     }
+
+
+    // AddMeal part is added below
+
+    public static void addMeal(Meal newMeal){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("meal").push().setValue(newMeal, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError error, DatabaseReference firebase) {
+                if (error != null) {
+                }
+            }
+        });
+    }
+
+    private static MealListener mMealListener;
+
+    public static void setmMealListener(MealListener listen) {
+        mMealListener = listen;
+    }
+    public static void getMeals(){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        final List<Meal> mealList = new ArrayList<Meal>();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("meal").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Meal meal = postSnapshot.getValue(Meal.class);
+                    mealList.add(meal);
+                }
+                if (mMealListener != null) {
+                    mMealListener.mealsRead(mealList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
+
+
+
     private static ReportListener mReportListener;
 
     public static void setReportListenerListener(ReportListener listen) {

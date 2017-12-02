@@ -303,17 +303,36 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
 
     public void createMealRecord(String stringNewPortionSize) {
         Food newFoodRecord = null;
-        for( int i = 0; i < allFoodList.size(); i++ ) {
-            if(selectedFood.equals(allFoodList.get(i).getFoodName())) {
+        for (int i = 0; i < allFoodList.size(); i++) {
+            if (selectedFood.equals(allFoodList.get(i).getFoodName())) {
                 newFoodRecord = allFoodList.get(i);
             }
         }
 
 
-        if( newFoodRecord != null )
-            NewMeal = new Meal(newFoodRecord, stringNewPortionSize );
+        if (newFoodRecord != null) {
+
+            Float floatNewPortionSize = 0f;
+
+            try {
+                floatNewPortionSize = Float.parseFloat(stringNewPortionSize.toString());
+            } catch (NumberFormatException NFE) {
+                System.out.println("Parsing int error: " + NFE);
+            }
+
+            NewMeal = new Meal();
+            NewMeal.setPortionSize(stringNewPortionSize);
+            NewMeal.setFloatPortionSize(floatNewPortionSize);
+            NewMeal.setTotalProtein(newFoodRecord.getProtein());
+            NewMeal.setTotalCarbohydrate(newFoodRecord.getCarbohydrate());
+            NewMeal.setTotalFat(newFoodRecord.getFat());
+            NewMeal.setTotalCalorie(newFoodRecord.getCalorie());
+            NewMeal.setTotalFiber(newFoodRecord.getFiber());
+            NewMeal.setTotalGlysemicIndex(newFoodRecord.getGlysemicIndex());
+            NewMeal.setTotalCarbohydrateCount(newFoodRecord.getCarbohydrateCount());
             NewMeal.setDate();
             NewMeal.setTime();
+        }
     }
 
 
@@ -334,6 +353,9 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
         portionSizeEditText.setVisibility(View.VISIBLE);
         samplePortionSizeTextView.setVisibility(View.VISIBLE);
         mealSubmitButton.setVisibility(View.VISIBLE);
+    }
+
+    public void mealsRead(List<Meal> mealList){
     }
 
 }
