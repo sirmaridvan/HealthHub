@@ -36,12 +36,31 @@ public class CustomCarbCountAdapter extends ArrayAdapter<Meal> {
 
         if (singleMealElement.getFoodType().equals("Milk Product"))
             imageView.setImageResource(R.drawable.pills);
-        else
+        else if (singleMealElement.getFoodType().equals("Milk Product"))
             imageView.setImageResource(R.drawable.camera_icon);
-        textView.setText("Food Name: " + singleMealElement.getDate() + "\n" +
-                "Food Type: " + singleMealElement.getTime() + "\n" +
-                "Carb Count: " + singleMealElement.getPortion() + "\n" +
-                "Glycemic Index: " + singleMealElement.getTotalCarbohydrate() + "\n");
+        else if (singleMealElement.getFoodType().equals("Milk Product"))
+            imageView.setImageResource(R.drawable.camera_icon);
+        else if (singleMealElement.getFoodType().equals("Milk Product"))
+            imageView.setImageResource(R.drawable.camera_icon);
+        else if (singleMealElement.getFoodType().equals("Milk Product"))
+            imageView.setImageResource(R.drawable.camera_icon);
+        else if (singleMealElement.getFoodType().equals("Milk Product"))
+            imageView.setImageResource(R.drawable.camera_icon);
+        else if (singleMealElement.getFoodType().equals("Milk Product"))
+            imageView.setImageResource(R.drawable.camera_icon);
+
+
+        textView.setText("Date: " + singleMealElement.getDate() + "\n" +
+                "Time: " + singleMealElement.getTime() + "\n" +
+                "Food Name: " + singleMealElement.getFoodName() + "\n" +
+                "Food Type: " + singleMealElement.getFoodType() + "\n" +
+                "Unit Portion Size: " + singleMealElement.getPortionSize() + "\n" +
+                "Your Portion Size: " + singleMealElement.getFloatPortionSize() + "\n" +
+                "Total Protein: " + singleMealElement.getTotalProtein() + "\n" +
+                "Total Fat: " + singleMealElement.getTotalFat() + "\n" +
+                "Total Carbohydrate: " + singleMealElement.getTotalCarbohydrate() + "\n" +
+                "Total Calorie: " + singleMealElement.getTotalCalorie() + "\n" +
+                "Total Fiber: " + singleMealElement.getTotalFiber() + "\n");
         return customView;
     }
 }
