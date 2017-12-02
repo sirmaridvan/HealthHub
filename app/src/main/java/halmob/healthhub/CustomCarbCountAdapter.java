@@ -34,20 +34,31 @@ public class CustomCarbCountAdapter extends ArrayAdapter<Meal> {
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
-        if (singleMealElement.getFoodType().equals("Milk Product"))
-            imageView.setImageResource(R.drawable.pills);
-        else if (singleMealElement.getFoodType().equals("Milk Product"))
+        if (singleMealElement.getFoodType().equals("Milk Product")) {
+            if (singleMealElement.getFoodName().equals("Milk"))
+                imageView.setImageResource(R.drawable.milk);
+            else if (singleMealElement.getFoodName().equals("Cheese"))
+                imageView.setImageResource(R.drawable.cheese);
+        }
+        else if (singleMealElement.getFoodType().equals("Fruit")) {
+            if (singleMealElement.getFoodName().equals("Watermelon")) ;
+            imageView.setImageResource(R.drawable.watermelon);
+        }
+        else if (singleMealElement.getFoodType().equals("Milk Product")) {
             imageView.setImageResource(R.drawable.camera_icon);
-        else if (singleMealElement.getFoodType().equals("Milk Product"))
+        }
+        else if (singleMealElement.getFoodType().equals("Milk Product")) {
             imageView.setImageResource(R.drawable.camera_icon);
-        else if (singleMealElement.getFoodType().equals("Milk Product"))
+        }
+        else if (singleMealElement.getFoodType().equals("Milk Product")) {
             imageView.setImageResource(R.drawable.camera_icon);
-        else if (singleMealElement.getFoodType().equals("Milk Product"))
+        }
+        else if (singleMealElement.getFoodType().equals("Milk Product")) {
             imageView.setImageResource(R.drawable.camera_icon);
-        else if (singleMealElement.getFoodType().equals("Milk Product"))
+        }
+        else if (singleMealElement.getFoodType().equals("Milk Product")) {
             imageView.setImageResource(R.drawable.camera_icon);
-        else if (singleMealElement.getFoodType().equals("Milk Product"))
-            imageView.setImageResource(R.drawable.camera_icon);
+        }
 
 
         textView.setText("Date: " + singleMealElement.getDate() + "\n" +
