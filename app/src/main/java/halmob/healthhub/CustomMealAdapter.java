@@ -34,13 +34,20 @@ public class CustomMealAdapter extends ArrayAdapter<Meal> {
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
         if(singleMealElement.getFoodType().equals("Milk Product"))
-            imageView.setImageResource(R.drawable.pills);
+            imageView.setImageResource(R.drawable.cheese);
         else
             imageView.setImageResource(R.drawable.camera_icon);
         textView.setText("Date: " + singleMealElement.getDate() + "\n" +
                 "Time: " + singleMealElement.getTime() + "\n" +
-                "Insulin Type: " + singleMealElement.getPortion() + "\n" +
-                "Applied Dose: " + singleMealElement.getTotalCarbohydrate() + "\n");
+                "Food Name: " + singleMealElement.getFoodName() + "\n" +
+                "Food Type: " + singleMealElement.getFoodType() + "\n" +
+                "Unit Portion Size: " + singleMealElement.getPortionSize() + "\n" +
+                "Your Portion Size: " + singleMealElement.getFloatPortionSize() + "\n" +
+                "Total Protein: " + singleMealElement.getTotalProtein() + "\n" +
+                "Total Fat: " + singleMealElement.getTotalFat() + "\n" +
+                "Total Carbohydrate: " + singleMealElement.getTotalCarbohydrate() + "\n" +
+                "Total Calorie: " + singleMealElement.getTotalCalorie() + "\n" +
+                "Total Fiber: " + singleMealElement.getTotalFiber() + "\n");
         return customView;
     }
 }

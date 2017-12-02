@@ -39,7 +39,7 @@
             android:layout_height="75dp"
             android:layout_marginTop="40dp"
             android:layout_weight="1"
-            android:background="@android:color/holo_purple"
+            android:background="#9266cc"
             android:gravity="center_vertical|center_horizontal"
             android:text="SELECT TABLE BELOW"
             android:textAppearance="@android:style/TextAppearance.Material.Widget.Button.Colored"
