@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import halmob.healthhub.Models.Meal;
@@ -42,22 +41,27 @@ public class CustomCarbCountAdapter extends ArrayAdapter<Meal> {
         }
         else if (singleMealElement.getFoodType().equals("Fruit")) {
             if (singleMealElement.getFoodName().equals("Watermelon")) ;
-            imageView.setImageResource(R.drawable.watermelon);
+                imageView.setImageResource(R.drawable.watermelon);
         }
-        else if (singleMealElement.getFoodType().equals("Milk Product")) {
-            imageView.setImageResource(R.drawable.camera_icon);
+        else if (singleMealElement.getFoodType().equals("Meat and Meat Products")) {
+            if( singleMealElement.getFoodName().equals("Steak"))
+                imageView.setImageResource(R.drawable.steak);
         }
-        else if (singleMealElement.getFoodType().equals("Milk Product")) {
-            imageView.setImageResource(R.drawable.camera_icon);
+        else if (singleMealElement.getFoodType().equals("Dessert")) {
+            if( singleMealElement.getFoodName().equals("Cheesecake") )
+                imageView.setImageResource(R.drawable.cheesecake);
         }
-        else if (singleMealElement.getFoodType().equals("Milk Product")) {
-            imageView.setImageResource(R.drawable.camera_icon);
+        else if (singleMealElement.getFoodType().equals("Vegetable")) {
+            if( singleMealElement.getFoodName().equals("Cauliflower") )
+                imageView.setImageResource(R.mipmap.cauliflower);
         }
-        else if (singleMealElement.getFoodType().equals("Milk Product")) {
-            imageView.setImageResource(R.drawable.camera_icon);
+        else if (singleMealElement.getFoodType().equals("Pasta")) {
+            if( singleMealElement.getFoodName().equals("Penne") )
+                imageView.setImageResource(R.drawable.pasta_penne);
         }
-        else if (singleMealElement.getFoodType().equals("Milk Product")) {
-            imageView.setImageResource(R.drawable.camera_icon);
+        else if (singleMealElement.getFoodType().equals("Rice")) {
+            if( singleMealElement.getFoodName().equals("Pilaf with Rice") )
+                imageView.setImageResource(R.drawable.rice);
         }
 
 
