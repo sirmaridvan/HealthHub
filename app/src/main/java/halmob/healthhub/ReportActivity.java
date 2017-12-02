@@ -22,6 +22,7 @@ public class ReportActivity extends AppCompatActivity implements ReportListener 
         setContentView(R.layout.activity_report);
 
 
+
         FirebaseTransaction.setReportListenerListener(this);
         FirebaseTransaction.getReports();
 
