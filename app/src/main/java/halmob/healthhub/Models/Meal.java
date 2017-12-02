@@ -23,10 +23,21 @@ public class Meal {
     private String totalCarbohydrateCount;
     private String totalGlysemicIndex;
 
+    public String getFoodType() {
+        return foodType;
+    }
 
+    public void setFoodType(String newFoodType) {
+        foodType = newFoodType;
+    }
 
+    public String getFoodName() {
+        return foodName;
+    }
 
-
+    public void setFoodName( String newFoodName ) {
+        foodName = newFoodName;
+    }
 
     public String getPortion() { return portionSize; }
     public void setPortion(String newPortionSize ) {
@@ -62,7 +73,7 @@ public class Meal {
     }
 
     public void setTotalProtein(float newTotalProtein) {
-        this.totalProtein = String.valueOf(newTotalProtein * floatPortionSize);
+        this.totalProtein = String.valueOf(newTotalProtein);
     }
 
     public Float getTotalFat() {
@@ -77,7 +88,7 @@ public class Meal {
     }
 
     public void setTotalFat(float newTotalFat) {
-        this.totalFat = String.valueOf(newTotalFat * floatPortionSize);
+        this.totalFat = String.valueOf(newTotalFat );
     }
 
     public Float getTotalCarbohydrate() {
@@ -92,7 +103,7 @@ public class Meal {
     }
 
     public void setTotalCarbohydrate(float newTotalCarbohydrate) {
-        this.totalCarbohydrate = String.valueOf(newTotalCarbohydrate * floatPortionSize);
+        this.totalCarbohydrate = String.valueOf(newTotalCarbohydrate );
     }
 
     public Float getTotalCalorie() {
@@ -107,7 +118,7 @@ public class Meal {
     }
 
     public void setTotalCalorie(float newTotalCalorie) {
-        this.totalCalorie = String.valueOf(newTotalCalorie * floatPortionSize);
+        this.totalCalorie = String.valueOf(newTotalCalorie );
     }
 
 
@@ -123,7 +134,7 @@ public class Meal {
     }
 
     public void setTotalFiber(float newTotalFiber) {
-        this.totalFiber = String.valueOf(newTotalFiber * floatPortionSize);
+        this.totalFiber = String.valueOf(newTotalFiber );
     }
 
     public Float getTotalCarbohydrateCount() {
@@ -138,7 +149,7 @@ public class Meal {
     }
 
     public void setTotalCarbohydrateCount(float newTotalCarbohydrateCount) {
-        this.totalCarbohydrateCount = String.valueOf(newTotalCarbohydrateCount * floatPortionSize);
+        this.totalCarbohydrateCount = String.valueOf(newTotalCarbohydrateCount );
     }
 
 
@@ -155,7 +166,7 @@ public class Meal {
     }
 
     public void setTotalGlysemicIndex(float newTotalGlycemicIndex) {
-        this.totalGlysemicIndex = String.valueOf(newTotalGlycemicIndex * floatPortionSize);
+        this.totalGlysemicIndex = String.valueOf(newTotalGlycemicIndex );
     }
 
     public String getPortionSize() {

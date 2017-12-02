@@ -96,7 +96,7 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/linearLayout8"
         android:layout_width="190dp"
         android:layout_height="140dp"
         android:layout_alignParentStart="true"
@@ -123,7 +123,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
+        android:id="@+id/linearLayout9"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:layout_below="@+id/linearLayout2"
@@ -132,7 +132,7 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/blood_sugar_button"
+            android:id="@+id/carb_count_button"
             android:layout_width="match_parent"
             android:layout_height="88dp"
             android:background="@android:color/white"

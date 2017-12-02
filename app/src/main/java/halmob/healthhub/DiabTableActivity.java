@@ -11,6 +11,7 @@ public class DiabTableActivity extends AppCompatActivity {
     private ImageButton insulinTableButton;
     private ImageButton bloodSugarTableButton;
     private ImageButton mealTableButton;
+    private ImageButton carbTableButton;
 
 
     @Override
@@ -42,6 +43,15 @@ public class DiabTableActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(DiabTableActivity.this, MealListActivity.class);
+                startActivity(i);
+            }
+        });
+
+        carbTableButton = findViewById(R.id.carb_count_table_button);
+        carbTableButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(DiabTableActivity.this, CarbCountListActivity.class);
                 startActivity(i);
             }
         });

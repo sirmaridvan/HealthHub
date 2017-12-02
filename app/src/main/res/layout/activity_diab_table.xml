@@ -133,7 +133,7 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/carb_count_button"
+            android:id="@+id/carb_count_table_button"
             android:layout_width="match_parent"
             android:layout_height="88dp"
             android:background="@android:color/white"

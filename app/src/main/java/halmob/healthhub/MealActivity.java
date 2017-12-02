@@ -321,17 +321,20 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
             }
 
             NewMeal = new Meal();
-            NewMeal.setPortionSize(stringNewPortionSize);
+
+            NewMeal.setPortionSize(newFoodRecord.getPortionSize());
             NewMeal.setFloatPortionSize(floatNewPortionSize);
-            NewMeal.setTotalProtein(newFoodRecord.getProtein());
-            NewMeal.setTotalCarbohydrate(newFoodRecord.getCarbohydrate());
-            NewMeal.setTotalFat(newFoodRecord.getFat());
-            NewMeal.setTotalCalorie(newFoodRecord.getCalorie());
-            NewMeal.setTotalFiber(newFoodRecord.getFiber());
-            NewMeal.setTotalGlysemicIndex(newFoodRecord.getGlysemicIndex());
-            NewMeal.setTotalCarbohydrateCount(newFoodRecord.getCarbohydrateCount());
+            NewMeal.setTotalProtein(newFoodRecord.getProtein() * floatNewPortionSize);
+            NewMeal.setTotalCarbohydrate(newFoodRecord.getCarbohydrate() * floatNewPortionSize);
+            NewMeal.setTotalFat(newFoodRecord.getFat() * floatNewPortionSize);
+            NewMeal.setTotalCalorie(newFoodRecord.getCalorie() * floatNewPortionSize);
+            NewMeal.setTotalFiber(newFoodRecord.getFiber() * floatNewPortionSize);
+            NewMeal.setTotalGlysemicIndex(newFoodRecord.getGlysemicIndex()* floatNewPortionSize);
+            NewMeal.setTotalCarbohydrateCount(newFoodRecord.getCarbohydrateCount()* floatNewPortionSize);
             NewMeal.setDate();
             NewMeal.setTime();
+            NewMeal.setFoodName(newFoodRecord.getFoodName());
+            NewMeal.setFoodType(newFoodRecord.getFoodType());
         }
     }
 
