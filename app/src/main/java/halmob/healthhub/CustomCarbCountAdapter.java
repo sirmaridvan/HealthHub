@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import halmob.healthhub.Models.Meal;
@@ -18,8 +19,8 @@ import halmob.healthhub.Models.Meal;
  * Created by hakan on 2.12.2017.
  */
 
-public class CustomMealAdapter extends ArrayAdapter<Meal> {
-    CustomMealAdapter(Context context, List<Meal> mealList){
+public class CustomCarbCountAdapter extends ArrayAdapter<Meal> {
+    CustomCarbCountAdapter(Context context, List<Meal> mealList){
         super(context, R.layout.custom_row_meal, mealList);
     }
 
@@ -33,14 +34,14 @@ public class CustomMealAdapter extends ArrayAdapter<Meal> {
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
-        if(singleMealElement.getFoodType().equals("Milk Product"))
+        if (singleMealElement.getFoodType().equals("Milk Product"))
             imageView.setImageResource(R.drawable.pills);
         else
             imageView.setImageResource(R.drawable.camera_icon);
-        textView.setText("Date: " + singleMealElement.getDate() + "\n" +
-                "Time: " + singleMealElement.getTime() + "\n" +
-                "Insulin Type: " + singleMealElement.getPortion() + "\n" +
-                "Applied Dose: " + singleMealElement.getTotalCarbohydrate() + "\n");
+        textView.setText("Food Name: " + singleMealElement.getDate() + "\n" +
+                "Food Type: " + singleMealElement.getTime() + "\n" +
+                "Carb Count: " + singleMealElement.getPortion() + "\n" +
+                "Glycemic Index: " + singleMealElement.getTotalCarbohydrate() + "\n");
         return customView;
     }
 }
