@@ -88,6 +88,11 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
                     if(spinnerInitFlag == true) { //if the program applied the steps for the first time
                         milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
                         fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
+                        vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                        meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                        dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                        pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+                        riceFoodNameSpinner.setVisibility(View.INVISIBLE);
                     }
                 }
                 else if( selectedFoodType.equals("Milk Product")) {
@@ -98,6 +103,11 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
                     //String s = fruitFoodNameSpinner.getSelectedItem().toString();
                     milkProductFoodNameSpinner.setVisibility(View.VISIBLE);
                     fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.INVISIBLE);
                     selectedFood = String.valueOf(milkProductFoodNameSpinner.getSelectedItem());
                     setSamplePortionSize();
                     makePortionVisible();
@@ -119,6 +129,11 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
 
                     fruitFoodNameSpinner.setVisibility(View.VISIBLE);
                     milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.INVISIBLE);
 
                     selectedFood = String.valueOf(fruitFoodNameSpinner.getSelectedItem());
                     setSamplePortionSize();
@@ -140,7 +155,12 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
                     vegetableFoodNameSpinner.setVisibility(View.VISIBLE);
+                    fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
                     milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.INVISIBLE);
 
                     selectedFood = String.valueOf(vegetableFoodNameSpinner.getSelectedItem());
                     setSamplePortionSize();
@@ -162,7 +182,12 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
                     dessertFoodNameSpinner.setVisibility(View.VISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
                     milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.INVISIBLE);
 
                     selectedFood = String.valueOf(dessertFoodNameSpinner.getSelectedItem());
                     setSamplePortionSize();
@@ -184,7 +209,12 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
                     meatFoodNameSpinner.setVisibility(View.VISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
                     milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.INVISIBLE);
 
                     selectedFood = String.valueOf(meatFoodNameSpinner.getSelectedItem());
                     setSamplePortionSize();
@@ -206,7 +236,12 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
                     riceFoodNameSpinner.setVisibility(View.VISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
                     milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    pastaFoodNameSpinner.setVisibility(View.INVISIBLE);
 
                     selectedFood = String.valueOf(riceFoodNameSpinner.getSelectedItem());
                     setSamplePortionSize();
@@ -228,7 +263,14 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
                     foodNameTextView.setVisibility(View.VISIBLE);
 
                     pastaFoodNameSpinner.setVisibility(View.VISIBLE);
+                    riceFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    meatFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    dessertFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    vegetableFoodNameSpinner.setVisibility(View.INVISIBLE);
+                    fruitFoodNameSpinner.setVisibility(View.INVISIBLE);
                     milkProductFoodNameSpinner.setVisibility(View.INVISIBLE);
+
+
 
                     selectedFood = String.valueOf(pastaFoodNameSpinner.getSelectedItem());
                     setSamplePortionSize();
@@ -372,7 +414,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
             if(foods.get(i).getFoodType().equals("Rice") )
                 riceFoodNames.add(foods.get(i).getFoodName());
         }
-        ArrayAdapter<String> adapter7 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, meatFoodNames);
+        ArrayAdapter<String> adapter7 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, riceFoodNames);
         adapter7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner7.setAdapter(adapter7);
 
@@ -389,7 +431,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
             if(foods.get(i).getFoodType().equals("Pasta") )
                 pastaFoodNames.add(foods.get(i).getFoodName());
         }
-        ArrayAdapter<String> adapter8 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, meatFoodNames);
+        ArrayAdapter<String> adapter8 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, pastaFoodNames);
         adapter8.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner8.setAdapter(adapter8);
 

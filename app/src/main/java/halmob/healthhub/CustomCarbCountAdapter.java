@@ -71,11 +71,7 @@ public class CustomCarbCountAdapter extends ArrayAdapter<Meal> {
                 "Food Type: " + singleMealElement.getFoodType() + "\n" +
                 "Unit Portion Size: " + singleMealElement.getPortionSize() + "\n" +
                 "Your Portion Size: " + singleMealElement.getFloatPortionSize() + "\n" +
-                "Total Protein: " + singleMealElement.getTotalProtein() + "\n" +
-                "Total Fat: " + singleMealElement.getTotalFat() + "\n" +
-                "Total Carbohydrate: " + singleMealElement.getTotalCarbohydrate() + "\n" +
-                "Total Calorie: " + singleMealElement.getTotalCalorie() + "\n" +
-                "Total Fiber: " + singleMealElement.getTotalFiber() + "\n");
+                "Carbohydrate Count: " + singleMealElement.getTotalCarbohydrateCount());
         return customView;
     }
 }
