@@ -1,5 +1,8 @@
 package halmob.healthhub.Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Furkan Ekici on 16.11.2017.
  */
@@ -10,6 +13,8 @@ public class SportForBodyWork {
     private String NumberOfSetForBodyWork;
     private String WeightForBodyWork;
     private String ExerciseDateForBodyWork;
+
+
 
     public String getNameOfExerciseForBodyWork() { return NameOfExerciseForBodyWork;}
     public void setNameOfExerciseForBodyWork(String NameOfExerciseForBodyWork) { this.NameOfExerciseForBodyWork = NameOfExerciseForBodyWork; }
@@ -25,7 +30,6 @@ public class SportForBodyWork {
 
     public String getExerciseDateForBodyWork() { return ExerciseDateForBodyWork;}
     public void setExerciseDateForBodyWork(String newExerciseDateForBodyWork) { this.ExerciseDateForBodyWork = newExerciseDateForBodyWork; }
-
 
 
 };
