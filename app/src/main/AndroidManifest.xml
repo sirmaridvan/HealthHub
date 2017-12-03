@@ -54,7 +54,8 @@
         <activity android:name=".MedicalAnalysisActivity" />
         <activity android:name=".AddAnalysisActivity" />
         <activity android:name=".MedicalAnalysisReportsActivity" />
-        <activity android:name=".UserSearchActivity"></activity>
+        <activity android:name=".UserSearchActivity" />
+        <activity android:name=".ListSportRecordActivity"></activity>
     </application>
 
 </manifest>

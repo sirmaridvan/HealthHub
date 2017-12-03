@@ -28,10 +28,11 @@
             android:layout_weight="1"
             android:text="Body Buıldıng Record" />
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Body Building Record List"
+        android:text="Cardio Record List"
         android:textAlignment="center"
         android:textSize="24dp"
         android:gravity="center"
@@ -39,7 +40,7 @@
         />
 
     <ListView
-        android:id="@+id/listBodyWorkRecord"
+        android:id="@+id/listCardioRecord"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="24dp"

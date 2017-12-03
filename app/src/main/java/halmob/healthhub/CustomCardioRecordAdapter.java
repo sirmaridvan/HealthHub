@@ -14,10 +14,10 @@ import java.util.List;
 import halmob.healthhub.Models.SportForBodyWork;
 import halmob.healthhub.Models.SportForCardio;
 
-public class CustomBodyWorkRecordAdapter extends ArrayAdapter<SportForBodyWork> {
+public class CustomCardioRecordAdapter extends ArrayAdapter<SportForCardio> {
 
-    CustomBodyWorkRecordAdapter(Context context, List<SportForBodyWork> bodyWorkList) {
-        super(context, R.layout.custom_row, bodyWorkList);
+    CustomCardioRecordAdapter(Context context, List<SportForCardio> cardioList) {
+        super(context, R.layout.custom_row, cardioList);
     }
 
     @NonNull
@@ -26,21 +26,18 @@ public class CustomBodyWorkRecordAdapter extends ArrayAdapter<SportForBodyWork> 
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View customView = inflater.inflate(R.layout.custom_row, parent, false);
 
-        SportForBodyWork singleBodyWorkRecordElement = getItem(position);
+        SportForCardio singleCardioRecordElement = getItem(position);
 
 
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
         imageView.setImageResource(R.drawable.pills);
-        textView.setText("Name: " + singleBodyWorkRecordElement.getNameOfExerciseForBodyWork() + "\n" +
-                "Repetition: " + singleBodyWorkRecordElement.getNumberOfRepetitionForBodyWork() + "\n" +
-                "Set: " + singleBodyWorkRecordElement.getNumberOfSetForBodyWork() + "\n" +
-                "Weight: " + singleBodyWorkRecordElement.getWeightForBodyWork() + "\n" +
-                "Time:" + singleBodyWorkRecordElement.getExerciseDateForBodyWork() + "\n"
+        textView.setText("Name: " + singleCardioRecordElement.getNameOfExerciseForCardio() + "\n" +
+                "Minute: " + singleCardioRecordElement.getMinuteOfExerciseForCardio() + "\n" +
+                "Calorie: " + singleCardioRecordElement.getBurnedCaloriesForCardio() + "\n" +
+                "Date: " + singleCardioRecordElement.getExerciseDateForCardio() + "\n"
         );
         return customView;
     }
 }
-
-

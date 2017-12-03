@@ -21,7 +21,7 @@ public class Sports_Activity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Sports_Activity.this, ListBodyWorkSportRecordActivity.class);
+                Intent i = new Intent(Sports_Activity.this, ListSportRecordActivity.class);
                 startActivity(i);
             }
         });
