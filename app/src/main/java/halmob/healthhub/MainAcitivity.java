@@ -20,6 +20,7 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
     private Button cameraDemo;
     private Button Report;
     private Button MedicalAnalysisButton;
+    private Button UserSearch;
     private DatabaseReference mPersonRef;
     private Intent intent;
 
@@ -50,6 +51,8 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
         Report.setOnClickListener(this);
         MedicalAnalysisButton = findViewById(R.id.medical_analysis_page);
         MedicalAnalysisButton.setOnClickListener(this);
+        UserSearch = findViewById(R.id.user_search_button);
+        UserSearch.setOnClickListener(this);
     }
     @Override
     public void onClick(View v){
@@ -75,6 +78,7 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.profilePage_button:
                 intent = new Intent(this, ProfilePageActivity.class);
+                intent.putExtra("userId",FirebaseUtil.getCurrentUserId());
                 startActivity(intent);
                 break;
             case R.id.sample_button:
@@ -91,6 +95,10 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.logout_button:
                 signOut();
+                break;
+            case R.id.user_search_button:
+                intent = new Intent(this, UserSearchActivity.class);
+                startActivity(intent);
                 break;
             case R.id.medical_analysis_page:
                 intent = new Intent(this, MedicalAnalysisActivity.class);

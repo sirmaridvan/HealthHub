@@ -1,5 +1,6 @@
 package halmob.healthhub;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -24,7 +25,13 @@ public class ProfilePageActivity extends AppCompatActivity {
         name  = findViewById(R.id.name);
         email  = findViewById(R.id.email);
         profilePhoto = findViewById(R.id.profile_photo);
-        final DatabaseReference personRef = FirebaseUtil.getPeopleRef().child(FirebaseUtil.getCurrentUserId());
+
+        // getIntent() is a method from the started activity
+        Intent intent = getIntent(); // gets the previously created intent
+        String userId = intent.getStringExtra("userId");
+
+
+        final DatabaseReference personRef = FirebaseUtil.getPeopleRef().child(userId);
         personRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

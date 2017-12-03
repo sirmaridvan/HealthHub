@@ -42,6 +42,12 @@
         android:text="Medical Analysis Page" />
 
     <Button
+        android:id="@+id/user_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="USER SEARCH" />
+
+    <Button
         android:id="@+id/profilePage_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -10,5 +10,5 @@ import halmob.healthhub.Models.Person;
  */
 
 public interface PeopleListener {
-    public void peopleRead(List<Person> personList);
+    void peopleRead(List<Person> personList);
 }

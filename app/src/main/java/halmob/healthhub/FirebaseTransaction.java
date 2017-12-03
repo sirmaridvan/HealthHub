@@ -1,5 +1,7 @@
 package halmob.healthhub;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,10 +17,12 @@ import halmob.healthhub.EventListeners.BodyWorkListener;
 import halmob.healthhub.EventListeners.CardioListener;
 import halmob.healthhub.EventListeners.DrugListener;
 import halmob.healthhub.EventListeners.FoodListener;
+import halmob.healthhub.EventListeners.HealthmanListener;
 import halmob.healthhub.EventListeners.InsulinDoseListener;
 import halmob.healthhub.EventListeners.MealListener;
 import halmob.healthhub.EventListeners.PeopleListener;
 import halmob.healthhub.EventListeners.ReportListener;
+import halmob.healthhub.EventListeners.UserTypeListener;
 import halmob.healthhub.Models.BloodSugar;
 import halmob.healthhub.Models.Drug;
 import halmob.healthhub.Models.Food;
@@ -131,13 +135,8 @@ public class FirebaseTransaction {
             }
         });
     }
-
-
-
-
-
-
     //RIDVAN TARAFINDAN KONTROL EDİLECEK BURADAN BAŞLANARAK
+    //RIDVAN: KİM DEMİŞ? :D
 
     public static void addBloodSugar(BloodSugar newBloodSugar){
         final String currentUserId = FirebaseUtil.getCurrentUserId();
@@ -300,17 +299,46 @@ public class FirebaseTransaction {
     public static void setPeopleListenerListener(PeopleListener listen) {
         mPeopleListener = listen;
     }
-    public static void getPeople(){
+    public static void getAllPeople(){
         final List<Person> personList = new ArrayList<Person>();
         FirebaseUtil.getPeopleRef().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     Person person = postSnapshot.getValue(Person.class);
+                    person.setUid(postSnapshot.getKey());
                     personList.add(person);
                 }
                 if (mPeopleListener != null) {
                     mPeopleListener.peopleRead(personList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
+
+    private static HealthmanListener mHealthmanListener;
+
+    public static void setHealthmanListenerListener(HealthmanListener listen) {
+        mHealthmanListener = listen;
+    }
+    public static void getHealthmans(){
+        final List<Person> personList = new ArrayList<Person>();
+        FirebaseUtil.getPeopleRef().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Person person = postSnapshot.getValue(Person.class);
+                    person.setUid(postSnapshot.getKey());
+                    if(person.getUserType().equals("Healthman"))
+                        personList.add(person);
+                }
+                if (mHealthmanListener != null) {
+                    mHealthmanListener.healthmanRead(personList);
                 }
             }
 
@@ -419,5 +447,29 @@ public class FirebaseTransaction {
             }
         });
     }
+
+    private static UserTypeListener mUserTypeListener;
+
+    public static void setUserTypetListenerListener(UserTypeListener listen) {
+        mUserTypeListener = listen;
+    }
+    public static void getCurrentUserType() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final String userType;
+        if (user != null) {
+            final DatabaseReference personRef = FirebaseUtil.getPeopleRef().child(user.getUid());
+            personRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Person person = dataSnapshot.getValue(Person.class);
+                    mUserTypeListener.usertypeRead(person.getUserType());
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+        }
+    }
+
 
 }

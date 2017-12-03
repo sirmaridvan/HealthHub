@@ -53,7 +53,8 @@
         <activity android:name=".ReportActivity" />
         <activity android:name=".MedicalAnalysisActivity" />
         <activity android:name=".AddAnalysisActivity" />
-        <activity android:name=".MedicalAnalysisReportsActivity"></activity>
+        <activity android:name=".MedicalAnalysisReportsActivity" />
+        <activity android:name=".UserSearchActivity"></activity>
     </application>
 
 </manifest>
