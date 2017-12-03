@@ -2,6 +2,7 @@
     <string name="app_name">HealthHub</string>
     <string name="loading">Loading...</string>
     <string name="follow_user_error">Unable to follow user.</string>
+    <string name="default_text">--</string>
     <string-array name="hunger_situation_array">
         <item>Hungry</item>
         <item>Full</item>
