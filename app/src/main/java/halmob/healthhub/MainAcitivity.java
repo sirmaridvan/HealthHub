@@ -1,6 +1,7 @@
 package halmob.healthhub;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
     private Button cameraDemo;
     private Button Report;
     private Button MedicalAnalysisButton;
+    private Button HearthRateButton;
     private Button UserSearch;
     private DatabaseReference mPersonRef;
     private Intent intent;
@@ -35,6 +37,8 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
         stepCounter.setOnClickListener(this);
         trackMedicineButton = findViewById(R.id.track_medicine);
         trackMedicineButton.setOnClickListener(this);
+        HearthRateButton = findViewById(R.id.heart_rate_button);
+        HearthRateButton.setOnClickListener(this);
         diabetesButton = findViewById(R.id.diabetes_button);
         diabetesButton.setOnClickListener(this);
         sportsPageButton = findViewById(R.id.sportsPage_button);
@@ -53,6 +57,12 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
         MedicalAnalysisButton.setOnClickListener(this);
         UserSearch = findViewById(R.id.user_search_button);
         UserSearch.setOnClickListener(this);
+
+        // camera permission
+        if (checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{android.Manifest.permission.CAMERA}, 111);
+        }
+
     }
     @Override
     public void onClick(View v){
@@ -102,6 +112,10 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.medical_analysis_page:
                 intent = new Intent(this, MedicalAnalysisActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.heart_rate_button:
+                intent = new Intent(this, HeartRateMonitorActivity.class);
                 startActivity(intent);
                 break;
         }
