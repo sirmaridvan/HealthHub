@@ -58,6 +58,9 @@
         <activity android:name=".AddAnalysisActivity" />
         <activity android:name=".MedicalAnalysisReportsActivity" />
         <activity android:name=".UserSearchActivity" />
+
+        <activity android:name=".ListSportRecordActivity"/>
+
         <activity android:name=".HeartRateMonitorActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait">
