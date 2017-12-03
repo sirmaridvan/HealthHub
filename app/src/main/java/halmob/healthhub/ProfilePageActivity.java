@@ -25,10 +25,15 @@ public class ProfilePageActivity extends AppCompatActivity {
         name  = findViewById(R.id.name);
         email  = findViewById(R.id.email);
         profilePhoto = findViewById(R.id.profile_photo);
-
         // getIntent() is a method from the started activity
         Intent intent = getIntent(); // gets the previously created intent
         String userId = intent.getStringExtra("userId");
+        FirebaseTransaction.follow(userId);
+        /*  userId kimin profil sayfasında olduğun bilgisini tutar.
+            Asıl kullanıcın id'si için 'FirebaseUtil.getCurrentUserId()' fonksiyonu çağrılabilir.
+            Asıl kullanıcı sayfasında bulunduğu kişiyi takip etmek isterse, takip etme fonksiyonu 'FirebaseTransaction.follow(userId);'
+            komutunu içermelidir. Bu komut takip etme sistemi için yeterlidir.
+         */
 
 
         final DatabaseReference personRef = FirebaseUtil.getPeopleRef().child(userId);
