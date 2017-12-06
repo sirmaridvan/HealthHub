@@ -2,12 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="halmob.healthhub">
 
-    <uses-feature android:name="android.hardware.CAMERA"/>
-    <uses-feature android:name="android.hardware.CAMERA.FLASH"/>
+    <uses-feature android:name="android.hardware.CAMERA" />
+    <uses-feature android:name="android.hardware.CAMERA.FLASH" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -58,13 +59,12 @@
         <activity android:name=".AddAnalysisActivity" />
         <activity android:name=".MedicalAnalysisReportsActivity" />
         <activity android:name=".UserSearchActivity" />
-
-        <activity android:name=".ListSportRecordActivity"/>
-
-        <activity android:name=".HeartRateMonitorActivity"
+        <activity android:name=".ListSportRecordActivity" />
+        <activity
+            android:name=".HeartRateMonitorActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".addNewSportProgram"></activity>
     </application>
 
 </manifest>
