@@ -10,6 +10,14 @@
         <item>Hungry</item>
         <item>Full</item>
     </string-array>
+    <string-array name="muscle_regions">
+        <item>Select Muscle Region</item>
+        <item>Chest</item>
+        <item>Leg</item>
+        <item>Fore Arm</item>
+        <item>Shoulder</item>
+        <item>Back Muscle</item>
+    </string-array>
     <string-array name="food_type_array">
         <item>Select Food Type</item>
         <item>Milk Product</item>

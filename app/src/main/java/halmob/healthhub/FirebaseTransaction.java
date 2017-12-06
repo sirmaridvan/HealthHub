@@ -22,6 +22,7 @@ import halmob.healthhub.EventListeners.InsulinDoseListener;
 import halmob.healthhub.EventListeners.MealListener;
 import halmob.healthhub.EventListeners.PeopleListener;
 import halmob.healthhub.EventListeners.ReportListener;
+import halmob.healthhub.EventListeners.StaticBodyWorkListener;
 import halmob.healthhub.EventListeners.UserTypeListener;
 import halmob.healthhub.Models.BloodSugar;
 import halmob.healthhub.Models.Drug;
@@ -34,6 +35,7 @@ import halmob.healthhub.Models.ProspectusInfo;
 import halmob.healthhub.Models.Report;
 import halmob.healthhub.Models.SportForBodyWork;
 import halmob.healthhub.Models.SportForCardio;
+import halmob.healthhub.Models.StaticExerciseForBodyWork;
 
 /**
  * Created by RIDVAN SIRMA on 11/15/2017.
@@ -362,7 +364,29 @@ public class FirebaseTransaction {
         });
     }
 
+    private static StaticBodyWorkListener mStaticBodyWorkListener;
 
+    public static void setStaticBodyWorkListener(StaticBodyWorkListener listen){mStaticBodyWorkListener = listen; }
+    public static void getStaticBodyWork(){
+        final List<StaticExerciseForBodyWork> StaticExerciseForBodyWorkList = new ArrayList<StaticExerciseForBodyWork>();
+        FirebaseUtil.getStaticBodyWork().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                    StaticExerciseForBodyWork staticExerciseForBodyWork = postSnapshot.getValue(StaticExerciseForBodyWork.class);
+                    StaticExerciseForBodyWorkList.add(staticExerciseForBodyWork);
+                }
+                if(mStaticBodyWorkListener !=null){
+                    mStaticBodyWorkListener.StaticBodyWorkRead(StaticExerciseForBodyWorkList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     private static FoodListener mFoodListener;
 

@@ -60,6 +60,7 @@ class FirebaseUtil {
     public static DatabaseReference getFoodRef() {
         return getBaseRef().child("food");
     }
+    public static DatabaseReference getStaticBodyWork(){ return getBaseRef().child("StaticBodyBuildingExercise");}
 
     public static DatabaseReference getMealRef() {
         return getBaseRef().child("meal");
