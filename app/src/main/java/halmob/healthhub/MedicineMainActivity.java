@@ -51,7 +51,7 @@ public class MedicineMainActivity extends AppCompatActivity {
         listProspectusButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(MedicineMainActivity.this, MedicineListActivity.class);
+                Intent intent = new Intent(MedicineMainActivity.this, ListProspectusActivity.class);
                 startActivity(intent);
             }
         });
