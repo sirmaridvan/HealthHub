@@ -21,6 +21,7 @@ import halmob.healthhub.EventListeners.HealthmanListener;
 import halmob.healthhub.EventListeners.InsulinDoseListener;
 import halmob.healthhub.EventListeners.MealListener;
 import halmob.healthhub.EventListeners.PeopleListener;
+import halmob.healthhub.EventListeners.ProspectusListener;
 import halmob.healthhub.EventListeners.ReportListener;
 import halmob.healthhub.EventListeners.UserTypeListener;
 import halmob.healthhub.Models.BloodSugar;
@@ -148,8 +149,37 @@ public class FirebaseTransaction {
             }
         });
     }
+
+    private static ProspectusListener mProspectusListener;
+
+    public static void setProspectusListenerListener(ProspectusListener listen) {
+        mProspectusListener = listen;
+    }
+    public static void getProspectuses(){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        final List<ProspectusInfo> prospectusInfoList = new ArrayList<ProspectusInfo>();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("prospectusInfo").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    ProspectusInfo prospectus = postSnapshot.getValue(ProspectusInfo.class);
+                    prospectusInfoList.add(prospectus);
+                }
+                if (mProspectusListener != null) {
+                    mProspectusListener.prospectusRead(prospectusInfoList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
+
     //RIDVAN TARAFINDAN KONTROL EDİLECEK BURADAN BAŞLANARAK
     //RIDVAN: KİM DEMİŞ? :D
+    //GÖRKEM: SELAM BEYLER, NASIL GİDİYOR?
 
     public static void addBloodSugar(BloodSugar newBloodSugar){
         final String currentUserId = FirebaseUtil.getCurrentUserId();

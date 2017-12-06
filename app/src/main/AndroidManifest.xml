@@ -72,8 +72,9 @@
         <activity
             android:name=".HeartRateMonitorActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".AddProspectusActivity"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".AddProspectusActivity" />
+        <activity android:name=".ListProspectusActivity"></activity>
     </application>
 
 </manifest>
