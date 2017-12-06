@@ -50,6 +50,8 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
 
         // camera permissions enabled??
         takePicButton.setEnabled(false);
+        // disable until image has been added successfully
+        submitAnalysisButton.setEnabled(false);
 
         if (checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{android.Manifest.permission.CAMERA}, 111);
@@ -156,6 +158,7 @@ public class AddAnalysisActivity extends AppCompatActivity implements AddedImage
     public void imageAdded(Uri uri) {
         medAnalysis.setReportUri(uri.toString());
         photoCheck = true;
+        submitAnalysisButton.setEnabled(true);
         // FirebaseTransaction.addMedicalAnalysis(medAnalysis);
     }
 

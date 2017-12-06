@@ -30,6 +30,7 @@ import halmob.healthhub.Models.InsulinDose;
 import halmob.healthhub.Models.Meal;
 import halmob.healthhub.Models.MedicalAnalysis;
 import halmob.healthhub.Models.Person;
+import halmob.healthhub.Models.ProspectusInfo;
 import halmob.healthhub.Models.Report;
 import halmob.healthhub.Models.SportForBodyWork;
 import halmob.healthhub.Models.SportForCardio;
@@ -109,6 +110,18 @@ public class FirebaseTransaction {
             }
         });
     }
+
+    public static void addProspectusInfo(ProspectusInfo prospectusInfo){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("prospectusInfo").push().setValue(prospectusInfo, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError error, DatabaseReference firebase) {
+                if (error != null) {
+                }
+            }
+        });
+    }
+
     private static DrugListener mDrugListener;
 
     public static void setDrugListenerListener(DrugListener listen) {

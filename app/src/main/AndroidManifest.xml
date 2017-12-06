@@ -2,12 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="halmob.healthhub">
 
-    <uses-feature android:name="android.hardware.CAMERA"/>
-    <uses-feature android:name="android.hardware.CAMERA.FLASH"/>
+    <uses-feature android:name="android.hardware.CAMERA" />
+    <uses-feature android:name="android.hardware.CAMERA.FLASH" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -23,12 +24,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
 
-        <activity android:name="com.facebook.FacebookActivity"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".MainAcitivity" />
@@ -65,13 +68,12 @@
         <activity android:name=".AddAnalysisActivity" />
         <activity android:name=".MedicalAnalysisReportsActivity" />
         <activity android:name=".UserSearchActivity" />
-
-        <activity android:name=".ListSportRecordActivity"/>
-
-        <activity android:name=".HeartRateMonitorActivity"
+        <activity android:name=".ListSportRecordActivity" />
+        <activity
+            android:name=".HeartRateMonitorActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".AddProspectusActivity"></activity>
     </application>
 
 </manifest>
