@@ -9,6 +9,8 @@ import android.widget.Button;
 public class MedicineMainActivity extends AppCompatActivity {
     private Button addButton;
     private Button listButton;
+    private Button addProspectusButton;
+    private Button listProspectusButton;
 
 
     @Override
@@ -33,6 +35,27 @@ public class MedicineMainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // add prospectus activity
+        addProspectusButton = findViewById(R.id.prospectusAddButton);
+        addProspectusButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(MedicineMainActivity.this, AddProspectusActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // list prospectus activity
+        listProspectusButton = findViewById(R.id.prospectusInfoButton);
+        listProspectusButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(MedicineMainActivity.this, ListProspectusActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }

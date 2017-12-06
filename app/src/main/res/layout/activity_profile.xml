@@ -13,6 +13,11 @@
         android:layout_height="wrap_content"
         android:text="Follow" />
     <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOG OUT" />
+    <Button
         android:id="@+id/step_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,10 +65,10 @@
         android:text="PROFILE PAGE" />
 
     <Button
-        android:id="@+id/logout_button"
+        android:id="@+id/wait_animation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LOG OUT" />
+        android:text="Wait" />
 
     <Button
         android:id="@+id/sample_button"
