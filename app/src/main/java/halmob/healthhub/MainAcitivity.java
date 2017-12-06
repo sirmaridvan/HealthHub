@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.roger.catloadinglibrary.CatLoadingView;
 
 public class MainAcitivity extends BaseActivity implements View.OnClickListener {
     private Button followButton;
@@ -23,13 +24,18 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
     private Button MedicalAnalysisButton;
     private Button HearthRateButton;
     private Button UserSearch;
+    private Button waitAnim;
     private DatabaseReference mPersonRef;
     private Intent intent;
+    private CatLoadingView mView;;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        mView = new CatLoadingView();
+        waitAnim = findViewById(R.id.wait_animation);
+        waitAnim.setOnClickListener(this);
         mPersonRef = FirebaseUtil.getPeopleRef();
         followButton = findViewById(R.id.follow);
         followButton.setOnClickListener(this);
@@ -62,6 +68,7 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
         if (checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{android.Manifest.permission.CAMERA}, 111);
         }
+
 
     }
     @Override
@@ -113,6 +120,10 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
             case R.id.medical_analysis_page:
                 intent = new Intent(this, MedicalAnalysisActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.wait_animation:
+                mView.show(getSupportFragmentManager(), "");
+                // kapatmak için "mView.dismiss();"
                 break;
             case R.id.heart_rate_button:
                 intent = new Intent(this, HeartRateMonitorActivity.class);
