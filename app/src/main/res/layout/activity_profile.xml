@@ -13,6 +13,11 @@
         android:layout_height="wrap_content"
         android:text="Follow" />
     <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOG OUT" />
+    <Button
         android:id="@+id/step_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,11 +87,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Report" />
-    <Button
-        android:id="@+id/logout_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LOG OUT" />
 
 
 

@@ -37,5 +37,6 @@ dependencies {
     compile 'com.google.firebase:firebase-storage:11.6.2'
     compile 'com.roger.catloadinglibrary:catloadinglibrary:1.0.1'
     testCompile 'junit:junit:4.12'
+    implementation 'com.facebook.android:facebook-login:[4,5)'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.roger.catloadinglibrary.CatLoadingView;
@@ -134,6 +135,7 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
     private void signOut() {
         // Firebase sign out
         FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
 
         /*// Google sign out
         Auth.GoogleSignInApi.signOut(LoginActivity.mGoogleApiClient).setResultCallback(
