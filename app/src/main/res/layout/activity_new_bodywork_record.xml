@@ -61,7 +61,6 @@
         android:id="@+id/LabelForBodyWorkTypeExercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_alignStart="@+id/Chest_ExerciseNameForBodyWork_Spinner"
         android:layout_below="@+id/MuscleRegion_spinner"
         android:layout_marginTop="9dp"
@@ -103,14 +102,6 @@
         android:layout_alignTop="@+id/Arm_ExerciseNameForBodyWork_Spinner"
         android:visibility="invisible" />
 
-    <Spinner
-        android:id="@+id/BackMuscle_ExerciseNameForBodyWork_Spinner"
-        android:layout_width="169dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/Chest_ExerciseNameForBodyWork_Spinner"
-        android:layout_alignTop="@+id/Arm_ExerciseNameForBodyWork_Spinner"
-        android:visibility="invisible" />
-
     <TextView
         android:id="@+id/LabelForBodyWorkNumberOfSet"
         android:layout_width="wrap_content"
@@ -124,8 +115,8 @@
 
     <EditText
         android:id="@+id/InputBodyWorkNumberOfSet"
-        android:layout_width="100dp"
-        android:layout_height="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/LabelForBodyWorkNumberOfSet"
         android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/LabelForMuscleRegion"
@@ -148,10 +139,33 @@
 
     <EditText
         android:id="@+id/InputBodyWorkNumberOfRepetition"
-        android:layout_width="100dp"
-        android:layout_height="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/LabelForBodyWorkNumberOfRepetition"
         android:layout_alignStart="@+id/InputBodyWorkNumberOfSet"
+        android:hint=""
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/LabelForBodyWorkWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignEnd="@+id/Chest_ExerciseNameForBodyWork_Spinner"
+        android:layout_below="@+id/LabelForBodyWorkNumberOfRepetition"
+        android:layout_marginTop="25dp"
+        android:text="Weight Of Exercise"
+        android:textSize="20sp"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/InputBodyWorkWeight"
+        android:layout_width="100dp"
+        android:layout_height="28dp"
+        android:layout_alignStart="@+id/InputBodyWorkNumberOfRepetition"
+        android:layout_alignTop="@+id/LabelForBodyWorkWeight"
         android:hint=""
         android:imeOptions="actionNext"
         android:inputType="text"
@@ -161,12 +175,12 @@
         android:id="@+id/LabelForDateOfBodyWork"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/LabelForBodyWorkNumberOfRepetition"
-        android:layout_below="@+id/LabelForBodyWorkNumberOfRepetition"
-        android:layout_marginTop="26dp"
+        android:layout_above="@+id/submitButtonForBodyWorkRecord"
+        android:layout_alignStart="@+id/LabelForBodyWorkWeight"
+        android:layout_marginBottom="23dp"
         android:text=" Date Of Exercise"
-        android:visibility="invisible"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:visibility="invisible" />
 
 
 
@@ -186,8 +200,8 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/LabelForBodyWorkNumberOfRepetition"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
-        android:visibility="invisible"
-        android:text="Submit" />
+        android:layout_marginBottom="25dp"
+        android:text="Submit"
+        android:visibility="invisible" />
 
 </RelativeLayout>

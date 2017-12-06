@@ -35,6 +35,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
     private Button submitForCardio;
 
     private DatePickerDialog.OnDateSetListener dateSetForCardio;
+    private DatePickerDialog.OnDateSetListener dateSetForBodyWork;
 
     private EditText editExerciseNameForCardio;
     private EditText editMinuteOfExerciseForCardio;
@@ -46,6 +47,8 @@ public class addNewSportRecordActivity extends AppCompatActivity {
     private TextView LabelForBodyWorkNumberOfSet;
     private TextView LabelForBodyWorkNumberOfRepetition;
     private TextView LabelForDateOfBodyWork;
+    private TextView LabelForBodyWorkWeight;
+    private EditText InputBodyWorkWeight;
     private TextView InputDateForBodyWorkRecord;
     private Button submitButtonForBodyWorkRecord;
     private EditText InputBodyWorkNumberOfSet;
@@ -56,7 +59,6 @@ public class addNewSportRecordActivity extends AppCompatActivity {
     private Spinner Chest_ExerciseNameForBodyWork_Spinner;
     private Spinner Arm_ExerciseNameForBodyWork_Spinner;
     private Spinner Shoulder_ExerciseNameForBodyWork_Spinner;
-    private Spinner BackMuscle_ExerciseNameForBodyWork_Spinner;
     private Spinner Leg_ExerciseNameForBodyWork_Spinner;
     private String selectedMuscle;
     private String selectedExercise;
@@ -112,15 +114,47 @@ public class addNewSportRecordActivity extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
 
-        MuscleRegionSpinner = (Spinner) findViewById(R.id.MuscleRegion_spinner);
+        Spinner spinner3 = (Spinner) findViewById(R.id.Leg_ExerciseNameForBodyWork_Spinner);
 
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
+                R.array.BodyWork_Exercise_For_Leg, android.R.layout.simple_spinner_item);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner3.setAdapter(adapter3);
+
+        Spinner spinner4 = (Spinner) findViewById(R.id.Shoulder_ExerciseNameForBodyWork_Spinner);
+
+        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
+                R.array.BodyWork_Exercise_For_Shoulder, android.R.layout.simple_spinner_item);
+        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner4.setAdapter(adapter4);
+
+        Spinner spinner5 = (Spinner) findViewById(R.id.Arm_ExerciseNameForBodyWork_Spinner);
+
+        ArrayAdapter<CharSequence> adapter5 = ArrayAdapter.createFromResource(this,
+                R.array.BodyWork_Exercise_For_Arm, android.R.layout.simple_spinner_item);
+        adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner5.setAdapter(adapter5);
+
+
+        MuscleRegionSpinner = (Spinner) findViewById(R.id.MuscleRegion_spinner);
         Chest_ExerciseNameForBodyWork_Spinner = (Spinner) findViewById(R.id.Chest_ExerciseNameForBodyWork_Spinner);
+        Arm_ExerciseNameForBodyWork_Spinner = (Spinner) findViewById(R.id.Arm_ExerciseNameForBodyWork_Spinner);
+        Shoulder_ExerciseNameForBodyWork_Spinner = (Spinner) findViewById(R.id.Shoulder_ExerciseNameForBodyWork_Spinner);
+        Leg_ExerciseNameForBodyWork_Spinner = (Spinner) findViewById(R.id.Leg_ExerciseNameForBodyWork_Spinner);
+
 
         LabelForMuscleRegion = (TextView) findViewById(R.id.LabelForMuscleRegion);
         LabelForBodyWorkTypeExercise = (TextView) findViewById(R.id.LabelForBodyWorkTypeExercise);
 
         LabelForBodyWorkNumberOfSet = (TextView) findViewById(R.id.LabelForBodyWorkNumberOfSet);
         LabelForBodyWorkNumberOfSet.setVisibility(View.INVISIBLE);
+
+        LabelForBodyWorkWeight = (TextView) findViewById(R.id.LabelForBodyWorkWeight);
+        LabelForBodyWorkWeight.setVisibility(View.INVISIBLE);
+
+        InputBodyWorkWeight = (EditText) findViewById(R.id.InputBodyWorkWeight);
+        InputBodyWorkWeight.setVisibility(View.INVISIBLE);
+
 
         InputBodyWorkNumberOfSet = (EditText) findViewById(R.id.InputBodyWorkNumberOfSet);
         InputBodyWorkNumberOfSet.setVisibility(View.INVISIBLE);
@@ -153,12 +187,13 @@ public class addNewSportRecordActivity extends AppCompatActivity {
                     LabelForDateOfBodyWork.setVisibility(View.INVISIBLE);
                     submitButtonForBodyWorkRecord.setVisibility(View.INVISIBLE);
                     InputDateForBodyWorkRecord.setVisibility(View.INVISIBLE);
+                    LabelForBodyWorkWeight.setVisibility(View.INVISIBLE);
+                    InputBodyWorkWeight.setVisibility(View.INVISIBLE);
 
                     if (spinnerInitFlag == true) { //if the program applied the steps for the first time
                         Chest_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                         Arm_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                         Shoulder_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
-                        BackMuscle_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                         Leg_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                     }
                 }
@@ -166,10 +201,8 @@ public class addNewSportRecordActivity extends AppCompatActivity {
 
                     LabelForBodyWorkTypeExercise.setVisibility(View.VISIBLE);
                     Chest_ExerciseNameForBodyWork_Spinner.setVisibility(View.VISIBLE);
-
                     Arm_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                     Shoulder_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
-                    BackMuscle_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                     Leg_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                     selectedExercise = String.valueOf(Chest_ExerciseNameForBodyWork_Spinner.getSelectedItem());
                     makePortionVisible();
@@ -186,19 +219,133 @@ public class addNewSportRecordActivity extends AppCompatActivity {
                         }
                     });
                 }
+                else if (selectedMuscle.equals("Leg")) {
+
+                    LabelForBodyWorkTypeExercise.setVisibility(View.VISIBLE);
+                    Chest_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
+                    Arm_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
+                    Shoulder_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
+                    Leg_ExerciseNameForBodyWork_Spinner.setVisibility(View.VISIBLE);
+                    selectedExercise = String.valueOf(Leg_ExerciseNameForBodyWork_Spinner.getSelectedItem());
+                    makePortionVisible();
+
+                    Leg_ExerciseNameForBodyWork_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedExercise = String.valueOf(Leg_ExerciseNameForBodyWork_Spinner.getSelectedItem());
+                        }
+
+
+
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                            return;
+                        }
+                    });
+                }
+                else if (selectedMuscle.equals("Arm")) {
+
+                    LabelForBodyWorkTypeExercise.setVisibility(View.VISIBLE);
+                    Chest_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
+                    Arm_ExerciseNameForBodyWork_Spinner.setVisibility(View.VISIBLE);
+                    Shoulder_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
+                    Leg_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
+                    selectedExercise = String.valueOf(Arm_ExerciseNameForBodyWork_Spinner.getSelectedItem());
+                    makePortionVisible();
+
+                    Arm_ExerciseNameForBodyWork_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedExercise = String.valueOf(Arm_ExerciseNameForBodyWork_Spinner.getSelectedItem());
+                        }
+
+
+
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                            return;
+                        }
+                    });
+                }
+                else if (selectedMuscle.equals("Shoulder")) {
+
+                    LabelForBodyWorkTypeExercise.setVisibility(View.VISIBLE);
+                    Chest_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
+                    Arm_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
+                    Shoulder_ExerciseNameForBodyWork_Spinner.setVisibility(View.VISIBLE);
+                    Leg_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
+                    selectedExercise = String.valueOf(Shoulder_ExerciseNameForBodyWork_Spinner.getSelectedItem());
+                    makePortionVisible();
+
+                    Shoulder_ExerciseNameForBodyWork_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedExercise = String.valueOf(Shoulder_ExerciseNameForBodyWork_Spinner.getSelectedItem());
+                        }
+
+
+
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                            return;
+                        }
+                    });
+                }
                 spinnerInitFlag = true;
             }
 
             public void onNothingSelected(AdapterView<?> adapterView) {return;}
         });
+        InputDateForBodyWorkRecord.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Calendar cal1 = Calendar.getInstance();
+                int year = cal1.get(Calendar.YEAR);
+                int month = cal1.get(Calendar.MONTH);
+                int day = cal1.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog1 = new DatePickerDialog(addNewSportRecordActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        dateSetForBodyWork,
+                        year, month, day
+                );
+                dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog1.show();
+
+            }
+        });
+
+        dateSetForBodyWork = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;  // since index starts from 0
+                String date1 = year + "-" + month + "-" + day;
+                InputDateForBodyWorkRecord.setText(date1);
+            }
+        };
 
 
+        submitButtonForBodyWorkRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitToBodyWork();
+                FirebaseTransaction.addBodyWork(BodyWork);
 
+                Toast.makeText(getApplicationContext(),
+                        "Sport Record is saved successfully!",
+                        Toast.LENGTH_LONG).show();
 
+                Intent intent1 = new Intent(addNewSportRecordActivity.this, Sports_Activity.class);
+                startActivity(intent1);
+                finish();
 
+            }
+        });
 
-
-
+        cardioButton = findViewById(R.id.Cardio);
+        cardioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.activity_new_cardio_record);
+                OnCreateCardio();
+            }
+        });
     }
     public void makePortionVisible() {
         LabelForBodyWorkNumberOfSet.setVisibility(View.VISIBLE);
@@ -208,6 +355,25 @@ public class addNewSportRecordActivity extends AppCompatActivity {
         LabelForDateOfBodyWork.setVisibility(View.VISIBLE);
         submitButtonForBodyWorkRecord.setVisibility(View.VISIBLE);
         InputDateForBodyWorkRecord.setVisibility(View.VISIBLE);
+        LabelForBodyWorkWeight.setVisibility(View.VISIBLE);
+        InputBodyWorkWeight.setVisibility(View.VISIBLE);
+    }
+    public void createBodyWorkExercise(String s1, String s2, String s3, String s4, String s5) {
+        BodyWork.setNameOfExerciseForBodyWork(s1);
+        BodyWork.setNumberOfSetForBodyWork(s2);
+        BodyWork.setNumberOfRepetitionForBodyWork(s3);
+        BodyWork.setWeightForBodyWork(s4);
+        BodyWork.setExerciseDateForBodyWork(s5);
+    }
+    public void submitToBodyWork() {
+        String input1 = selectedExercise.toString();
+        String input2 = InputBodyWorkNumberOfSet.getText().toString();
+        String input3 = InputBodyWorkNumberOfRepetition.getText().toString();
+        String input4 = InputBodyWorkWeight.getText().toString();
+        String input5 = InputDateForBodyWorkRecord.getText().toString();
+
+        createBodyWorkExercise(input1, input2, input3, input4, input5);
+
     }
 
 
