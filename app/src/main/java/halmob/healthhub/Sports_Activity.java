@@ -10,6 +10,8 @@ import android.widget.Button;
 public class Sports_Activity extends AppCompatActivity {
     private Button addSportRecordButton;
     private Button ListSportRecord;
+    private Button createSportProgram;
+    private Button listSportProgram;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,15 @@ public class Sports_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Sports_Activity.this, addNewSportRecordActivity.class);
+                startActivity(i);
+            }
+        });
+        createSportProgram = findViewById(R.id.createSportProgram);
+        createSportProgram.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Sports_Activity.this, addNewSportProgram.class);
                 startActivity(i);
             }
         });

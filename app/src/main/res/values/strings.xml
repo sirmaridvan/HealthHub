@@ -14,9 +14,41 @@
         <item>Select Muscle Region</item>
         <item>Chest</item>
         <item>Leg</item>
-        <item>Fore Arm</item>
+        <item>Arm</item>
         <item>Shoulder</item>
-        <item>Back Muscle</item>
+    </string-array>
+    <string-array name="BodyWork_Exercise_For_Chest">
+        <item>Selcet Exercise For Chest</item>
+        <item>Barbell Bench Press</item>
+        <item>Flat Bench Dumbbell Press</item>
+        <item>Low-Incline Barbell Bench Press </item>
+        <item>Machine Decline Press </item>
+        <item>Seated Machine Chest Press</item>
+    </string-array>
+    <string-array name="BodyWork_Exercise_For_Leg">
+        <item>Barbell Back Squat</item>
+        <item>Barbell Front Squat</item>
+        <item>Barbell Lunge</item>
+        <item>Hack Squat Sled</item>
+        <item>Leg Press Machine</item>
+        <item>Seated Calf Raise</item>
+    </string-array>
+    <string-array name="BodyWork_Exercise_For_Shoulder">
+        <item>Seated Barbell Shoulder Press</item>
+        <item>Barbell Rear Delt Row</item>
+        <item>Dumbell Overhead Press</item>
+        <item>Arnold Press</item>
+        <item>Dumbbell Side Lateral Raise</item>
+        <item>Dumbbell Rear Lateral Raise</item>
+    </string-array>
+    <string-array name="BodyWork_Exercise_For_Arm">
+        <item>Close-Grip Barbell Bench Press</item>
+        <item>Barbell Curl</item>
+        <item>Cable Wrist Curl</item>
+        <item>Dip Machine</item>
+        <item>Cross Body Hammer Curl</item>
+        <item>Plate Pinch</item>
+
     </string-array>
     <string-array name="food_type_array">
         <item>Select Food Type</item>
