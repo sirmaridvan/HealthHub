@@ -71,25 +71,16 @@
             android:orientation="vertical"
             android:padding="4dp">
 
-            <TextView
-                android:id="@+id/textView2"
+            <Button
+                android:id="@+id/button_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/holo_blue_light"
                 android:fontFamily="sans-serif-medium"
-                android:text="Following"
+                android:text="Comment"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:background="@android:color/holo_blue_light"
-                android:text="102"
-                android:textAlignment="center"
-                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -101,25 +92,16 @@
             android:orientation="vertical"
             android:padding="4dp">
 
-            <TextView
-                android:id="@+id/textView6"
+            <Button
+                android:id="@+id/buton_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/holo_blue_light"
                 android:fontFamily="sans-serif-medium"
-                android:text="Followers"
+                android:text="Detail"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/holo_blue_light"
-                android:text="128"
-                android:textAlignment="center"
-                android:textColor="@android:color/white" />
         </LinearLayout>
     </LinearLayout>
 

@@ -1,5 +1,6 @@
 package halmob.healthhub;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -38,6 +39,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener, Tex
     private TextView portionSizeTextView;
     private TextView samplePortionSizeTextView;
     private Button mealSubmitButton;
+    private String userId;
     Meal NewMeal;
 
 
@@ -45,6 +47,10 @@ public class MealActivity extends AppCompatActivity implements FoodListener, Tex
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal);
+
+        Intent intent = getIntent(); // gets the previously created intent
+        userId = intent.getStringExtra("userId");
+        FirebaseTransaction.follow(userId);
         FirebaseTransaction.setFoodListener(this);
         FirebaseTransaction.getFoods();
         spinnerInitFlag = false;
