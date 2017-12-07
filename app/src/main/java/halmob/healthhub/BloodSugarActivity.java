@@ -3,6 +3,8 @@ package halmob.healthhub;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,7 +18,7 @@ import java.util.List;
 import halmob.healthhub.Models.BloodSugar;
 import halmob.healthhub.EventListeners.BloodSugarListener;
 
-public class BloodSugarActivity extends AppCompatActivity {
+public class BloodSugarActivity extends AppCompatActivity implements TextWatcher {
     private EditText editTextSugarValue;
     private Spinner hungerSituationSpinner;
     private EditText editTextHungerSituation;
@@ -34,6 +36,7 @@ public class BloodSugarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_blood_sugar);
 
         editTextSugarValue = (EditText) findViewById(R.id.blood_sugar_input);
+        editTextSugarValue.addTextChangedListener(this);
 
 
         //Spinner definition
@@ -55,6 +58,7 @@ public class BloodSugarActivity extends AppCompatActivity {
 
 
         buttonSubmit = (Button) findViewById(R.id.blood_sugar_submit_button);
+        buttonSubmit.setEnabled(false);
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +71,39 @@ public class BloodSugarActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        int intS = 0;
+        if(s.toString().trim().length() != 0)
+            intS = Integer.parseInt(s.toString());
+        if(s.toString().trim().length()==0){
+            buttonSubmit.setEnabled(false);
+            editTextSugarValue.setError("This field can not be empty!");
+        }
+
+        else if (s.toString().trim().length() >= 4 && s.toString().contains(".") == false ){
+            buttonSubmit.setEnabled(false);
+            editTextSugarValue.setError("The entered dose is too high!");
+        }
+
+        else if(intS >= 600 || intS < 30 ) {
+            buttonSubmit.setEnabled(false);
+            editTextSugarValue.setError("The entered dose is not valid!");
+        }
+
+        else {
+            buttonSubmit.setEnabled(true);
+        }
+
+    }
+
+    public void afterTextChanged(Editable s) {
+    }
+
 
 
     public void submitBloodSugar()
