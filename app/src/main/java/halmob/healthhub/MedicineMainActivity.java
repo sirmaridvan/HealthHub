@@ -22,6 +22,12 @@ public class MedicineMainActivity extends AppCompatActivity {
         userId = intent.getStringExtra("userId");
         FirebaseTransaction.follow(userId);
 
+        // supervisor ise add button görünmez olur
+        if(FirebaseUtil.userType.equals("Supervisor")){
+            addButton.setVisibility(View.GONE);
+            addProspectusButton.setVisibility(View.GONE);
+        }
+
         addButton = findViewById(R.id.addButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
