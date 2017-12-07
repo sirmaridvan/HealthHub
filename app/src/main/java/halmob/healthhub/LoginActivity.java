@@ -1,12 +1,11 @@
 package halmob.healthhub;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -43,7 +42,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private Button signOutButton;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
-    private TextView signTextView;
     public static GoogleApiClient mGoogleApiClient;
     private FirebaseAuth mAuth;
     private CatLoadingView mView;
@@ -100,7 +98,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         signInButton.setOnClickListener(this);
         signOutButton = findViewById(R.id.signOutButton);
         signOutButton.setOnClickListener(this);
-        signTextView = findViewById(R.id.signTextView);
     }
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d(TAG, "handleFacebookAccessToken:" + token);
@@ -226,9 +223,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     }
     private void startNextActivity(String userType){
         if(userType.equals("Healthman")) {
+            FirebaseUtil.userType="Healthman";
             Intent intent = new Intent(this, MainAcitivity.class);
             startActivity(intent);
         }else{
+            FirebaseUtil.userType="Supervisor";
             Intent intent = new Intent(this, UserSearchActivity.class);
             startActivity(intent);
         }

@@ -1,34 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout
     android:layout_height="match_parent"
-    tools:context="halmob.healthhub.LoginActivity">
+    android:layout_width="match_parent"
+    android:background="#99c2cf"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <ImageView
+        android:id="@+id/healthhub_icon"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/icon_healthhub"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+
+        />
+
 
     <TextView
+        android:id="@+id/heathhub_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:id="@+id/signTextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/signInButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign In" />
+        android:text="Login to HealthHub"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="28sp"
+        android:textColor="#ffffff"
+        />
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="207dp" />
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:layout_marginTop="50dp" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/signInButton"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Sign In" />
+
+
     <Button
         android:id="@+id/signOutButton"
         android:layout_width="wrap_content"
@@ -36,4 +53,8 @@
         android:text="Sign Out"
         android:visibility="invisible"/>
 
-</android.support.constraint.ConstraintLayout>
+
+
+
+
+</LinearLayout>
