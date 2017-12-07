@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="halmob.healthhub.MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        >
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/icon_healthhub"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home Screen"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/track_medicine"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:text="Medicine Tracker"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="#24bfd4"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/diabetes_button"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:text="Diabetes Page"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="#db964c"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:visibility="visible"
+        />
+
+    <Button
+        android:id="@+id/meal_page_button"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:text="Meal Page"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:layout_marginTop="-55dp"
+        android:background="#db964c"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        />
+
+    <Button
+        android:id="@+id/sportsPage_button"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:text="Sports Page"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="#91c765"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/heart_rate_button"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:text="Hearth Rate Monitor"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="#cc3908"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/medical_analysis_page"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:text="Medical Analysis"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="#e57373"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/step_counter"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:text="Step Counter"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="#ff6f00"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        />
+
+
+    <Button
+        android:id="@+id/follow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Follow"
+        android:visibility="invisible"/>
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOG OUT"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/user_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="USER SEARCH"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/wait_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wait"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/profilePage_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wait"
+        android:visibility="invisible"/>
+
+</LinearLayout>

@@ -224,7 +224,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private void startNextActivity(String userType){
         if(userType.equals("Healthman")) {
             FirebaseUtil.userType="Healthman";
-            Intent intent = new Intent(this, MainAcitivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }else{
             FirebaseUtil.userType="Supervisor";

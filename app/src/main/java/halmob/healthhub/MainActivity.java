@@ -11,17 +11,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.roger.catloadinglibrary.CatLoadingView;
 
-public class MainAcitivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Button followButton;
     private Button stepCounter;
     private Button trackMedicineButton;
     private Button diabetesButton;
+    private Button mealButton;
     private Button sportsPageButton;
     private Button profilePageButton;
     private Button logoutButton;
-    private Button sampleRead;
-    private Button cameraDemo;
-    private Button Report;
     private Button MedicalAnalysisButton;
     private Button HearthRateButton;
     private Button UserSearch;
@@ -33,7 +31,7 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_main);
         mView = new CatLoadingView();
         waitAnim = findViewById(R.id.wait_animation);
         waitAnim.setOnClickListener(this);
@@ -48,18 +46,14 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
         HearthRateButton.setOnClickListener(this);
         diabetesButton = findViewById(R.id.diabetes_button);
         diabetesButton.setOnClickListener(this);
+        mealButton = findViewById(R.id.meal_page_button);
+        mealButton.setOnClickListener(this);
         sportsPageButton = findViewById(R.id.sportsPage_button);
         sportsPageButton.setOnClickListener(this);
         profilePageButton = findViewById(R.id.profilePage_button);
         profilePageButton.setOnClickListener(this);
         logoutButton = findViewById(R.id.logout_button);
         logoutButton.setOnClickListener(this);
-        sampleRead = findViewById(R.id.sample_button);
-        sampleRead.setOnClickListener(this);
-        cameraDemo = findViewById(R.id.camera_demo_button);
-        cameraDemo.setOnClickListener(this);
-        Report = findViewById(R.id.report_button);
-        Report.setOnClickListener(this);
         MedicalAnalysisButton = findViewById(R.id.medical_analysis_page);
         MedicalAnalysisButton.setOnClickListener(this);
         UserSearch = findViewById(R.id.user_search_button);
@@ -99,18 +93,6 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
                 intent.putExtra("userId",FirebaseUtil.getCurrentUserId());
                 startActivity(intent);
                 break;
-            case R.id.sample_button:
-                intent = new Intent(this, SampleReadActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.camera_demo_button:
-                intent = new Intent(this, CameraDemoActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.report_button:
-                intent = new Intent(this, ReportActivity.class);
-                startActivity(intent);
-                break;
             case R.id.logout_button:
                 signOut();
                 break;
@@ -128,6 +110,11 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.heart_rate_button:
                 intent = new Intent(this, HeartRateMonitorActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.meal_button:
+                // intent'in içerisine yeni yapılacak activity konacak: show meal add meal içerecek
+                intent = new Intent(this, MealActivity.class);
                 startActivity(intent);
                 break;
         }
