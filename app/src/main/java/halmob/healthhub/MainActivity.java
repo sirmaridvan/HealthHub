@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         Intent intent = getIntent(); // gets the previously created intent
         userId = intent.getStringExtra("userId");
-        FirebaseTransaction.follow(userId);
+
         if(userId == null){
             userId=FirebaseUtil.getCurrentUserId();
         }

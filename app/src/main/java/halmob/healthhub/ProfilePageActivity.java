@@ -34,7 +34,7 @@ public class ProfilePageActivity extends AppCompatActivity implements View.OnCli
         // getIntent() is a method from the started activity
         Intent intent = getIntent(); // gets the previously created intent
         userId = intent.getStringExtra("userId");
-        FirebaseTransaction.follow(userId);
+
         /*  userId kimin profil sayfasında olduğun bilgisini tutar.
             Asıl kullanıcın id'si için 'FirebaseUtil.getCurrentUserId()' fonksiyonu çağrılabilir.
             Asıl kullanıcı sayfasında bulunduğu kişiyi takip etmek isterse, takip etme fonksiyonu 'FirebaseTransaction.follow(userId);'

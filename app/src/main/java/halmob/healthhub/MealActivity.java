@@ -50,7 +50,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener, Tex
 
         Intent intent = getIntent(); // gets the previously created intent
         userId = intent.getStringExtra("userId");
-        FirebaseTransaction.follow(userId);
+
         FirebaseTransaction.setFoodListener(this);
         FirebaseTransaction.getFoods();
         spinnerInitFlag = false;

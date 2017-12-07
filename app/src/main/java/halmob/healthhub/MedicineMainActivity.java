@@ -20,7 +20,7 @@ public class MedicineMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medicine_main);
         Intent intent = getIntent(); // gets the previously created intent
         userId = intent.getStringExtra("userId");
-        FirebaseTransaction.follow(userId);
+
 
         // supervisor ise add button görünmez olur
         if(FirebaseUtil.userType.equals("Supervisor")){

@@ -22,7 +22,7 @@ public class MedicalAnalysisActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medical_analysis);
         Intent intent = getIntent(); // gets the previously created intent
         userId = intent.getStringExtra("userId");
-        FirebaseTransaction.follow(userId);
+
 
         addLayout = findViewById(R.id.addLayout1);
 

@@ -21,7 +21,6 @@ public class Sports_Activity extends AppCompatActivity {
 
         Intent intent = getIntent(); // gets the previously created intent
         userId = intent.getStringExtra("userId");
-        FirebaseTransaction.follow(userId);
 
         ListSportRecord = findViewById(R.id.sportRecord_Button);
         ListSportRecord.setOnClickListener(new View.OnClickListener() {
