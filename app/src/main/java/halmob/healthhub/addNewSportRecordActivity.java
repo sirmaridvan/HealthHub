@@ -16,6 +16,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -32,7 +34,6 @@ public class addNewSportRecordActivity extends AppCompatActivity {
 
     private Button cardioButton;
     private Button bodyWorkButton;
-    private Button submitForCardio;
 
     private DatePickerDialog.OnDateSetListener dateSetForCardio;
     private DatePickerDialog.OnDateSetListener dateSetForBodyWork;
@@ -53,8 +54,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
     private Button submitButtonForBodyWorkRecord;
     private EditText InputBodyWorkNumberOfSet;
     private EditText InputBodyWorkNumberOfRepetition;
-
-    private boolean spinnerInitFlag;
+    private boolean spinnerInitFlagForBodyWork;
     private Spinner MuscleRegionSpinner;
     private Spinner Chest_ExerciseNameForBodyWork_Spinner;
     private Spinner Arm_ExerciseNameForBodyWork_Spinner;
@@ -62,6 +62,19 @@ public class addNewSportRecordActivity extends AppCompatActivity {
     private Spinner Leg_ExerciseNameForBodyWork_Spinner;
     private String selectedMuscle;
     private String selectedExercise;
+
+    private TextView LabelForCardioTypeExercise;
+    private TextView LabelForCardioMinute;
+    private TextView LabelForCardioBurnedCalories;
+    private TextView LabelForDateOfCardio;
+    private String selectedCardioExercise;
+    private Spinner CardioExercises_Spinner;
+    private boolean spinnerInitFlagForCardio;
+    private EditText InputCardioMinute;
+    private EditText InputCardioBurnedCalories;
+    private TextView InputDateForCardiRecordRecord;
+    private Button submitButtonForCardioRecord;
+
 
 
     SportForBodyWork BodyWork;
@@ -77,6 +90,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setContentView(R.layout.activity_new_cardio_record);
+                OnCreateCardio();
             }
         });
 
@@ -97,7 +111,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
     protected void OnCreateBodyWork(){
         setContentView(R.layout.activity_new_bodywork_record);
         BodyWork = new SportForBodyWork();
-        spinnerInitFlag = false;
+        spinnerInitFlagForBodyWork = false;
 
 
         Spinner spinner = (Spinner) findViewById(R.id.MuscleRegion_spinner);
@@ -190,7 +204,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
                     LabelForBodyWorkWeight.setVisibility(View.INVISIBLE);
                     InputBodyWorkWeight.setVisibility(View.INVISIBLE);
 
-                    if (spinnerInitFlag == true) { //if the program applied the steps for the first time
+                    if (spinnerInitFlagForBodyWork == true) { //if the program applied the steps for the first time
                         Chest_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                         Arm_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                         Shoulder_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
@@ -205,7 +219,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
                     Shoulder_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                     Leg_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                     selectedExercise = String.valueOf(Chest_ExerciseNameForBodyWork_Spinner.getSelectedItem());
-                    makePortionVisible();
+                    makePortionVisibleForBodyWork();
 
                     Chest_ExerciseNameForBodyWork_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -227,7 +241,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
                     Shoulder_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                     Leg_ExerciseNameForBodyWork_Spinner.setVisibility(View.VISIBLE);
                     selectedExercise = String.valueOf(Leg_ExerciseNameForBodyWork_Spinner.getSelectedItem());
-                    makePortionVisible();
+                    makePortionVisibleForBodyWork();
 
                     Leg_ExerciseNameForBodyWork_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -249,7 +263,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
                     Shoulder_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                     Leg_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                     selectedExercise = String.valueOf(Arm_ExerciseNameForBodyWork_Spinner.getSelectedItem());
-                    makePortionVisible();
+                    makePortionVisibleForBodyWork();
 
                     Arm_ExerciseNameForBodyWork_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -271,7 +285,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
                     Shoulder_ExerciseNameForBodyWork_Spinner.setVisibility(View.VISIBLE);
                     Leg_ExerciseNameForBodyWork_Spinner.setVisibility(View.INVISIBLE);
                     selectedExercise = String.valueOf(Shoulder_ExerciseNameForBodyWork_Spinner.getSelectedItem());
-                    makePortionVisible();
+                    makePortionVisibleForBodyWork();
 
                     Shoulder_ExerciseNameForBodyWork_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -285,7 +299,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
                         }
                     });
                 }
-                spinnerInitFlag = true;
+                spinnerInitFlagForBodyWork = true;
             }
 
             public void onNothingSelected(AdapterView<?> adapterView) {return;}
@@ -347,7 +361,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
             }
         });
     }
-    public void makePortionVisible() {
+    public void makePortionVisibleForBodyWork() {
         LabelForBodyWorkNumberOfSet.setVisibility(View.VISIBLE);
         InputBodyWorkNumberOfSet.setVisibility(View.VISIBLE);
         LabelForBodyWorkNumberOfRepetition.setVisibility(View.VISIBLE);
@@ -376,11 +390,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-    //////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
     //FOR CARDIO
 //////////////////////////////////////////////////////////////////////////////
     protected void OnCreateCardio() {
@@ -388,12 +398,65 @@ public class addNewSportRecordActivity extends AppCompatActivity {
 
     Cardio = new SportForCardio();
 
-    editExerciseNameForCardio = (EditText) findViewById(R.id.InputCardioExerciseName);
-    editMinuteOfExerciseForCardio = (EditText) findViewById(R.id.InputCardioMinute);
-    editBurnedCaloriesForCardio = (EditText) findViewById(R.id.InputCardioBurnedCalories);
-    editExerciseDateForCardio = (TextView) findViewById(R.id.InputDateForCardiRecordRecord);
+    Spinner spinnerForCardioExercise = (Spinner) findViewById(R.id.CardioExercises_Spinner);
 
-    editExerciseDateForCardio.setOnClickListener(new View.OnClickListener() {
+    ArrayAdapter<CharSequence> adapterForCardioExercise = ArrayAdapter.createFromResource(this,
+                R.array.Cardio_Exercise, android.R.layout.simple_spinner_item);
+    adapterForCardioExercise.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    spinnerForCardioExercise.setAdapter(adapterForCardioExercise);
+
+    CardioExercises_Spinner = (Spinner) findViewById(R.id.CardioExercises_Spinner);
+
+    LabelForCardioTypeExercise = (TextView) findViewById(R.id.LabelForCardioTypeExercise);
+
+    InputCardioMinute = (EditText) findViewById(R.id.InputCardioMinute);
+    InputCardioMinute.setVisibility(View.INVISIBLE);
+
+    InputCardioBurnedCalories = (EditText) findViewById(R.id.InputCardioBurnedCalories);
+    InputCardioBurnedCalories.setVisibility(View.INVISIBLE);
+
+    InputDateForCardiRecordRecord = (TextView) findViewById(R.id.InputDateForCardiRecordRecord);
+    InputDateForCardiRecordRecord.setVisibility(View.INVISIBLE);
+
+    LabelForDateOfCardio = (TextView) findViewById(R.id.LabelForDateOfCardio);
+    LabelForDateOfCardio.setVisibility(View.INVISIBLE);
+
+    LabelForCardioBurnedCalories = (TextView) findViewById(R.id.LabelForCardioBurnedCalories);
+    LabelForCardioBurnedCalories.setVisibility(View.INVISIBLE);
+
+    LabelForCardioMinute = (TextView)  findViewById(R.id.LabelForCardioMinute);
+    LabelForCardioMinute.setVisibility(View.INVISIBLE);
+
+    submitButtonForCardioRecord = (Button) findViewById(R.id.submitButtonForCardioRecord);
+    submitButtonForCardioRecord.setVisibility(View.INVISIBLE);
+
+
+
+        CardioExercises_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            selectedCardioExercise = String.valueOf(CardioExercises_Spinner.getSelectedItem());
+
+            if (selectedCardioExercise.equals("Select Cardio Exercise")) {
+                InputCardioMinute.setVisibility(View.INVISIBLE);
+                InputCardioBurnedCalories.setVisibility(View.INVISIBLE);
+                InputDateForCardiRecordRecord.setVisibility(View.INVISIBLE);
+                LabelForDateOfCardio.setVisibility(View.INVISIBLE);
+                LabelForCardioBurnedCalories.setVisibility(View.INVISIBLE);
+                LabelForCardioMinute.setVisibility(View.INVISIBLE);
+                submitButtonForCardioRecord.setVisibility(View.INVISIBLE);
+
+            }
+            else{
+                makePortionVisibleForCardio();
+
+            }
+        }
+            public void onNothingSelected(AdapterView<?> adapterView) {return;}
+    });
+
+
+
+    InputDateForCardiRecordRecord.setOnClickListener(new View.OnClickListener() {
 
         @Override
         public void onClick(View view) {
@@ -418,12 +481,11 @@ public class addNewSportRecordActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;  // since index starts from 0
                 String date1 = year + "-" + month + "-" + day;
-                editExerciseDateForCardio.setText(date1);
+                InputDateForCardiRecordRecord.setText(date1);
             }
         };
-
-    submitForCardio = (Button) findViewById(R.id.button_submitForCardioRecord);
-    submitForCardio.setOnClickListener(new View.OnClickListener() {
+    submitButtonForCardioRecord = (Button) findViewById(R.id.submitButtonForCardioRecord);
+    submitButtonForCardioRecord.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             submitToCardio();
@@ -449,14 +511,11 @@ public class addNewSportRecordActivity extends AppCompatActivity {
         }
     });
 }
-    public void CardioRead(List<SportForCardio> CardioList){
-
-    }
     public void submitToCardio() {
-        String input1 = editExerciseNameForCardio.getText().toString();
-        String input2 = editMinuteOfExerciseForCardio.getText().toString();
-        String input3 = editBurnedCaloriesForCardio.getText().toString();
-        String input4 = editExerciseDateForCardio.getText().toString();
+        String input1 = selectedCardioExercise.toString();
+        String input2 = InputCardioMinute.getText().toString();
+        String input3 = InputCardioBurnedCalories.getText().toString();
+        String input4 = InputDateForCardiRecordRecord.getText().toString();
 
         createCardioExercise(input1, input2, input3, input4);
 
@@ -466,6 +525,15 @@ public class addNewSportRecordActivity extends AppCompatActivity {
         Cardio.setMinuteOfExerciseForCardio(s2);
         Cardio.setBurnedCaloriesForCardio(s3);
         Cardio.setExerciseDateForCardio(s4);
+    }
+    public void makePortionVisibleForCardio(){
+        InputCardioMinute.setVisibility(View.VISIBLE);
+        InputCardioBurnedCalories.setVisibility(View.VISIBLE);
+        InputDateForCardiRecordRecord.setVisibility(View.VISIBLE);
+        LabelForDateOfCardio.setVisibility(View.VISIBLE);
+        LabelForCardioBurnedCalories.setVisibility(View.VISIBLE);
+        LabelForCardioMinute.setVisibility(View.VISIBLE);
+        submitButtonForCardioRecord.setVisibility(View.VISIBLE);
     }
     ////////////////////////////////////////////////////////
 }

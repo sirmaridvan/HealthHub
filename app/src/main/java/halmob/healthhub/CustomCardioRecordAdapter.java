@@ -17,22 +17,22 @@ import halmob.healthhub.Models.SportForCardio;
 public class CustomCardioRecordAdapter extends ArrayAdapter<SportForCardio> {
 
     CustomCardioRecordAdapter(Context context, List<SportForCardio> cardioList) {
-        super(context, R.layout.custom_row, cardioList);
+        super(context, R.layout.custom_cardiolist, cardioList);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View customView = inflater.inflate(R.layout.custom_row, parent, false);
+        View customView = inflater.inflate(R.layout.custom_cardiolist, parent, false);
 
         SportForCardio singleCardioRecordElement = getItem(position);
 
 
-        TextView textView = (TextView) customView.findViewById(R.id.medInfo);
-        ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
+        TextView textView = (TextView) customView.findViewById(R.id.cardiolist);
+        ImageView imageView = (ImageView) customView.findViewById(R.id.cardioPhoto);
 
-        imageView.setImageResource(R.drawable.pills);
+        imageView.setImageResource(R.drawable.cardioicon);
         textView.setText("Name: " + singleCardioRecordElement.getNameOfExerciseForCardio() + "\n" +
                 "Minute: " + singleCardioRecordElement.getMinuteOfExerciseForCardio() + "\n" +
                 "Calorie: " + singleCardioRecordElement.getBurnedCaloriesForCardio() + "\n" +

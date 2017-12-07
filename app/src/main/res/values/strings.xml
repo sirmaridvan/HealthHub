@@ -17,8 +17,16 @@
         <item>Arm</item>
         <item>Shoulder</item>
     </string-array>
+    <string-array name="Cardio_Exercise">
+        <item>Select Cardio Exercise</item>
+        <item>Walking</item>
+        <item>Running</item>
+        <item>Cycling</item>
+        <item>Rowing</item>
+        <item>Swimming</item>
+        <item>Jumping Rope</item>
+    </string-array>
     <string-array name="BodyWork_Exercise_For_Chest">
-        <item>Selcet Exercise For Chest</item>
         <item>Barbell Bench Press</item>
         <item>Flat Bench Dumbbell Press</item>
         <item>Low-Incline Barbell Bench Press </item>

@@ -4,14 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@android:color/holo_blue_light"
-        android:gravity="center"
-        android:text="Sports Page"
-        android:id="@+id/textView7" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -115,7 +107,7 @@
 
     <EditText
         android:id="@+id/InputBodyWorkNumberOfSet"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/LabelForBodyWorkNumberOfSet"
         android:layout_marginStart="10dp"
@@ -139,7 +131,7 @@
 
     <EditText
         android:id="@+id/InputBodyWorkNumberOfRepetition"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/LabelForBodyWorkNumberOfRepetition"
         android:layout_alignStart="@+id/InputBodyWorkNumberOfSet"
@@ -163,9 +155,9 @@
     <EditText
         android:id="@+id/InputBodyWorkWeight"
         android:layout_width="100dp"
-        android:layout_height="28dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/LabelForBodyWorkWeight"
         android:layout_alignStart="@+id/InputBodyWorkNumberOfRepetition"
-        android:layout_alignTop="@+id/LabelForBodyWorkWeight"
         android:hint=""
         android:imeOptions="actionNext"
         android:inputType="text"
@@ -177,7 +169,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/submitButtonForBodyWorkRecord"
         android:layout_alignStart="@+id/LabelForBodyWorkWeight"
-        android:layout_marginBottom="23dp"
+        android:layout_marginBottom="21dp"
         android:text=" Date Of Exercise"
         android:textSize="20sp"
         android:visibility="invisible" />

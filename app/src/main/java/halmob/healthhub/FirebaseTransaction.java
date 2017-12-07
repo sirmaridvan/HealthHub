@@ -322,7 +322,7 @@ public class FirebaseTransaction {
                     SportForCardio Cardio = postSnapshot.getValue(SportForCardio.class);
                     CardioList.add(Cardio);
                 }
-                if (mDrugListener != null) {
+                if (mCardioListener != null) {
                     mCardioListener.CardioRead(CardioList);
                 }
             }
