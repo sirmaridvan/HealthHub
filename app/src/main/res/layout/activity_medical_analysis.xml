@@ -16,34 +16,60 @@
         android:layout_marginTop="24dp"
         />
 
-    <Button
-        android:id="@+id/addAnalysis"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="48dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:text="Add Medical Analysis"
-        android:textSize="24dp"
-        android:textAllCaps="false"
-        android:background="#FF1744"
-        android:textColor="#FFFFFF"
-        />
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:id="@+id/showLayout1"
+        >
 
-    <Button
-        android:id="@+id/showAnalysis"
-        android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/showAnalysis_1"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:scaleType="centerInside"
+            android:background="#ffffff"
+            android:src="@drawable/medical_analysis_icon" />
+
+        <Button
+            android:id="@+id/showAnalysis_2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="#91c765"
+            android:textAllCaps="true"
+            android:text="Show Medical Analysis" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:text="Show Medical Analysis"
-        android:textSize="24dp"
-        android:textAllCaps="false"
-        android:background="#FF1744"
-        android:textColor="#FFFFFF"
-        />
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:id="@+id/addLayout1"
+        >
+
+        <ImageButton
+            android:id="@+id/addAnalysis_1"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:scaleType="centerInside"
+            android:background="#ffffff"
+            android:src="@drawable/add_record_icon" />
+
+        <Button
+            android:id="@+id/addAnalysis_2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="#24bfd4"
+            android:textAllCaps="true"
+            android:text="Add Medical Analysis" />
+    </LinearLayout>
 
 </LinearLayout>
