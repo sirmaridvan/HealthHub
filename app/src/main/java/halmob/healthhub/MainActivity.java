@@ -27,6 +27,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private DatabaseReference mPersonRef;
     private Intent intent;
     private CatLoadingView mView;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         UserSearch = findViewById(R.id.user_search_button);
         UserSearch.setOnClickListener(this);
 
+        Intent intent = getIntent(); // gets the previously created intent
+        userId = intent.getStringExtra("userId");
+        FirebaseTransaction.follow(userId);
+        if(userId == null){
+            userId=FirebaseUtil.getCurrentUserId();
+        }
+
         // camera permission
         if (checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{android.Manifest.permission.CAMERA}, 111);
@@ -74,18 +82,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.step_counter:
                 intent = new Intent(this, StepCounterActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
                 break;
             case R.id.track_medicine:
                 intent = new Intent(this, MedicineMainActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
                 break;
             case R.id.diabetes_button:
                 intent = new Intent(this, DiabActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
                 break;
             case R.id.sportsPage_button:
                 intent = new Intent(this, Sports_Activity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
                 break;
             case R.id.profilePage_button:
@@ -102,6 +114,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.medical_analysis_page:
                 intent = new Intent(this, MedicalAnalysisActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
                 break;
             case R.id.wait_animation:
@@ -110,11 +123,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.heart_rate_button:
                 intent = new Intent(this, HeartRateMonitorActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
                 break;
             case R.id.meal_button:
                 // intent'in içerisine yeni yapılacak activity konacak: show meal add meal içerecek
                 intent = new Intent(this, MealActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
                 break;
         }

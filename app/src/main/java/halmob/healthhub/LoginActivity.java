@@ -239,6 +239,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         person.setPhotoUrl(firebaseUser.getPhotoUrl() != null ? firebaseUser.getPhotoUrl().toString() : null);
         person.setEmail(firebaseUser.getEmail());
         person.setUid(firebaseUser.getUid());
+        if(firebaseUser.getUid().equals("dunLf06mGyWkBrS7iacGVxtTNC73")){
+            person.setUserType("Supervisor");
+        }
         //kullanıcı tipi ve diğer fazladan bilgiler burada eklenecek. (Hastalıklar vs gibi)
         FirebaseTransaction.addUser(person);
         FirebaseTransaction.getCurrentUserType();

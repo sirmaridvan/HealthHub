@@ -9,17 +9,22 @@ import android.widget.Button;
 public class MedicalAnalysisActivity extends AppCompatActivity {
     private Button addButton;
     private Button showButton;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_analysis);
+        Intent intent = getIntent(); // gets the previously created intent
+        userId = intent.getStringExtra("userId");
+        FirebaseTransaction.follow(userId);
 
         addButton = findViewById(R.id.addAnalysis);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MedicalAnalysisActivity.this, AddAnalysisActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
             }
         });
@@ -29,6 +34,7 @@ public class MedicalAnalysisActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MedicalAnalysisActivity.this, MedicalAnalysisReportsActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
             }
         });
