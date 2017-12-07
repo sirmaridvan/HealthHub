@@ -130,10 +130,9 @@ public class FirebaseTransaction {
     public static void setDrugListenerListener(DrugListener listen) {
         mDrugListener = listen;
     }
-    public static void getDrugs(){
-        final String currentUserId = FirebaseUtil.getCurrentUserId();
+    public static void getDrugs(String userId){
         final List<Drug> drugList = new ArrayList<Drug>();
-        FirebaseUtil.getPeopleRef().child(currentUserId).child("drugs").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseUtil.getPeopleRef().child(userId).child("drugs").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
@@ -198,10 +197,9 @@ public class FirebaseTransaction {
     public static void setmBloodSugarListener(BloodSugarListener listen) {
         mBloodSugarListener = listen;
     }
-    public static void getBloodSugars(){
-        final String currentUserId = FirebaseUtil.getCurrentUserId();
+    public static void getBloodSugars(String userId){
         final List<BloodSugar> bloodSugarList = new ArrayList<BloodSugar>();
-        FirebaseUtil.getPeopleRef().child(currentUserId).child("bloodSugars").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseUtil.getPeopleRef().child(userId).child("bloodSugars").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
@@ -238,10 +236,10 @@ public class FirebaseTransaction {
     public static void setmInsulinDoseListener(InsulinDoseListener listen) {
         mInsulinDoseListener = listen;
     }
-    public static void getInsulinDoses(){
-        final String currentUserId = FirebaseUtil.getCurrentUserId();
+    public static void getInsulinDoses(String userId){
+        //final String userId = FirebaseUtil.getCurrentUserId();
         final List<InsulinDose> insulinDoseList = new ArrayList<InsulinDose>();
-        FirebaseUtil.getPeopleRef().child(currentUserId).child("insulinDoses").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseUtil.getPeopleRef().child(userId).child("insulinDoses").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
@@ -278,10 +276,9 @@ public class FirebaseTransaction {
     public static void setBodyWorkListenerListener(BodyWorkListener listen) {
         mBodyWorkListener = listen;
     }
-    public static void getBodyWork(){
-        final String currentUserId = FirebaseUtil.getCurrentUserId();
+    public static void getBodyWork(String userId){
         final List<SportForBodyWork> BodyWorkList = new ArrayList<SportForBodyWork>();
-        FirebaseUtil.getPeopleRef().child(currentUserId).child("bodyWork").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseUtil.getPeopleRef().child(userId).child("bodyWork").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
@@ -316,10 +313,9 @@ public class FirebaseTransaction {
     public static void setCardioListenerListener(CardioListener listen) {
         mCardioListener = listen;
     }
-    public static void getCardio(){
-        final String currentUserId = FirebaseUtil.getCurrentUserId();
+    public static void getCardio(String userId){
         final List<SportForCardio> CardioList = new ArrayList<>();
-        FirebaseUtil.getPeopleRef().child(currentUserId).child("cardio").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseUtil.getPeopleRef().child(userId).child("cardio").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
@@ -463,10 +459,10 @@ public class FirebaseTransaction {
     public static void setmMealListener(MealListener listen) {
         mMealListener = listen;
     }
-    public static void getMeals(){
-        final String currentUserId = FirebaseUtil.getCurrentUserId();
+    public static void getMeals(String userId){
+        //final String userId = FirebaseUtil.getCurrentUserId();
         final List<Meal> mealList = new ArrayList<Meal>();
-        FirebaseUtil.getPeopleRef().child(currentUserId).child("meal").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseUtil.getPeopleRef().child(userId).child("meal").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
@@ -493,10 +489,9 @@ public class FirebaseTransaction {
         mReportListener = listen;
     }
 
-    public static void getReports(){
+    public static void getReports(String userId){
         final List<Report> reportList = new ArrayList<Report>();
-        final String currentUserId = FirebaseUtil.getCurrentUserId();
-        FirebaseUtil.getPeopleRef().child(currentUserId).child("medicalAnalysis").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseUtil.getPeopleRef().child(userId).child("medicalAnalysis").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot reportSnapshot: dataSnapshot.getChildren()) {

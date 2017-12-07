@@ -1,5 +1,6 @@
 package halmob.healthhub;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListAdapter;
@@ -18,7 +19,12 @@ public class MedicineListActivity extends AppCompatActivity implements DrugListe
         setContentView(R.layout.activity_medicine_list);
 
         FirebaseTransaction.setDrugListenerListener(this);
-        FirebaseTransaction.getDrugs();
+        Intent myIntent = getIntent(); // gets the previously created intent
+        String userId = myIntent.getStringExtra("userId");
+        if(userId == null){
+            userId=FirebaseUtil.getCurrentUserId();
+        }
+        FirebaseTransaction.getDrugs(userId);
     }
 
     @Override

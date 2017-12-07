@@ -1,5 +1,6 @@
 package halmob.healthhub;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -47,8 +48,15 @@ public class ListSportRecordActivity extends AppCompatActivity implements BodyWo
     protected void ListBodyWorkOnCreate() {
         setContentView(R.layout.activity_bodywork_record_list);
 
+        setContentView(R.layout.activity_insulin_dose_list);
+        Intent myIntent = getIntent(); // gets the previously created intent
+        String userId = myIntent.getStringExtra("userId");
+        if(userId == null){
+            userId=FirebaseUtil.getCurrentUserId();
+        }
+
         FirebaseTransaction.setBodyWorkListenerListener(this);
-        FirebaseTransaction.getBodyWork();
+        FirebaseTransaction.getBodyWork(userId);
 
         listCardioRecordButton = findViewById(R.id.ListCardioRecord);
         listCardioRecordButton.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +90,12 @@ public class ListSportRecordActivity extends AppCompatActivity implements BodyWo
         setContentView(R.layout.activity_list_cardio_sport_record);
 
         FirebaseTransaction.setCardioListenerListener(this);
-        FirebaseTransaction.getCardio();
+        Intent myIntent = getIntent(); // gets the previously created intent
+        String userId = myIntent.getStringExtra("userId");
+        if(userId == null){
+            userId=FirebaseUtil.getCurrentUserId();
+        }
+        FirebaseTransaction.getCardio(userId);
 
         listCardioRecordButton = findViewById(R.id.ListCardioRecord);
         listCardioRecordButton.setOnClickListener(new View.OnClickListener() {

@@ -4,6 +4,7 @@ package halmob.healthhub;
  * Created by hakan on 19.11.2017.
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListAdapter;
@@ -20,9 +21,13 @@ public class BloodSugarListActivity extends AppCompatActivity implements BloodSu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_sugar_list);
-
+        Intent myIntent = getIntent(); // gets the previously created intent
+        String userId = myIntent.getStringExtra("userId");
+        if(userId == null){
+            userId=FirebaseUtil.getCurrentUserId();
+        }
         FirebaseTransaction.setmBloodSugarListener(this);
-        FirebaseTransaction.getBloodSugars();
+        FirebaseTransaction.getBloodSugars(userId);
     }
 
     @Override

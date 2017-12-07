@@ -33,10 +33,12 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.roger.catloadinglibrary.CatLoadingView;
 
+import halmob.healthhub.EventListeners.UserTypeListener;
 import halmob.healthhub.Models.Person;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener{
+public class LoginActivity extends BaseActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener,UserTypeListener {
     private SignInButton signInButton;
     private Button signOutButton;
     private LoginButton loginButton;
@@ -44,12 +46,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private TextView signTextView;
     public static GoogleApiClient mGoogleApiClient;
     private FirebaseAuth mAuth;
+    private CatLoadingView mView;
     private static final String TAG = "LoginActivity";
     private static final int RC_SIGN_IN = 9001;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mView = new CatLoadingView();
+        FirebaseTransaction.setUserTypetListenerListener(this);
 
 
         callbackManager = CallbackManager.Factory.create();
@@ -123,14 +128,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     public void onClick(View v){
         switch (v.getId()){
             case R.id.signInButton:
-                showProgressDialog();
+                mView.show(getSupportFragmentManager(), "");
                 signIn();
-                hideProgressDialog();
                 break;
             case R.id.signOutButton:
-                showProgressDialog();
+                mView.show(getSupportFragmentManager(), "");
                 signOut();
-                hideProgressDialog();
+                mView.dismiss();
                 break;
         }
     }
@@ -147,7 +151,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(@NonNull Status status) {
-                        startMainActivity();
+
+                        FirebaseTransaction.getCurrentUserType();
                     }
                 });
     }
@@ -194,10 +199,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 // ...
             }
         }
+        mView.dismiss();
     }
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -219,10 +224,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     }
                 });
     }
-    private void startMainActivity(){
-        //hideProgressDialog();
-        Intent intent = new Intent(this, MainAcitivity.class);
-        startActivity(intent);
+    private void startNextActivity(String userType){
+        if(userType.equals("Healthman")) {
+            Intent intent = new Intent(this, MainAcitivity.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, UserSearchActivity.class);
+            startActivity(intent);
+        }
     }
     private void updateUser(FirebaseUser firebaseUser) {
         Log.d(TAG, "Showing signed in UI");
@@ -233,7 +242,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         person.setUid(firebaseUser.getUid());
         //kullanıcı tipi ve diğer fazladan bilgiler burada eklenecek. (Hastalıklar vs gibi)
         FirebaseTransaction.addUser(person);
-        startMainActivity();
+        FirebaseTransaction.getCurrentUserType();
+    }
+    @Override
+    public void usertypeRead(String userType){
+        startNextActivity(userType);
+
     }
 
 }

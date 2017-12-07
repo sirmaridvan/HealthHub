@@ -28,7 +28,7 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
     private Button waitAnim;
     private DatabaseReference mPersonRef;
     private Intent intent;
-    private CatLoadingView mView;;
+    private CatLoadingView mView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +136,6 @@ public class MainAcitivity extends BaseActivity implements View.OnClickListener 
         // Firebase sign out
         FirebaseAuth.getInstance().signOut();
         LoginManager.getInstance().logOut();
-
         /*// Google sign out
         Auth.GoogleSignInApi.signOut(LoginActivity.mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {

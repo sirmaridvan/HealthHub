@@ -5,25 +5,21 @@ import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.roger.catloadinglibrary.CatLoadingView;
+
 public class BaseActivity extends AppCompatActivity {
+    private CatLoadingView mView = new CatLoadingView();
 
     @VisibleForTesting
     public ProgressDialog mProgressDialog;
 
     public void showProgressDialog() {
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(this);
-            mProgressDialog.setMessage(getString(R.string.loading));
-            mProgressDialog.setIndeterminate(true);
-        }
 
-        mProgressDialog.show();
+        //mView.show(getSupportFragmentManager(), "");
     }
 
     public void hideProgressDialog() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
-        }
+        //mView.dismiss();
     }
 
     @Override

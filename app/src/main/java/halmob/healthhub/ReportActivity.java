@@ -1,5 +1,6 @@
 package halmob.healthhub;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,11 +20,16 @@ public class ReportActivity extends AppCompatActivity implements ReportListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+        Intent myIntent = getIntent(); // gets the previously created intent
+        String userId = myIntent.getStringExtra("userId");
+        if(userId == null){
+            userId=FirebaseUtil.getCurrentUserId();
+        }
 
 
 
         FirebaseTransaction.setReportListenerListener(this);
-        FirebaseTransaction.getReports();
+        FirebaseTransaction.getReports(userId);
 
 
 

@@ -1,5 +1,6 @@
 package halmob.healthhub;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListAdapter;
@@ -19,9 +20,14 @@ public class CarbCountListActivity extends AppCompatActivity implements MealList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.carb_count_meal_list);
+        Intent myIntent = getIntent(); // gets the previously created intent
+        String userId = myIntent.getStringExtra("userId");
+        if(userId == null){
+            userId=FirebaseUtil.getCurrentUserId();
+        }
 
         FirebaseTransaction.setmMealListener(this);
-        FirebaseTransaction.getMeals();
+        FirebaseTransaction.getMeals(userId);
     }
 
     @Override
