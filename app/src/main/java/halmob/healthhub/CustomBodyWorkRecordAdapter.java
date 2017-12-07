@@ -32,12 +32,12 @@ public class CustomBodyWorkRecordAdapter extends ArrayAdapter<SportForBodyWork> 
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
-        imageView.setImageResource(R.drawable.pills);
-        textView.setText("Name: " + singleBodyWorkRecordElement.getNameOfExerciseForBodyWork() + "\n" +
+        imageView.setImageResource(R.drawable.bodybuildingicon);
+        textView.setText("Exercise->  " + singleBodyWorkRecordElement.getNameOfExerciseForBodyWork() + "\n" +
                 "Repetition: " + singleBodyWorkRecordElement.getNumberOfRepetitionForBodyWork() + "\n" +
                 "Set: " + singleBodyWorkRecordElement.getNumberOfSetForBodyWork() + "\n" +
                 "Weight: " + singleBodyWorkRecordElement.getWeightForBodyWork() + "\n" +
-                "Time:" + singleBodyWorkRecordElement.getExerciseDateForBodyWork() + "\n"
+                "Date Exercise" + singleBodyWorkRecordElement.getExerciseDateForBodyWork() + "\n"
         );
         return customView;
     }
