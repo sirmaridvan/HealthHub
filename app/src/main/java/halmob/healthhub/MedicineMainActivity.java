@@ -21,13 +21,6 @@ public class MedicineMainActivity extends AppCompatActivity {
         Intent intent = getIntent(); // gets the previously created intent
         userId = intent.getStringExtra("userId");
 
-
-        // supervisor ise add button görünmez olur
-        if(FirebaseUtil.userType.equals("Supervisor")){
-            addButton.setVisibility(View.GONE);
-            addProspectusButton.setVisibility(View.GONE);
-        }
-
         addButton = findViewById(R.id.addButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +60,14 @@ public class MedicineMainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+        // supervisor ise add button görünmez olur
+        if(FirebaseUtil.userType.equals("Supervisor")){
+            addButton.setVisibility(View.GONE);
+            addProspectusButton.setVisibility(View.GONE);
+        }
 
 
     }

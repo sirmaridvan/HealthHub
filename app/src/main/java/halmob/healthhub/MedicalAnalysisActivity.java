@@ -26,12 +26,6 @@ public class MedicalAnalysisActivity extends AppCompatActivity {
 
         addLayout = findViewById(R.id.addLayout1);
 
-        // supervisor ise add button görünmez olur
-        if(FirebaseUtil.userType.equals("Supervisor")){
-            addLayout.setVisibility(View.GONE);
-            // kaybolmuyorsa addButton ve addButton1'i ayrı ayrı GONE yap.
-        }
-
         addButton = findViewById(R.id.addAnalysis_2);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,5 +61,12 @@ public class MedicalAnalysisActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        // supervisor ise add button görünmez olur
+        if(FirebaseUtil.userType.equals("Supervisor")){
+            addLayout.setVisibility(View.GONE);
+            // kaybolmuyorsa addButton ve addButton1'i ayrı ayrı GONE yap.
+        }
     }
 }
