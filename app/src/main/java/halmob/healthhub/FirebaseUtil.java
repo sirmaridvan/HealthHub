@@ -6,13 +6,8 @@ package halmob.healthhub;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import halmob.healthhub.Models.Person;
 
 class FirebaseUtil {
     public static DatabaseReference getBaseRef() {
@@ -41,6 +36,8 @@ class FirebaseUtil {
     public static DatabaseReference getRepliesRef() {
         return getBaseRef().child("replies");
     }
+
+    public static String userType;
 
     public static String getPostsPath() {
         return "posts/";
