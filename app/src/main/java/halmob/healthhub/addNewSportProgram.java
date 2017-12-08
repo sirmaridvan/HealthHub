@@ -83,6 +83,7 @@ public class addNewSportProgram extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setContentView(R.layout.activity_new_program_bodywork);
+                OnCreateBodyWork();
 
             }
         });
@@ -175,6 +176,7 @@ public class addNewSportProgram extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setContentView(R.layout.activity_new_program_bodywork);
+                OnCreateBodyWork();
 
             }
         });

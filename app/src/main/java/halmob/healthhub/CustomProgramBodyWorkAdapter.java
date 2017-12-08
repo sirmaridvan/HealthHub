@@ -36,10 +36,10 @@ public class CustomProgramBodyWorkAdapter extends ArrayAdapter<SportProgramForBo
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
         imageView.setImageResource(R.drawable.bodybuildingicon);
-        textView.setText("Exercise -> " + singleCardioRecordElement.getNameOfExerciseForBodyWork() + "\n" +"\n" +
-                "Repetition" + singleCardioRecordElement.getNumberOfRepetitionForBodyWork()  + "\n" +
-                "Set" + singleCardioRecordElement.getNumberOfSetForBodyWork() + "\n" +
-                "Frequency " + singleCardioRecordElement.getFrequencyForBodyWork() + "\n"
+        textView.setText("Exercise-> " + singleCardioRecordElement.getNameOfExerciseForBodyWork() + "\n" +"\n" +
+                "Repetition:" + singleCardioRecordElement.getNumberOfRepetitionForBodyWork()  + "\n" +
+                "Set:" + singleCardioRecordElement.getNumberOfSetForBodyWork() + "\n" +
+                "Frequency:" + singleCardioRecordElement.getFrequencyForBodyWork() + "\n"
         );
         return customView;
     }
