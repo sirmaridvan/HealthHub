@@ -1,7 +1,10 @@
 package halmob.healthhub;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,7 +21,7 @@ import halmob.healthhub.EventListeners.FoodListener;
 import halmob.healthhub.Models.Food;
 import halmob.healthhub.Models.Meal;
 
-public class MealActivity extends AppCompatActivity implements FoodListener {
+public class MealActivity extends AppCompatActivity implements FoodListener, TextWatcher {
     private Spinner foodTypeSpinner;
     private Spinner fruitFoodNameSpinner;
     private Spinner milkProductFoodNameSpinner;
@@ -36,6 +39,7 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
     private TextView portionSizeTextView;
     private TextView samplePortionSizeTextView;
     private Button mealSubmitButton;
+    private String userId;
     Meal NewMeal;
 
 
@@ -43,6 +47,10 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal);
+
+        Intent intent = getIntent(); // gets the previously created intent
+        userId = intent.getStringExtra("userId");
+
         FirebaseTransaction.setFoodListener(this);
         FirebaseTransaction.getFoods();
         spinnerInitFlag = false;
@@ -67,12 +75,14 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
 
         portionSizeEditText = (EditText) findViewById(R.id.portion_size_input_edit_text);
         portionSizeEditText.setVisibility(View.INVISIBLE);
+        portionSizeEditText.addTextChangedListener(this);
 
         samplePortionSizeTextView = (TextView)findViewById(R.id.sample_portion_size_text_view);
         samplePortionSizeTextView.setVisibility(View.INVISIBLE);
 
         mealSubmitButton = (Button) findViewById(R.id.meal_submit_button);
         mealSubmitButton.setVisibility(View.INVISIBLE);
+        mealSubmitButton.setEnabled(false);
 
         foodTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -575,6 +585,38 @@ public class MealActivity extends AppCompatActivity implements FoodListener {
     }
 
     public void mealsRead(List<Meal> mealList){
+    }
+
+
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        int intS = 0;
+        if(s.toString().trim().length() != 0)
+            intS = Integer.parseInt(s.toString());
+        if(s.toString().trim().length()==0){
+            mealSubmitButton.setEnabled(false);
+            portionSizeEditText.setError("This field can not be empty!");
+        }
+
+        else if (s.toString().trim().length() >= 4 && s.toString().contains(".") == false ){
+            mealSubmitButton.setEnabled(false);
+            portionSizeEditText.setError("The portion size is too high!");
+        }
+
+        else if(intS > 40) {
+            mealSubmitButton.setEnabled(false);
+            portionSizeEditText.setError("The entered portion size is not valid!");
+        }
+
+        else {
+            mealSubmitButton.setEnabled(true);
+        }
+    }
+
+    public void afterTextChanged(Editable s) {
     }
 
 }

@@ -34,7 +34,7 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
         <activity android:name=".BaseActivity" />
-        <activity android:name=".MainAcitivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".StepCounterActivity" />
         <activity android:name=".MedicineActivity" />
         <activity android:name=".DiabActivity" />
@@ -77,7 +77,12 @@
         android:screenOrientation="portrait" />
         <activity android:name=".AddProspectusActivity" />
         <activity android:name=".ListProspectusActivity" />
-        <activity android:name=".ListSportProgramActivity"></activity>
+
+        <activity android:name=".ListSportProgramActivity"/>
+
+        <activity android:name=".WriteCommentActivity" />
+        <activity android:name=".ReadCommentActivity"></activity>
+
     </application>
 
 </manifest>

@@ -15,6 +15,7 @@ import java.util.Map;
 import halmob.healthhub.EventListeners.BloodSugarListener;
 import halmob.healthhub.EventListeners.BodyWorkListener;
 import halmob.healthhub.EventListeners.CardioListener;
+import halmob.healthhub.EventListeners.CommentListener;
 import halmob.healthhub.EventListeners.DrugListener;
 import halmob.healthhub.EventListeners.FoodListener;
 import halmob.healthhub.EventListeners.HealthmanListener;
@@ -28,6 +29,7 @@ import halmob.healthhub.EventListeners.ReportListener;
 import halmob.healthhub.EventListeners.StaticBodyWorkListener;
 import halmob.healthhub.EventListeners.UserTypeListener;
 import halmob.healthhub.Models.BloodSugar;
+import halmob.healthhub.Models.Comment;
 import halmob.healthhub.Models.Drug;
 import halmob.healthhub.Models.Food;
 import halmob.healthhub.Models.InsulinDose;
@@ -99,6 +101,16 @@ public class FirebaseTransaction {
     public static void addDrug(Drug drug){
         final String currentUserId = FirebaseUtil.getCurrentUserId();
         FirebaseUtil.getPeopleRef().child(currentUserId).child("drugs").push().setValue(drug, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError error, DatabaseReference firebase) {
+                if (error != null) {
+                }
+            }
+        });
+    }
+
+    public static void addComment(Comment comment,String userId){
+        FirebaseUtil.getPeopleRef().child(userId).child("comments").push().setValue(comment, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError error, DatabaseReference firebase) {
                 if (error != null) {
@@ -609,6 +621,26 @@ public class FirebaseTransaction {
             });
         }
     }
+    private static CommentListener commentListener;
 
-
+    public static void setCommentListenerListener(CommentListener listen) {
+        commentListener = listen;
+    }
+    public static void getAllCommentAboutMe() {
+        final List<Comment> commentList = new ArrayList<Comment>();
+        final String userId = FirebaseUtil.getCurrentUserId();
+        final DatabaseReference commentRef = FirebaseUtil.getPeopleRef().child(userId).child("comments");
+        commentRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Comment comment = dataSnapshot.getValue(Comment.class);
+                if(commentListener != null) {
+                    commentListener.commentRead(commentList);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
 }

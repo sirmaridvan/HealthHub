@@ -11,12 +11,15 @@ public class MedicineMainActivity extends AppCompatActivity {
     private Button listButton;
     private Button addProspectusButton;
     private Button listProspectusButton;
+    private String userId;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicine_main);
+        Intent intent = getIntent(); // gets the previously created intent
+        userId = intent.getStringExtra("userId");
 
         addButton = findViewById(R.id.addButton);
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +35,7 @@ public class MedicineMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MedicineMainActivity.this, MedicineListActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
             }
         });
@@ -52,9 +56,18 @@ public class MedicineMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(MedicineMainActivity.this, ListProspectusActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
             }
         });
+
+
+
+        // supervisor ise add button görünmez olur
+        if(FirebaseUtil.userType.equals("Supervisor")){
+            addButton.setVisibility(View.GONE);
+            addProspectusButton.setVisibility(View.GONE);
+        }
 
 
     }

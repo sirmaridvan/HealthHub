@@ -1,13 +1,11 @@
 package halmob.healthhub;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-
-import halmob.healthhub.Models.BloodSugar;
 
 public class DiabActivity extends AppCompatActivity {
     private ImageButton insulinButton;
@@ -19,6 +17,7 @@ public class DiabActivity extends AppCompatActivity {
     private Button mealButton2;
     private Button carbCountButton2;
     private Button tableButton;
+    private String userId;
 
 
     @Override
@@ -26,11 +25,16 @@ public class DiabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diab);
 
+        Intent intent = getIntent(); // gets the previously created intent
+        userId = intent.getStringExtra("userId");
+
+
         insulinButton = findViewById(R.id.insulin_button);
         insulinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(DiabActivity.this, InsulinActivity.class);
+                i.putExtra("userId",userId);
                 startActivity(i);
             }
         });
@@ -40,6 +44,7 @@ public class DiabActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(DiabActivity.this, InsulinActivity.class);
+                i.putExtra("userId",userId);
                 startActivity(i);
             }
         });
@@ -51,6 +56,7 @@ public class DiabActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(DiabActivity.this, BloodSugarActivity.class);
+                i.putExtra("userId",userId);
                 startActivity(i);
             }
         });
@@ -61,6 +67,7 @@ public class DiabActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(DiabActivity.this, BloodSugarActivity.class);
+                i.putExtra("userId",userId);
                 startActivity(i);
             }
         });
@@ -70,6 +77,7 @@ public class DiabActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DiabActivity.this, MealActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
             }
         });
@@ -79,6 +87,7 @@ public class DiabActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DiabActivity.this, MealActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
             }
         });
@@ -89,6 +98,7 @@ public class DiabActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DiabActivity.this, MealActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
             }
         });
@@ -99,6 +109,7 @@ public class DiabActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DiabActivity.this, MealActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
             }
         });
@@ -108,6 +119,7 @@ public class DiabActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DiabActivity.this, DiabTableActivity.class);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
             }
         });

@@ -12,11 +12,15 @@ public class Sports_Activity extends AppCompatActivity {
     private Button ListSportRecord;
     private Button createSportProgram;
     private Button listSportProgram;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sports_);
+
+        Intent intent = getIntent(); // gets the previously created intent
+        userId = intent.getStringExtra("userId");
 
         ListSportRecord = findViewById(R.id.sportRecord_Button);
         ListSportRecord.setOnClickListener(new View.OnClickListener() {
@@ -24,6 +28,7 @@ public class Sports_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Sports_Activity.this, ListSportRecordActivity.class);
+                i.putExtra("userId",userId);
                 startActivity(i);
             }
         });
@@ -33,6 +38,7 @@ public class Sports_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Sports_Activity.this, addNewSportRecordActivity.class);
+                i.putExtra("userId",userId);
                 startActivity(i);
             }
         });
@@ -42,6 +48,7 @@ public class Sports_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Sports_Activity.this, addNewSportProgram.class);
+                i.putExtra("userId",userId);
                 startActivity(i);
             }
         });
