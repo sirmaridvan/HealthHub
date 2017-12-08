@@ -509,6 +509,7 @@ public class addNewSportRecordActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             setContentView(R.layout.activity_new_bodywork_record);
+            OnCreateBodyWork();
 
         }
     });

@@ -45,8 +45,6 @@ public class ListSportProgramActivity extends AppCompatActivity implements Progr
     }
     protected void ListBodyWorkOnCreate() {
         setContentView(R.layout.activity_list_bodywork_sport_program);
-
-        setContentView(R.layout.activity_insulin_dose_list);
         Intent myIntent = getIntent(); // gets the previously created intent
         String userId = myIntent.getStringExtra("userId");
         if(userId == null){

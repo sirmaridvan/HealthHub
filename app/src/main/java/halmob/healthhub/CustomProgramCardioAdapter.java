@@ -36,9 +36,9 @@ public class CustomProgramCardioAdapter extends ArrayAdapter<SportProgramForCard
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
         imageView.setImageResource(R.drawable.cardioicon);
-        textView.setText("Exercise -> " + singleCardioRecordElement.getNameOfExerciseForCardio() + "\n" +"\n" +
-                singleCardioRecordElement.getMinuteOfExerciseForCardio() + "Minutes " + "\n" +
-                "Frequency " + singleCardioRecordElement.getFrequencyForCardio() + "\n"
+        textView.setText("Exercise->" + singleCardioRecordElement.getNameOfExerciseForCardio() + "\n" +"\n" +
+                singleCardioRecordElement.getMinuteOfExerciseForCardio() + "Minutes" + "\n" +
+                "Frequency:" + singleCardioRecordElement.getFrequencyForCardio() + "\n"
         );
         return customView;
     }

@@ -47,8 +47,6 @@ public class ListSportRecordActivity extends AppCompatActivity implements BodyWo
 
     protected void ListBodyWorkOnCreate() {
         setContentView(R.layout.activity_bodywork_record_list);
-
-        setContentView(R.layout.activity_insulin_dose_list);
         Intent myIntent = getIntent(); // gets the previously created intent
         String userId = myIntent.getStringExtra("userId");
         if(userId == null){
