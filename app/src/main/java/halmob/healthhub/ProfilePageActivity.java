@@ -74,8 +74,14 @@ public class ProfilePageActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.button_comment:
                 //comment activity oluşturulacak
-                /*intent = new Intent(this, MedicineMainActivity.class);
-                startActivity(intent);*/
+                if(FirebaseUtil.userType.equals("Supervisor")) {
+                    intent = new Intent(this, WriteCommentActivity.class);
+                    intent.putExtra("userId",userId);
+                    startActivity(intent);
+                }else if(FirebaseUtil.userType.equals("Healthman")){
+                    intent = new Intent(this, ReadCommentActivity.class);
+                    startActivity(intent);
+                }
                 break;
         }
     }

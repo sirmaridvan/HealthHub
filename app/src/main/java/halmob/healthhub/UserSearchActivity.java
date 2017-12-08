@@ -57,13 +57,14 @@ public class UserSearchActivity extends AppCompatActivity implements PeopleListe
     }
     @Override
     public void usertypeRead(String userType){
-        if(userType.equals("Healthman")) {
+        if(userType.equals("Supervisor")) {
             FirebaseTransaction.setHealthmanListenerListener(this);
             FirebaseTransaction.getHealthmans();
-        }else{
+        }
+        /*else{
             FirebaseTransaction.setPeopleListenerListener(this);
             FirebaseTransaction.getAllPeople();
-        }
+        }*/
     }
     @Override
     public void healthmanRead(final List<Person> personList){
