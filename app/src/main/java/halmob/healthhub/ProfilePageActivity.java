@@ -21,6 +21,7 @@ public class ProfilePageActivity extends AppCompatActivity implements View.OnCli
     private TextView email;
     private Button buttonComment;
     private Button buttonDetail;
+    private Button followButton;
     private ImageView profilePhoto;
     private Intent intent;
     private String userId;
@@ -41,6 +42,7 @@ public class ProfilePageActivity extends AppCompatActivity implements View.OnCli
             komutunu içermelidir. Bu komut takip etme sistemi için yeterlidir.
          */
 
+        followButton = findViewById(R.id.followButton);
         buttonComment = findViewById(R.id.button_comment);
         buttonComment.setOnClickListener(this);
 
@@ -63,6 +65,11 @@ public class ProfilePageActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
+        // HealthMan ise follow tuşunu yok et
+        if(FirebaseUtil.userType.equals("HealthMan")){
+            followButton.setVisibility(View.GONE);
+        }
+
     }
     @Override
     public void onClick(View v){
@@ -83,6 +90,10 @@ public class ProfilePageActivity extends AppCompatActivity implements View.OnCli
                     startActivity(intent);
                 }
                 break;
+            case R.id.followButton:
+                FirebaseTransaction.follow(userId);
+                break;
+
         }
     }
 }

@@ -40,7 +40,7 @@
             android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/followButton"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="75dp"
             android:layout_height="25dp"
