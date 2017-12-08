@@ -72,14 +72,12 @@
         <activity
             android:name=".HeartRateMonitorActivity"
             android:configChanges="keyboardHidden|orientation"
-
-            android:screenOrientation="portrait"/>
-        <activity android:name=".addNewSportProgram"/>
-
             android:screenOrientation="portrait" />
+        <activity android:name=".addNewSportProgram" />
+        android:screenOrientation="portrait" />
         <activity android:name=".AddProspectusActivity" />
-        <activity android:name=".ListProspectusActivity"></activity>
-
+        <activity android:name=".ListProspectusActivity" />
+        <activity android:name=".ListSportProgramActivity"></activity>
     </application>
 
 </manifest>

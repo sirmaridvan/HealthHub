@@ -21,6 +21,8 @@ import halmob.healthhub.EventListeners.HealthmanListener;
 import halmob.healthhub.EventListeners.InsulinDoseListener;
 import halmob.healthhub.EventListeners.MealListener;
 import halmob.healthhub.EventListeners.PeopleListener;
+import halmob.healthhub.EventListeners.ProgramForBodyWorkListener;
+import halmob.healthhub.EventListeners.ProgramForCardioListener;
 import halmob.healthhub.EventListeners.ProspectusListener;
 import halmob.healthhub.EventListeners.ReportListener;
 import halmob.healthhub.EventListeners.StaticBodyWorkListener;
@@ -36,6 +38,8 @@ import halmob.healthhub.Models.ProspectusInfo;
 import halmob.healthhub.Models.Report;
 import halmob.healthhub.Models.SportForBodyWork;
 import halmob.healthhub.Models.SportForCardio;
+import halmob.healthhub.Models.SportProgramForBodyWork;
+import halmob.healthhub.Models.SportProgramForCardio;
 import halmob.healthhub.Models.StaticExerciseForBodyWork;
 
 /**
@@ -260,6 +264,42 @@ public class FirebaseTransaction {
 
 ///////////////////////////////////////////////////////////////////////////
     //FOR BODYWORK
+    public static void addBodyWorkProgram(SportProgramForBodyWork newBodyWork) {
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("bodyWorkProgram").push().setValue(newBodyWork, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError error, DatabaseReference firebase) {
+                if (error != null) {
+                }
+            }
+        });
+    }
+    private static ProgramForBodyWorkListener mProgramForBodyWorkListener;
+    public static void setProgramForBodyWorkListenerListener(ProgramForBodyWorkListener listen) {
+        mProgramForBodyWorkListener = listen;
+    }
+    public static void getBodyWorkProgram(String userId){
+        final List<SportProgramForBodyWork> BodyWorkList = new ArrayList<SportProgramForBodyWork>();
+        FirebaseUtil.getPeopleRef().child(userId).child("bodyWorkProgram").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    SportProgramForBodyWork BodyWorkProgram = postSnapshot.getValue(SportProgramForBodyWork.class);
+                    BodyWorkList.add(BodyWorkProgram);
+                }
+                if (mProgramForBodyWorkListener != null) {
+                    mProgramForBodyWorkListener.BodyWorkProgramRead(BodyWorkList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
+
+
 
     public static void addBodyWork(SportForBodyWork newBodyWork){
         final String currentUserId = FirebaseUtil.getCurrentUserId();
@@ -298,6 +338,43 @@ public class FirebaseTransaction {
     }
 ///////////////////////////////////////////////////////////////////
     //FOR CARDIO
+
+    public static void addCardioProgram(SportProgramForCardio CardioProgram){
+        final String currentUserId = FirebaseUtil.getCurrentUserId();
+        FirebaseUtil.getPeopleRef().child(currentUserId).child("cardioProgram").push().setValue(CardioProgram, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError error, DatabaseReference firebase) {
+                if (error != null) {
+                }
+            }
+        });
+    }
+    private static ProgramForCardioListener mProgramForCardioListener;
+    public static void setProgramForCardioListenerListener(ProgramForCardioListener listen) {
+        mProgramForCardioListener = listen;
+    }
+    public static void getCardioProgram(String userId){
+        final List<SportProgramForCardio> CardioProgramList = new ArrayList<>();
+        FirebaseUtil.getPeopleRef().child(userId).child("cardioProgram").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    SportProgramForCardio CardioProgram = postSnapshot.getValue(SportProgramForCardio.class);
+                    CardioProgramList.add(CardioProgram);
+                }
+                if (mProgramForCardioListener != null) {
+                    mProgramForCardioListener.CardioProgramRead(CardioProgramList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        });
+    }
+
+
 
     public static void addCardio(SportForCardio Cardio){
         final String currentUserId = FirebaseUtil.getCurrentUserId();

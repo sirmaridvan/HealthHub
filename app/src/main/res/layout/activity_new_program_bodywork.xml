@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout7">
+
+        <Button
+            android:id="@+id/Cardio"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/holo_red_dark"
+            android:text="Cardio" />
+
+        <TextView
+            android:id="@+id/BodyWork"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_dark"
+            android:text="BodyBuilding" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/LabelForMuscleRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/LabelForBodyWorkTypeExercise"
+        android:layout_below="@+id/linearLayout7"
+        android:layout_marginTop="16dp"
+        android:text="Select Muscle Region"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/MuscleRegion_spinner"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/LabelForMuscleRegion"
+        android:layout_below="@+id/LabelForMuscleRegion"
+        android:layout_marginTop="12dp" />
+
+    <TextView
+        android:id="@+id/LabelForBodyWorkTypeExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Chest_ExerciseNameForBodyWork_Spinner"
+        android:layout_below="@+id/MuscleRegion_spinner"
+        android:layout_marginTop="20dp"
+        android:text=" Select Exercise"
+        android:textSize="20sp"
+        android:visibility="invisible" />
+
+    <Spinner
+        android:id="@+id/Chest_ExerciseNameForBodyWork_Spinner"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/LabelForBodyWorkTypeExercise"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="15dp"
+        android:visibility="invisible" />
+
+    <Spinner
+        android:id="@+id/Arm_ExerciseNameForBodyWork_Spinner"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Chest_ExerciseNameForBodyWork_Spinner"
+        android:layout_alignTop="@+id/Chest_ExerciseNameForBodyWork_Spinner"
+        android:visibility="invisible" />
+
+    <Spinner
+        android:id="@+id/Shoulder_ExerciseNameForBodyWork_Spinner"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Arm_ExerciseNameForBodyWork_Spinner"
+        android:layout_alignTop="@+id/Arm_ExerciseNameForBodyWork_Spinner"
+        android:visibility="invisible" />
+
+    <Spinner
+        android:id="@+id/Leg_ExerciseNameForBodyWork_Spinner"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Arm_ExerciseNameForBodyWork_Spinner"
+        android:layout_alignTop="@+id/Arm_ExerciseNameForBodyWork_Spinner"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/LabelForBodyWorkProgramFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Chest_ExerciseNameForBodyWork_Spinner"
+        android:layout_below="@+id/Chest_ExerciseNameForBodyWork_Spinner"
+        android:layout_marginTop="15dp"
+        android:text="Select Frequency"
+        android:textSize="20sp"
+        android:visibility="invisible" />
+
+    <Spinner
+        android:id="@+id/BodyWorkProgramFrequency_Spinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/LabelForCardioProgramFrequency"
+        android:layout_below="@+id/LabelForCardioProgramFrequency"
+        android:layout_marginTop="15dp"
+        android:visibility="invisible" />
+    android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/LabelForBodyWorkNumberOfSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/LabelForCardioProgramFrequency"
+        android:layout_below="@+id/CardioProgramFrequency_Spinner"
+        android:layout_marginTop="18dp"
+        android:text="Number Of Set"
+        android:textSize="20sp"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/InputBodyWorkNumberOfSet"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/LabelForBodyWorkNumberOfSet"
+        android:layout_alignBottom="@+id/LabelForBodyWorkNumberOfSet"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/LabelForMuscleRegion"
+        android:hint=""
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/LabelForBodyWorkNumberOfRepetition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignEnd="@+id/LabelForMuscleRegion"
+        android:layout_below="@+id/InputBodyWorkNumberOfSet"
+        android:layout_marginTop="23dp"
+        android:text="Number Of Repetition"
+        android:textSize="20sp"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/InputBodyWorkNumberOfRepetition"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/LabelForBodyWorkNumberOfRepetition"
+        android:layout_alignBottom="@+id/LabelForBodyWorkNumberOfRepetition"
+        android:layout_alignStart="@+id/InputBodyWorkNumberOfSet"
+        android:hint=""
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:visibility="invisible" />
+
+
+    <Button
+        android:id="@+id/submitButtonForBodyWorkRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/InputBodyWorkNumberOfRepetition"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:text="Submit"
+        android:visibility="invisible" />
+
+</RelativeLayout>

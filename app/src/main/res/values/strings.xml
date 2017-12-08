@@ -17,6 +17,12 @@
         <item>Arm</item>
         <item>Shoulder</item>
     </string-array>
+    <string-array name="Frequency">
+        <item>Everyday</item>
+        <item>Once Every Two Days</item>
+        <item>Once Every Three Days</item>
+        <item>Once A Week</item>
+    </string-array>
     <string-array name="Cardio_Exercise">
         <item>Select Cardio Exercise</item>
         <item>Walking</item>
