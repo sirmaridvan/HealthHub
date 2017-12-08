@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout5">
+
+        <TextView
+            android:id="@+id/Cardio"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/holo_red_dark"
+            android:text="Cardio" />
+        <Button
+            android:id="@+id/BodyWork"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_weight="1"
+            android:text="BodyBuilding" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/LabelForCardioTypeExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout5"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="26dp"
+        android:text="Exercise Name"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/CardioExercises_Spinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/LabelForCardioTypeExercise"
+        android:layout_below="@+id/LabelForCardioTypeExercise"
+        android:layout_marginTop="23dp" />
+
+
+    <TextView
+        android:id="@+id/LabelForCardioProgramFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/CardioExercises_Spinner"
+        android:layout_below="@+id/CardioExercises_Spinner"
+        android:layout_marginTop="34dp"
+        android:text="Select Frequency"
+        android:visibility="invisible"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/CardioProgramFrequency_Spinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/LabelForCardioProgramFrequency"
+        android:layout_below="@+id/LabelForCardioProgramFrequency"
+        android:layout_marginTop="23dp"
+        android:visibility="invisible" />
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/LabelForCardioMinute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/LabelForCardioProgramFrequency"
+        android:layout_below="@+id/CardioProgramFrequency_Spinner"
+        android:layout_marginTop="32dp"
+        android:text="Minute Of Exercise"
+        android:textSize="20sp"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/InputCardioMinute"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/LabelForCardioMinute"
+        android:layout_alignBottom="@+id/LabelForCardioMinute"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="24dp"
+        android:hint=""
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/submitButtonForCardioRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/InputCardioMinute"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="34dp"
+        android:layout_toStartOf="@+id/InputCardioMinute"
+        android:onClick="submitButtonForCardioRecord"
+        android:text="Submit"
+        android:textSize="16dp"
+        android:visibility="invisible" />
+
+
+
+
+
+</RelativeLayout>

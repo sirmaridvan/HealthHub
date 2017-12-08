@@ -11,13 +11,16 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import halmob.healthhub.Models.SportForBodyWork;
 import halmob.healthhub.Models.SportForCardio;
+import halmob.healthhub.Models.SportProgramForCardio;
 
-public class CustomCardioRecordAdapter extends ArrayAdapter<SportForCardio> {
+/**
+ * Created by Furkan Ekici on 8.12.2017.
+ */
 
-    CustomCardioRecordAdapter(Context context, List<SportForCardio> cardioList) {
-        super(context, R.layout.custom_row, cardioList);
+public class CustomProgramCardioAdapter extends ArrayAdapter<SportProgramForCardio>{
+    CustomProgramCardioAdapter(Context context, List<SportProgramForCardio> CardioProgramList) {
+        super(context,R.layout.custom_row, CardioProgramList);
     }
 
     @NonNull
@@ -26,7 +29,7 @@ public class CustomCardioRecordAdapter extends ArrayAdapter<SportForCardio> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View customView = inflater.inflate(R.layout.custom_row, parent, false);
 
-        SportForCardio singleCardioRecordElement = getItem(position);
+        SportProgramForCardio singleCardioRecordElement = getItem(position);
 
 
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
@@ -34,10 +37,10 @@ public class CustomCardioRecordAdapter extends ArrayAdapter<SportForCardio> {
 
         imageView.setImageResource(R.drawable.cardioicon);
         textView.setText("Exercise -> " + singleCardioRecordElement.getNameOfExerciseForCardio() + "\n" +"\n" +
-                 singleCardioRecordElement.getMinuteOfExerciseForCardio() + "Minutes " + "\n" +
-                "Burned " + singleCardioRecordElement.getBurnedCaloriesForCardio() +"Calories" + "\n" +
-                "Exercise Date " + singleCardioRecordElement.getExerciseDateForCardio() + "\n"
+                singleCardioRecordElement.getMinuteOfExerciseForCardio() + "Minutes " + "\n" +
+                "Frequency " + singleCardioRecordElement.getFrequencyForCardio() + "\n"
         );
         return customView;
     }
 }
+

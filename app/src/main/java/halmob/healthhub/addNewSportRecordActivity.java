@@ -23,11 +23,11 @@ import java.util.Calendar;
 import java.util.List;
 
 
-import halmob.healthhub.EventListeners.StaticBodyWorkListener;
+
 
 import halmob.healthhub.Models.SportForBodyWork;
 import halmob.healthhub.Models.SportForCardio;
-import halmob.healthhub.Models.StaticExerciseForBodyWork;
+
 
 public class addNewSportRecordActivity extends AppCompatActivity {
 
@@ -404,6 +404,8 @@ public class addNewSportRecordActivity extends AppCompatActivity {
                 R.array.Cardio_Exercise, android.R.layout.simple_spinner_item);
     adapterForCardioExercise.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     spinnerForCardioExercise.setAdapter(adapterForCardioExercise);
+
+
 
     CardioExercises_Spinner = (Spinner) findViewById(R.id.CardioExercises_Spinner);
 

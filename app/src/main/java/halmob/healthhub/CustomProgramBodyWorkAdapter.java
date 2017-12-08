@@ -1,4 +1,5 @@
 package halmob.healthhub;
+
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,13 +12,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import halmob.healthhub.Models.SportForBodyWork;
-import halmob.healthhub.Models.SportForCardio;
+import halmob.healthhub.Models.SportProgramForBodyWork;
 
-public class CustomBodyWorkRecordAdapter extends ArrayAdapter<SportForBodyWork> {
+/**
+ * Created by Furkan Ekici on 8.12.2017.
+ */
 
-    CustomBodyWorkRecordAdapter(Context context, List<SportForBodyWork> bodyWorkList) {
-        super(context, R.layout.custom_row, bodyWorkList);
+public class CustomProgramBodyWorkAdapter extends ArrayAdapter<SportProgramForBodyWork> {
+    CustomProgramBodyWorkAdapter(Context context, List<SportProgramForBodyWork> BodyWorkProgramList) {
+        super(context,R.layout.custom_row, BodyWorkProgramList);
     }
 
     @NonNull
@@ -26,21 +29,18 @@ public class CustomBodyWorkRecordAdapter extends ArrayAdapter<SportForBodyWork> 
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View customView = inflater.inflate(R.layout.custom_row, parent, false);
 
-        SportForBodyWork singleBodyWorkRecordElement = getItem(position);
+        SportProgramForBodyWork singleCardioRecordElement = getItem(position);
 
 
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
         imageView.setImageResource(R.drawable.bodybuildingicon);
-        textView.setText("Exercise->  " + singleBodyWorkRecordElement.getNameOfExerciseForBodyWork() + "\n" +
-                "Repetition: " + singleBodyWorkRecordElement.getNumberOfRepetitionForBodyWork() + "\n" +
-                "Set: " + singleBodyWorkRecordElement.getNumberOfSetForBodyWork() + "\n" +
-                "Weight: " + singleBodyWorkRecordElement.getWeightForBodyWork() + "\n" +
-                "Date Exercise" + singleBodyWorkRecordElement.getExerciseDateForBodyWork() + "\n"
+        textView.setText("Exercise -> " + singleCardioRecordElement.getNameOfExerciseForBodyWork() + "\n" +"\n" +
+                "Repetition" + singleCardioRecordElement.getNumberOfRepetitionForBodyWork()  + "\n" +
+                "Set" + singleCardioRecordElement.getNumberOfSetForBodyWork() + "\n" +
+                "Frequency " + singleCardioRecordElement.getFrequencyForBodyWork() + "\n"
         );
         return customView;
     }
 }
-
-
