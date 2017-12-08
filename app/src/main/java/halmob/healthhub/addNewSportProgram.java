@@ -102,12 +102,12 @@ public class addNewSportProgram extends AppCompatActivity {
 
         CardioExercises_Spinner = (Spinner) findViewById(R.id.CardioExercises_Spinner);
 
-        Spinner spinner2 = (Spinner) findViewById(R.id.CardioProgramFrequency_Spinner);
+        Spinner SpinnerForFrequencyCardio = (Spinner) findViewById(R.id.CardioProgramFrequency_Spinner);
 
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.Frequency, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(adapter2);
+        SpinnerForFrequencyCardio.setAdapter(adapter2);
 
         CardioProgramFrequency_Spinner = (Spinner) findViewById(R.id.CardioProgramFrequency_Spinner);
 
@@ -247,7 +247,7 @@ public class addNewSportProgram extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter6 = ArrayAdapter.createFromResource(this,
                 R.array.Frequency, android.R.layout.simple_spinner_item);
         adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner5.setAdapter(adapter6);
+        spinner6.setAdapter(adapter6);
 
 
         MuscleRegionSpinner = (Spinner) findViewById(R.id.MuscleRegion_spinner);
@@ -259,10 +259,15 @@ public class addNewSportProgram extends AppCompatActivity {
 
 
         LabelForMuscleRegion = (TextView) findViewById(R.id.LabelForMuscleRegion);
+
         LabelForBodyWorkTypeExercise = (TextView) findViewById(R.id.LabelForBodyWorkTypeExercise);
+        LabelForBodyWorkTypeExercise.setVisibility(View.INVISIBLE);
 
         LabelForBodyWorkNumberOfSet = (TextView) findViewById(R.id.LabelForBodyWorkNumberOfSet);
         LabelForBodyWorkNumberOfSet.setVisibility(View.INVISIBLE);
+
+        LabelForBodyWorkProgramFrequency = (TextView) findViewById(R.id.LabelForBodyWorkProgramFrequency);
+        LabelForBodyWorkProgramFrequency.setVisibility(View.INVISIBLE);
 
 
         InputBodyWorkNumberOfSet = (EditText) findViewById(R.id.InputBodyWorkNumberOfSet);
@@ -451,7 +456,7 @@ public class addNewSportProgram extends AppCompatActivity {
         cardioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_new_cardio_record);
+                setContentView(R.layout.activity_new_program_cardio);
                 OnCreateCardio();
             }
         });

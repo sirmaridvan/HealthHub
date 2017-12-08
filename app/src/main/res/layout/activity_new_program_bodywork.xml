@@ -6,10 +6,10 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:id="@+id/linearLayout7">
+        android:layout_height="50dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/Cardio"
@@ -45,9 +45,9 @@
         android:id="@+id/MuscleRegion_spinner"
         android:layout_width="169dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/LabelForMuscleRegion"
+        android:layout_alignStart="@+id/LabelForBodyWorkTypeExercise"
         android:layout_below="@+id/LabelForMuscleRegion"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:id="@+id/LabelForBodyWorkTypeExercise"
@@ -109,19 +109,19 @@
         android:id="@+id/BodyWorkProgramFrequency_Spinner"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/LabelForCardioProgramFrequency"
-        android:layout_below="@+id/LabelForCardioProgramFrequency"
-        android:layout_marginTop="15dp"
-        android:visibility="invisible" />
-    android:layout_centerVertical="true" />
+        android:layout_alignStart="@+id/LabelForBodyWorkNumberOfSet"
+        android:layout_below="@+id/LabelForBodyWorkProgramFrequency"
+        android:layout_marginTop="24dp"
+        android:visibility="invisible"
+     android:layout_centerVertical="true"/>
 
     <TextView
         android:id="@+id/LabelForBodyWorkNumberOfSet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/LabelForCardioProgramFrequency"
-        android:layout_below="@+id/CardioProgramFrequency_Spinner"
-        android:layout_marginTop="18dp"
+        android:layout_alignStart="@+id/LabelForBodyWorkProgramFrequency"
+        android:layout_below="@+id/BodyWorkProgramFrequency_Spinner"
+        android:layout_marginTop="22dp"
         android:text="Number Of Set"
         android:textSize="20sp"
         android:visibility="invisible" />
@@ -144,9 +144,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_alignEnd="@+id/LabelForMuscleRegion"
         android:layout_below="@+id/InputBodyWorkNumberOfSet"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="34dp"
+        android:layout_toStartOf="@+id/InputBodyWorkNumberOfSet"
         android:text="Number Of Repetition"
         android:textSize="20sp"
         android:visibility="invisible" />

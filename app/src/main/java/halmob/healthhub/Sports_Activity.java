@@ -11,6 +11,7 @@ public class Sports_Activity extends AppCompatActivity {
     private Button addSportRecordButton;
     private Button ListSportRecord;
     private Button createSportProgram;
+    private Button showSportProgram;
     private Button listSportProgram;
     private String userId;
 
@@ -52,5 +53,20 @@ public class Sports_Activity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        showSportProgram = findViewById(R.id.showSportProgram);
+        showSportProgram.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Sports_Activity.this, ListSportProgramActivity.class);
+                i.putExtra("userId",userId);
+                startActivity(i);
+            }
+        });
+
+        if(FirebaseUtil.userType.equals("Supervisor")){
+            createSportProgram.setVisibility(View.GONE);
+            addSportRecordButton.setVisibility(View.GONE);
+        }
     }
 }
