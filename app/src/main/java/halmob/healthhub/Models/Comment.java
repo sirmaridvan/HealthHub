@@ -15,20 +15,22 @@
 */
 
 package halmob.healthhub.Models;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Comment {
     private Author author;
     private String text;
-    private Object timestamp;
+    private String Date;
+    private String Time;
 
     public Comment() {
         // empty default constructor, necessary for Firebase to be able to deserialize comments
     }
 
-    public Comment(Author author, String text, Object timestamp) {
+    public Comment(Author author, String text) {
         this.author = author;
         this.text = text;
-        this.timestamp = timestamp;
     }
 
     public Author getAuthor() {
@@ -38,8 +40,15 @@ public class Comment {
     public String getText() {
         return text;
     }
+    public void setDate() {
+        CurrentDate newDate = new CurrentDate();
+        this.Date = newDate.getCurrentDate();
+    }
 
-    public Object getTimestamp() {
-        return timestamp;
+    public String getDate(){return Date;}
+    public String getTime(){return Time;}
+    public void setTime() {
+        CurrentTime newTime = new CurrentTime();
+        this.Time = newTime.getCurrentTime();
     }
 }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import halmob.healthhub.Models.Author;
 import halmob.healthhub.Models.Comment;
 
 /**
@@ -30,15 +31,18 @@ public class CustomReadCommentAdapter extends ArrayAdapter<Comment> {
         View customView = inflater.inflate(R.layout.custom_row, parent, false);
 
         Comment singleCardioRecordElement = getItem(position);
-
+        Author author = singleCardioRecordElement.getAuthor();
 
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
-        imageView.setImageResource(R.drawable.commenticon);
-        textView.setText(singleCardioRecordElement.getAuthor() + "commented at"+ "\n" +
-                "At" + singleCardioRecordElement.getTimestamp()+"\n" +
-                singleCardioRecordElement.getText() + "\n"
+        FirebaseStorageUtility.loadImage(author.getProfile_picture(),imageView, this.getContext());
+
+        textView.setText(
+                singleCardioRecordElement.getText() + "\n" + "\n" +
+                author.getFull_name() + " commented by at"+ "\n" +
+                "date:"+singleCardioRecordElement.getDate()+ "\n" +
+                "time:" + singleCardioRecordElement.getTime()
         );
         return customView;
     }
