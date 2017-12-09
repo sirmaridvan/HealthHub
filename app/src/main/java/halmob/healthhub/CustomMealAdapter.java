@@ -31,6 +31,8 @@ public class CustomMealAdapter extends ArrayAdapter<Meal> {
 
         Meal singleMealElement = getItem(position);
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
+        TextView textViewDate = (TextView) customView.findViewById(R.id.textView3);
+        TextView textViewTime = (TextView) customView.findViewById(R.id.textView4);
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
         if (singleMealElement.getFoodType().equals("Milk Product")) {
@@ -64,9 +66,10 @@ public class CustomMealAdapter extends ArrayAdapter<Meal> {
                 imageView.setImageResource(R.drawable.rice);
         }
 
-        textView.setText("Date: " + singleMealElement.getDate() + "\n" +
-                "Time: " + singleMealElement.getTime() + "\n" +
-                "Food Name: " + singleMealElement.getFoodName() + "\n" +
+        textViewDate.setText(singleMealElement.getDate());
+        textViewTime.setText(singleMealElement.getTime());
+
+        textView.setText( "Food Name: " + singleMealElement.getFoodName() + "\n" +
                 "Food Type: " + singleMealElement.getFoodType() + "\n" +
                 "Unit Portion Size: " + singleMealElement.getPortionSize() + "\n" +
                 "Your Portion Size: " + singleMealElement.getFloatPortionSize() + "\n" +
