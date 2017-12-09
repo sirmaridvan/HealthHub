@@ -2,6 +2,8 @@ package halmob.healthhub;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import java.util.List;
 
@@ -20,7 +22,8 @@ public class ReadCommentActivity extends AppCompatActivity implements CommentLis
     }
     @Override
     public void commentRead(List<Comment> commentList){
-        //burada gelen liste uygun bir arayüz ile ekrana basılacak.
-        int x;
+        ListAdapter commentListAdapter = new CustomReadCommentAdapter(this, commentList);
+        ListView listCommentRecord = (ListView) findViewById(R.id.listComment);
+        listCommentRecord.setAdapter(commentListAdapter);
     }
 }
