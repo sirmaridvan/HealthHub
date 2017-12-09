@@ -633,7 +633,10 @@ public class FirebaseTransaction {
         commentRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Comment comment = dataSnapshot.getValue(Comment.class);
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Comment comment = postSnapshot.getValue(Comment.class);
+                    commentList.add(comment);
+                }
                 if(commentListener != null) {
                     commentListener.commentRead(commentList);
                 }
