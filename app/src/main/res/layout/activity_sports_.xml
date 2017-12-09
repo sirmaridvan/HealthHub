@@ -1,70 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@android:color/holo_blue_light"
+        android:layout_height="46dp"
         android:gravity="center"
         android:text="Sports Page"
-        android:id="@+id/textView2" />
+        android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/sportRecord_Button"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView2"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="60dp"
-        android:background="@android:color/holo_blue_bright"
-        android:onClick="sportRecords"
-        android:text="Show Sport Records" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:paddingLeft="100dp"
+        app:srcCompat="@drawable/bicycle" />
 
-    <Button
-        android:id="@+id/addSportRecord"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/sportRecord_Button"
-        android:layout_marginEnd="17dp"
-        android:layout_marginTop="83dp"
-        android:background="@android:color/holo_green_light"
-        android:onClick="addSportRecord"
-        android:text="Add Sport Record" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="248dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/addSportRecord"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignLeft="@+id/showSportProgram"
+            android:layout_alignStart="@+id/showSportProgram"
+            android:layout_below="@+id/sportRecord_Button"
+            android:background="@android:color/holo_green_light"
+            android:onClick="addSportRecord"
+            android:text="Add Sport Record" />
+
+        <Button
+            android:id="@+id/sportRecord_Button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView2"
+            android:background="@android:color/holo_blue_bright"
+            android:onClick="sportRecords"
+            android:text="Show Sport Records" />
+
+        <Button
+            android:id="@+id/createSportProgram"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_below="@+id/showSportProgram"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/holo_orange_light"
+            android:onClick="createSportProgram"
+            android:text="Create Sport Program" />
+
+        <Button
+            android:id="@+id/showSportProgram"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_alignLeft="@+id/createSportProgram"
+            android:layout_alignStart="@+id/createSportProgram"
+            android:layout_below="@+id/addSportRecord"
+            android:background="@android:color/holo_red_light"
+            android:onClick="showSportProgram"
+            android:text="Show Sport Program" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="138dp"
+            android:layout_height="74dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/fitness" />
+
+        <ImageView
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/weightlifting" />
+
+    </LinearLayout>
 
 
-    <Button
-        android:id="@+id/showSportProgram"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/sportRecord_Button"
-        android:layout_below="@+id/addSportRecord"
-        android:layout_marginTop="60dp"
-        android:background="@android:color/holo_red_light"
-        android:onClick="showSportProgram"
-        android:text="Show Sport Program" />
-
-    <Button
-        android:id="@+id/createSportProgram"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/addSportRecord"
-        android:layout_alignTop="@+id/showSportProgram"
-        android:layout_marginTop="93dp"
-        android:background="@android:color/holo_orange_light"
-        android:onClick="createSportProgram"
-        android:text="Create Sport Program" />
-
-
-</RelativeLayout>
+</LinearLayout>
 
 
 
