@@ -1,4 +1,5 @@
 package halmob.healthhub;
+
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,13 +12,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import halmob.healthhub.Models.SportForBodyWork;
-import halmob.healthhub.Models.SportForCardio;
+import halmob.healthhub.Models.Comment;
 
-public class CustomCardioRecordAdapter extends ArrayAdapter<SportForCardio> {
+/**
+ * Created by Furkan Ekici on 9.12.2017.
+ */
 
-    CustomCardioRecordAdapter(Context context, List<SportForCardio> cardioList) {
-        super(context, R.layout.custom_row, cardioList);
+public class CustomReadCommentAdapter extends ArrayAdapter<Comment> {
+    CustomReadCommentAdapter(Context context, List<Comment> CommentList) {
+        super(context,R.layout.custom_row, CommentList);
     }
 
     @NonNull
@@ -26,17 +29,16 @@ public class CustomCardioRecordAdapter extends ArrayAdapter<SportForCardio> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View customView = inflater.inflate(R.layout.custom_row, parent, false);
 
-        SportForCardio singleCardioRecordElement = getItem(position);
+        Comment singleCardioRecordElement = getItem(position);
 
 
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
-        imageView.setImageResource(R.drawable.cardioicon);
-        textView.setText("Exercise->" + singleCardioRecordElement.getNameOfExerciseForCardio() + "\n" +"\n" +
-                 singleCardioRecordElement.getMinuteOfExerciseForCardio() + "Minutes " + "\n" +
-                "Burned " + singleCardioRecordElement.getBurnedCaloriesForCardio() +"Calories" + "\n" +
-                "Exercise Date:" + singleCardioRecordElement.getExerciseDateForCardio() + "\n"
+        imageView.setImageResource(R.drawable.commenticon);
+        textView.setText(singleCardioRecordElement.getAuthor() + "commented at"+ "\n" +
+                "At" + singleCardioRecordElement.getTimestamp()+"\n" +
+                singleCardioRecordElement.getText() + "\n"
         );
         return customView;
     }
