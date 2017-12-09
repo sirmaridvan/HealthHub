@@ -31,6 +31,8 @@ public class CustomCarbCountAdapter extends ArrayAdapter<Meal> {
 
         Meal singleMealElement = getItem(position);
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
+        TextView textViewDate = (TextView) customView.findViewById(R.id.textView3);
+        TextView textViewTime = (TextView) customView.findViewById(R.id.textView4);
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
         if (singleMealElement.getFoodType().equals("Milk Product")) {
@@ -64,6 +66,8 @@ public class CustomCarbCountAdapter extends ArrayAdapter<Meal> {
                 imageView.setImageResource(R.drawable.rice);
         }
 
+        textViewDate.setText(singleMealElement.getDate());
+        textViewTime.setText(singleMealElement.getTime());
 
         textView.setText("Date: " + singleMealElement.getDate() + "\n" +
                 "Time: " + singleMealElement.getTime() + "\n" +
