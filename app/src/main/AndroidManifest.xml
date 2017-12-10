@@ -16,6 +16,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -32,27 +33,48 @@
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" />
-        <activity android:name=".BaseActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".StepCounterActivity" />
-        <activity android:name=".MedicineActivity" />
-        <activity android:name=".DiabActivity" />
-        <activity android:name=".InsulinActivity" />
-        <activity android:name=".BloodSugarActivity" />
-        <activity android:name=".ProfilePageActivity" />
-        <activity android:name=".Sports_Activity" />
-        <activity android:name=".addNewSportRecordActivity" />
-        <activity android:name=".MedicineMainActivity" />
-        <activity android:name=".MedicineListActivity" />
-        <activity android:name=".BloodSugarListActivity" />
-        <activity android:name=".InsulinDoseListActivity" />
-        <activity android:name=".SampleReadActivity" />
-        <activity android:name=".DiabTableActivity" />
-        <activity android:name=".CameraDemoActivity" />
-        <activity android:name=".MealActivity" />
-        <activity android:name=".MealListActivity" />
-        <activity android:name=".CarbCountListActivity" />
+        <activity android:name=".BaseActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".StepCounterActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MedicineActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".DiabActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".InsulinActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".BloodSugarActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ProfilePageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Sports_Activity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".addNewSportRecordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MedicineMainActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MedicineListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".BloodSugarListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".InsulinDoseListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SampleReadActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".DiabTableActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CameraDemoActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MealActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MealListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CarbCountListActivity"
+            android:screenOrientation="portrait" />
 
         <receiver
             android:name=".MyReceiver"
@@ -63,25 +85,36 @@
             android:name=".MyNewIntentService"
             android:exported="false" />
 
-        <activity android:name=".ReportActivity" />
-        <activity android:name=".MedicalAnalysisActivity" />
-        <activity android:name=".AddAnalysisActivity" />
-        <activity android:name=".MedicalAnalysisReportsActivity" />
-        <activity android:name=".UserSearchActivity" />
-        <activity android:name=".ListSportRecordActivity" />
+        <activity android:name=".ReportActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MedicalAnalysisActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AddAnalysisActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MedicalAnalysisReportsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".UserSearchActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ListSportRecordActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".HeartRateMonitorActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".addNewSportProgram" />
-        android:screenOrientation="portrait" />
-        <activity android:name=".AddProspectusActivity" />
-        <activity android:name=".ListProspectusActivity" />
+        <activity android:name=".addNewSportProgram"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddProspectusActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ListProspectusActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ListSportProgramActivity"/>
+        <activity android:name=".ListSportProgramActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".WriteCommentActivity" />
-        <activity android:name=".ReadCommentActivity"></activity>
+        <activity android:name=".WriteCommentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ReadCommentActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 
