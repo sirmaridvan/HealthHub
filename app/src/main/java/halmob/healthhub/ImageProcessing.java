@@ -6,7 +6,7 @@ package halmob.healthhub;
 
 public abstract class ImageProcessing {
 
-    private static int decodeYUV420SPtoRedSum(byte[] yuv420sp, int width, int height) {
+    public static int decodeYUV420SPtoRedSum(byte[] yuv420sp, int width, int height) {
         if (yuv420sp == null) return 0;
 
         final int frameSize = width * height;
