@@ -58,7 +58,7 @@ public class StepCounterActivity extends BaseActivity implements SensorEventList
                 break;
         }
     }
-    private void stop(){
+    public void stop(){
         activityRunning = false;
         startButton.setText("Start Counter");
         lastValue=lastValue+Float.valueOf(count.getText().toString());

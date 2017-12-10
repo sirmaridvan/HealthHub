@@ -37,7 +37,7 @@ class FirebaseUtil {
         return getBaseRef().child("replies");
     }
 
-    public static String userType;
+    public static String userType="Healthman";
 
     public static String getPostsPath() {
         return "posts/";
