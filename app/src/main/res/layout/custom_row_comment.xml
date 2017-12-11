@@ -9,20 +9,43 @@
     <ImageView
         android:id="@+id/pills"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="134dp"
         android:layout_margin="5dp"
         app:srcCompat="@drawable/commenticon" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="137dp"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/date_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/comment"
-        android:layout_width="match_parent"
-        android:layout_margin="5dp"
-        android:layout_height="100dp"
-        />
-
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView" />
 
 
 </LinearLayout>

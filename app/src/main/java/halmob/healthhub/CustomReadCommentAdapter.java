@@ -21,28 +21,35 @@ import halmob.healthhub.Models.Comment;
 
 public class CustomReadCommentAdapter extends ArrayAdapter<Comment> {
     CustomReadCommentAdapter(Context context, List<Comment> CommentList) {
-        super(context,R.layout.custom_row, CommentList);
+        super(context,R.layout.custom_row_comment, CommentList);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View customView = inflater.inflate(R.layout.custom_row, parent, false);
+        View customView = inflater.inflate(R.layout.custom_row_comment, parent, false);
 
         Comment singleCardioRecordElement = getItem(position);
         Author author = singleCardioRecordElement.getAuthor();
 
-        TextView textView = (TextView) customView.findViewById(R.id.medInfo);
+        TextView textView = (TextView) customView.findViewById(R.id.author);
+        TextView textView2 = (TextView) customView.findViewById(R.id.comment);
+        TextView textView3 = (TextView) customView.findViewById(R.id.date_time);
+
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
         FirebaseStorageUtility.loadImage(author.getProfile_picture(),imageView, this.getContext());
 
+
         textView.setText(
-                singleCardioRecordElement.getText() + "\n" + "\n" +
-                author.getFull_name() + " commented by at"+ "\n" +
-                "date:"+singleCardioRecordElement.getDate()+ "\n" +
-                "time:" + singleCardioRecordElement.getTime()
+                author.getFull_name()
+        );
+        textView2.setText(
+                singleCardioRecordElement.getText()
+        );
+        textView3.setText(
+                singleCardioRecordElement.getDate() + " - " + singleCardioRecordElement.getTime()
         );
         return customView;
     }
