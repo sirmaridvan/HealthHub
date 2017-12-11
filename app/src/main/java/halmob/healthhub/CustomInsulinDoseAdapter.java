@@ -33,7 +33,7 @@ public class CustomInsulinDoseAdapter extends ArrayAdapter<InsulinDose>{
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
-        imageView.setImageResource(R.drawable.pills);
+        imageView.setImageResource(R.drawable.add_record_icon);
         textView.setText("Date: " + singleInsulinDoseElement.getDate() + "\n" +
                 "Time: " + singleInsulinDoseElement.getTime() + "\n" +
                 "Insulin Type: " + singleInsulinDoseElement.getInsulinType() + "\n" +

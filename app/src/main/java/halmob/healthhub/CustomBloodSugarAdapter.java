@@ -34,7 +34,7 @@ public class CustomBloodSugarAdapter extends ArrayAdapter<BloodSugar>{
         TextView textView = (TextView) customView.findViewById(R.id.medInfo);
         ImageView imageView = (ImageView) customView.findViewById(R.id.pills);
 
-        imageView.setImageResource(R.drawable.pills);
+        imageView.setImageResource(R.drawable.icon_healthhub);
         textView.setText("Date: " + singleBloodSugarElement.getDate() + "\n" +
                 "Time: " +singleBloodSugarElement.getTime() + "\n" +
                 "Hunger Situation: " +singleBloodSugarElement.getHungerSituation() + "\n" +
